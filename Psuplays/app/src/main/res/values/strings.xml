@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Psuplays</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="admin">Admin</string>
+    <string name="student">Student</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="fgt_psswd">Forget Password</string>
+    <string name="logo">logo</string>
+</resources>
