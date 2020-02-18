@@ -5,6 +5,16 @@
     <string name="admin">Admin</string>
     <string name="student">Student</string>
     <string name="sign_up">Sign Up</string>
-    <string name="fgt_psswd">Forget Password</string>
+    <string name="fgt_psswd">Forgot Password</string>
     <string name="logo">logo</string>
+    <string name="test">test</string>
+    <string name="email">Enter .psu email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="re_enter_password">Re-enter Password</string>
+    <string name="answer">Answer</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="place_holder">Place holder</string>
+    <string name="changePassword">Change Password</string>
+    <string name="LoginAs">LOGIN AS</string>
 </resources>
