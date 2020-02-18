@@ -1,0 +1,8 @@
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mysql.conf.d/
+
+[client]
+database = capstone
+user = harsh
+password = harsh
+default-character-set = utf8
