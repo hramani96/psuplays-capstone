@@ -32,7 +32,7 @@
 					<img src="{% static 'login/images/psu_logo-web.png' %}" alt="IMG">
 				</div>
 
-				<form method="post" class="login100-form validate-form">
+				<form method="post" class="login100-form validate-form" action="/add_student/">
 					      {% csrf_token %}
 					<span class="login100-form-title">
 						SignUp
@@ -47,7 +47,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="text" name="lastname" placeholder="Last Name">
+						<input class="input100" type="text" name="last_name" placeholder="Last Name">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
@@ -63,7 +63,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -71,12 +71,12 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pssconf" placeholder="Re-enter Password">
+						<input class="input100" type="password" name="passconf" placeholder="Re-enter Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
-					</div>
+				</div> 
 
 				<!--	<div class="wrap-input100 validate-input" data-validate = "Password is required">
 						<input class="input100" type="text" name="security que" placeholder="Select a Sequerity Question">
