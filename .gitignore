@@ -1,2 +1,19 @@
 *.pyc
 *.swp
+
+# Android files to ignore
+./Psuplays/*.iml
+./Psuplays/.gradle
+./Psuplays/local.properties
+./Psuplays/.idea/caches
+./Psuplays/.idea/libraries
+./Psuplays/.idea/modules.xml
+./Psuplays/.idea/workspace.xml
+./Psuplays/.idea/navEditor.xml
+./Psuplays/.idea/assetWizardSettings.xml
+./Psuplays/.DS_Store
+./Psuplays/build
+./Psuplays/captures
+./Psuplays/.externalNativeBuild
+./Psuplays/.cxx
+./Psuplays/app/build
