@@ -2,12 +2,12 @@ from django.db import models
 
 # Create your models here.
 
-class Signup(models.Model):
-    firstName = models.CharField(max_length=100, null=False)
-    lastName = models.CharField(max_length=100) 
-    email = models.CharField(primary_key=True,max_length=100)
-    password = models.CharField(max_length=100)
+class Users(models.Model):
+    first_name = models.CharField(max_length=50, default='', null=False)
+    last_name = models.CharField(max_length=50, default='', null=False) 
+    email = models.CharField(max_length=50, unique=True, default='', null=False)
+    password = models.CharField(max_length=50, default='', null=False)
 
     def __str__(self):
-        return self.firstName
+        return self.first_name
    

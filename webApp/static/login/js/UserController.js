@@ -24,11 +24,10 @@ app.controller('UserController', function($http) {
         //
         // Change the api to '/user/create/'. Then on creation check 
         // the type of user. i.e whether we are creating student or faculty
-
         $http.post('/add_student/', vm.formInfo)
         .then(function success(response) {
             console.log(response);
-            toastr.success("Student has been created");
+            toastr.success(" has been created");
         },
         function error(response) {
             console.log(response);
