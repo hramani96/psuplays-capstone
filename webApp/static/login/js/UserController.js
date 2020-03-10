@@ -5,7 +5,7 @@ app.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 }]);
 
-app.controller('UserController', function($http) {
+app.controller('UserController', function($http, $window) {
     var vm = this;
 
     vm.formInfo = {};
@@ -24,10 +24,11 @@ app.controller('UserController', function($http) {
         //
         // Change the api to '/user/create/'. Then on creation check 
         // the type of user. i.e whether we are creating student or faculty
-        $http.post('/add_student/', vm.formInfo)
+        $http.post('/user/create/', vm.formInfo)
         .then(function success(response) {
             console.log(response);
-            toastr.success(" has been created");
+            toastr.success(" Account has been created");
+            // $window.location.href='/login/';
         },
         function error(response) {
             console.log(response);
@@ -39,5 +40,17 @@ app.controller('UserController', function($http) {
     }
 
     vm.delete = function() {
+    }
+
+    vm.login = function() {
+        $http.post('/login/', vm.formInfo)
+        .then(function success(response) {
+            console.log(response);
+            toastr.success(" Login successful");
+        },
+        function error(response) {
+            console.log(response);
+            toastr.warning("Failure : " + response.data.reason);
+        });
     }
 });
