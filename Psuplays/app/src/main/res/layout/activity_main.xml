@@ -51,6 +51,7 @@
 
             <Button
                 android:id="@+id/buttonStudent"
+                android:onClick="studentDash"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginTop="8dp"
