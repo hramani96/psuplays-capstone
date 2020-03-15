@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load static %}	
+        <link rel="icon" type="image/png" href="{% static 'login/images/icons/favicon.ico' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'login/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/animate/animate.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/css-hamburgers/hamburgers.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/select2/select2.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 120px;
+  background-color: #f1f1f1;
+  position:fixed;
+  text-align: center;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 25px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 120px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+.toolong{
+    padding: 5px;
+}
+.contentBody {
+    margin-left: 150px;
+    padding: 100px 15px;
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <a class="active" href=""><i class="fa fa-paint-brush"style="font-size:36px"></i><p>Placeholder</p></a>
+  <a href=""><i class="fa fa-pencil-square-o"style="font-size:36px"></i><p>Placeholder</p></a>
+  <a href="http://127.0.0.1:8000/dashboard/"><i class="fa fa-home text-align:center"style= "font-size:36px"></i><i class="fa fa-bell" style= "font-size:36px"></i></a>
+<!-- 	fa fa-group -->
+</div>
+    
+<style>
+ /* Dropdown Button */
+.dropbtn {
+  color: white;
+  font-size: 15px;
+  line-height: 1.5;
+  border: none;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  min-width: 290px;
+  background: #e6e6e6;
+  height: 50px;
+  border-radius: 25px;
+  padding: 0 100px 0 100px;
+  margin-bottom: 10px;
+    }
+
+
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+    
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;} 
+    
+    </style>
+
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" ng-controller="UserController as userCtrl">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="{% static 'login/images/psu_logo-web.png' %}" alt="IMG">
+				</div>
+
+				<form ng-app="" class="login100-form validate-form">
+					      {% csrf_token %}
+					<span class="login100-form-title">
+						Create A Team
+					</span>
+
+					 <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn">Pick a Sport</button>
+                        <span class="focus-input100"></span>
+                         <div id="myDropdown" class="dropdown-content">
+                            <a>Sport 1</a>
+                            <a>Sport 2</a>
+                            <a>Sport 3</a>
+                        </div>
+                    </div> 
+
+
+					<div class="wrap-input100 validate-input" data-validate = "Team name required.">
+                            <input class="input100" type="text" name="team_name" placeholder="Team Name" ng-model="userCtrl.formInfo.team_name">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </span>
+                        </div>
+					
+					<div class="wrap-input100">
+                            <input class="input100" type="text" name="description" placeholder="Description (optional)" ng-model="userCtrl.formInfo.description">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </span>
+                        </div>
+
+
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" ng-click="userCtrl.createTeam()"> <!-- needs to be changed to create team></1-->
+							Create Team
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+    <script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+            }
+    </script>
+    <script>
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+      }
+    }
+  }
+} 
+    </script>
+    <!--===============================================================================================-->
+        <script src="{% static 'login/js/UserController.js' %}"></script>
+
+</body>
+</html>
