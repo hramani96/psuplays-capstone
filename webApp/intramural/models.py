@@ -8,6 +8,7 @@ class Users(models.Model):
     last_name = models.CharField(max_length=50, default='', null=False) 
     email = models.CharField(max_length=50, unique=True, default='', null=False)
     password = models.CharField(max_length=50, default='', null=False)
+    role = models.CharField(max_length=7, default='Student', null=False)
 
     def __str__(self):
         return self.first_name

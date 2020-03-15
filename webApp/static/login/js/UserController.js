@@ -28,7 +28,7 @@ app.controller('UserController', function($http, $window) {
         .then(function success(response) {
             console.log(response);
             toastr.success(" Account has been created");
-            // $window.location.href='/login/';
+            $window.location.href='/';
         },
         function error(response) {
             console.log(response);

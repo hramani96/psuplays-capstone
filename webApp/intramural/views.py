@@ -29,10 +29,11 @@ def create_user(request):
         email = req_data["email"]
         password = req_data["password"]
         password_conf = req_data["password_conf"]
+        role = req_data["role"]
 
-        # TODO: Validate the data here
+        # Validate the data here
         if is_empty([first_name, last_name, email,
-            password, password_conf]):
+            password, password_conf, role]):
             error = "Required fields cannot be empty"
 
         # email compatible validation
@@ -48,13 +49,17 @@ def create_user(request):
         if password_conf != password:
             error = "Passwords do not match"
 
+        # role is not Student validation
+        if role != "Student":
+            error = "Do not play with me!"
+
         if error is not None:
             data["status"] = "failure"
             data["reason"] = error
             return HttpResponse(json.dumps(data), status=500)
 
 
-        user = Users(first_name=first_name,last_name=last_name,email=email,password=password)
+        user = Users(first_name=first_name,last_name=last_name,email=email,password=password,role=role)
         user.save()
         data["status"] = "success"
         return HttpResponse(json.dumps(data), status=200)

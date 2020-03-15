@@ -8,4 +8,5 @@ urlpatterns = [
     path('user/create/', views.create_user, name='create_user'), # user cration api
     path('login/', views.login, name='login'), # login api
     path('dashboard/', views.DashboardPageView.as_view(), name='dashboard'), # login api
+    #path('adminSports/', views.SportsPageView.as_view(), name='sports'), # sports url
 ]
