@@ -39,16 +39,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void tryresponse(String uname,  String Password) throws JSONException {
+    public void tryresponse(String uname,String Password,String role) throws JSONException {
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http:71.114.127.203:8888/dashboard/";
+        String url = "http:71.114.127.203:8888" + role;
         JSONObject form = new JSONObject();
         form.put("email",uname);
         form.put("password",Password);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, url, form, new Response.Listener<JSONObject>() {
+                (Request.Method.POST, url, form, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
@@ -59,13 +59,13 @@ public class MainActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         if(status.equals("success")){
-                            Toast.makeText(MainActivity.this,"Signin successfull",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MainActivity.this, Dashboard.class);
+                            Toast.makeText(MainActivity.this,"Sign-in successful",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(MainActivity.this, Student_Dasboard.class);
                             startActivity(intent);
                             finish();
                         }
                         else {
-                            Toast.makeText(MainActivity.this, "Signin not successfull", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Sign-in not successful", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -98,6 +98,13 @@ public class MainActivity extends AppCompatActivity {
         String uname = ((TextView)findViewById(R.id.etUsername)).getText().toString();
         String password = ((TextView)findViewById(R.id.etPassword)).getText().toString();
 
-        tryresponse(uname,password);
+        tryresponse(uname,password,"/loginStudent/");
+    }
+
+    public void adminDash(View view) throws JSONException {
+        String uname = ((TextView)findViewById(R.id.etUsername)).getText().toString();
+        String password = ((TextView)findViewById(R.id.etPassword)).getText().toString();
+
+        tryresponse(uname,password,"/loginAdmin/");
     }
 }

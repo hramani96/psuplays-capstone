@@ -21,6 +21,10 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
+        <activity
+            android:name="com.example.psuplays.Student_Dasboard"
+            android:label="@string/title_activity_student__dasboard"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.example.psuplays.Dashboard" />
         <activity
             android:name="com.example.psuplays.medical_info"
@@ -38,6 +42,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+            android:authorities="com.example.psuplays.lifecycle-process"
+            android:exported="false"
+            android:multiprocess="true" />
     </application>
 
 </manifest>

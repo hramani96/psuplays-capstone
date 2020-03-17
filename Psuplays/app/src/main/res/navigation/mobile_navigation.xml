@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_live_games">
+
+    <fragment
+        android:id="@+id/nav_live_games"
+        android:name="com.example.psuplays.StudentLiveGamesFragment"
+        android:label="@string/Live_Games"
+        tools:layout="@layout/fragment_student_live_games" />
+
+    <fragment
+        android:id="@+id/nav_sports"
+        android:name="com.example.psuplays.StudentSportsFragment"
+        android:label="@string/Sports"
+        tools:layout="@layout/fragment_student_sports" />
+
+    <fragment
+        android:id="@+id/nav_users"
+        android:name="com.example.psuplays.StudentUsersFragment"
+        android:label="@string/Users"
+        tools:layout="@layout/fragment_student_users" />
+
+</navigation>

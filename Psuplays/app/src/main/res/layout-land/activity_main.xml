@@ -94,6 +94,7 @@
 
                 <Button
                     android:id="@+id/buttonAdmin"
+                    android:onClick="adminDash"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:background="@drawable/button"

@@ -67,6 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:background="@drawable/button"
+                android:onClick="adminDash"
                 android:text="@string/admin"
                 app:layout_constraintBottom_toBottomOf="@+id/buttonStudent"
                 app:layout_constraintEnd_toEndOf="@+id/etPassword"
