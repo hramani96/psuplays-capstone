@@ -6,8 +6,15 @@ app.config(['$httpProvider', function($httpProvider) {
 }]);
 
 app.controller('UserController', function($http, $window) {
+
     var vm = this;
 
+    console.log("tsging");
+
+    vm.admins = []
+
+    this.test = "abcd";
+    vm.test1 = "abcefvd";
     vm.formInfo = {};
 
     vm.index = function() {
@@ -42,15 +49,38 @@ app.controller('UserController', function($http, $window) {
     vm.delete = function() {
     }
 
-    vm.login = function() {
-        $http.post('/login/', vm.formInfo)
+    vm.login_student = function() {
+        $http.post('/loginStudent/', vm.formInfo)
         .then(function success(response) {
             console.log(response);
-            toastr.success(" Login successful");
+            toastr.success(" login successful");
+            $window.location.href='/dashboard/';
         },
         function error(response) {
             console.log(response);
-            toastr.warning("Failure : " + response.data.reason);
+            toastr.warning("failure : " + response.data.reason);
+        });
+    }
+
+    vm.login_admin = function() {
+        $http.post('/loginAdmin/', vm.formInfo)
+        .then(function success(response) {
+            console.log(response);
+            toastr.success(" login successful");
+            $window.location.href='/admin/dashboard/';
+        },
+        function error(response) {
+            console.log(response);
+            toastr.warning("failure : " + response.data.reason);
+        });
+    }
+
+    vm.getAllAdmins = function() {
+        $http.get('/admin/getAllAdmins')
+        .then(function success(response) {
+            vm.admins = response.data.admins;
+        }, function error(response) {
+            vm.admins = ["abcd"];
         });
     }
 });

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView # Import TemplateView
 from django.http import HttpResponse
 from .models import Users
+from django.core import serializers
 import json
 from .helpers import is_empty
 from django.views.decorators.csrf import csrf_exempt
@@ -15,8 +16,11 @@ class SignUpPageView(TemplateView):
 class ForgotPasswordPageView(TemplateView):
     template_name = "forgotPassword.html"
 
-class DashboardPageView(TemplateView):
-    template_name = "dashboard.html"
+class AdminDashboardPageView(TemplateView):
+    template_name = "adminDashboard.html"
+
+class manageAdminPageView(TemplateView):
+    template_name = "manageAdmin.html"
 
 @csrf_exempt
 def create_user(request):
@@ -66,31 +70,85 @@ def create_user(request):
     except Exception as e:
         print("[EXCEPTION][CREATE_USER] ::: {}".format(e))
         data["status"] = "failure"
-        data["reason"] = "Because you made a stupid mistake"
+        data["reason"] = "Because you made a mistake"
         return HttpResponse(json.dumps(data), status=500)
 
-def login(request):
+@csrf_exempt
+def login_student(request):
+    req_data = json.loads(request.body)
     try:
-        req_data = json.loads(request.body)
+        error = None
         data={}
         email = req_data["email"]
         password = req_data["password"]
 
+        # Email validation
         if  Users.objects.filter(email=email).count() <= 0:
-            data["status"] = "failure"
-            data["reason"] = "Incorrect Username/Password"
-            return HttpResponse(json.dumps(data), status=500)
+            error = "Incorrect Username/Password"
 
-        if password != Users.objects.filter(email=email).get().password:
-            data["status"] = "failure"
-            data["reason"] = "Incorrect Username/Password"
-            return HttpResponse(json.dumps(data), status=500)
+        # password validation
+        elif password != Users.objects.filter(email=email).get().password:
+            error = "Incorrect Username/Password"
 
+        # Role validation (Making sure its Student)
+        elif Users.objects.filter(email=email).get().role != "Student":
+            error = "You are not a Student!"
+
+        else:
+            error = None
+
+        if error is not None:
+            data["status"] = "failure"
+            data["reason"] = error
+            return HttpResponse(json.dumps(data), status=500)
         data["status"] = "success"
         return HttpResponse(json.dumps(data), status=200)
     except Exception as e:
         print("[EXCEPTION][dashboard] ::: {}".format(e))
         data["status"] = "failure"
-        data["reason"] = "Because you made a stupid mistake"
+        data["reason"] = "Because you made a mistake"
         return HttpResponse(json.dumps(data), status=500)
 
+@csrf_exempt
+def login_admin(request):
+    req_data = json.loads(request.body)
+    try:
+        error = None
+        data={}
+        email = req_data["email"]
+        password = req_data["password"]
+
+        # Email validation
+        if  Users.objects.filter(email=email).count() <= 0:
+            error = "Incorrect Username/Password"
+
+        # password validation
+        elif password != Users.objects.filter(email=email).get().password:
+            error = "Incorrect Username/Password"
+
+        # Role validation (Making sure its Admin)
+        elif Users.objects.filter(email=email).get().role != "Admin":
+            error = "You are not an Admin!"
+
+        else:
+            error = None
+
+        if error is not None:
+            data["status"] = "failure"
+            data["reason"] = error
+            return HttpResponse(json.dumps(data), status=500)
+        data["status"] = "success"
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][dashboard] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+
+@csrf_exempt
+def get_all_admins(request):
+    data={}
+    admins = Users.objects.filter(role='Admin').values("id", "first_name", "last_name", "email", "role")
+    data["status"] = "success"
+    data["admins"] = list(admins)
+    return HttpResponse(json.dumps(data), status=200)
