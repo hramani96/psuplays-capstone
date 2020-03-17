@@ -5,14 +5,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
         {% load static %}	
-        <link rel="icon" type="image/png" href="{% static 'login/images/icons/favicon.ico' %}"/>
-        <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/bootstrap/css/bootstrap.min.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'login/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/animate/animate.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/css-hamburgers/hamburgers.min.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/select2/select2.min.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="{% static 'dashboard/assets/css/material-dashboard.css' %}">
         <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
 </head>
@@ -20,210 +16,363 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body {
-  margin: 0;
-  font-family: "Lato", sans-serif;
-}
-
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 120px;
-  background-color: #f1f1f1;
-  position:fixed;
-  text-align: center;
-  height: 100%;
-  overflow: auto;
-}
-
-.sidebar a {
-  display: block;
-  color: black;
-  padding: 25px;
-  text-decoration: none;
-}
- 
-.sidebar a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.sidebar a:hover:not(.active) {
-  background-color: #555;
-  color: white;
-}
-
-div.content {
-  margin-left: 120px;
-  padding: 1px 16px;
-  height: 1000px;
-}
-.toolong{
-    padding: 5px;
-}
-.contentBody {
-    margin-left: 150px;
-    padding: 100px 15px;
-}
-</style>
-</head>
-<body>
-
-<div class="sidebar">
-  <a class="active" href=""><i class="fa fa-paint-brush"style="font-size:36px"></i><p>Placeholder</p></a>
-  <a href=""><i class="fa fa-pencil-square-o"style="font-size:36px"></i><p>Placeholder</p></a>
-  <a href="http://127.0.0.1:8000/dashboard/"><i class="fa fa-home text-align:center"style= "font-size:36px"></i><i class="fa fa-bell" style= "font-size:36px"></i></a>
-<!-- 	fa fa-group -->
-</div>
-    
-<style>
- /* Dropdown Button */
-.dropbtn {
-  color: white;
-  font-size: 15px;
-  line-height: 1.5;
-  border: none;
-  cursor: pointer;
-  display: block;
-  width: 100%;
-  min-width: 290px;
-  background: #e6e6e6;
-  height: 50px;
-  border-radius: 25px;
-  padding: 0 100px 0 100px;
-  margin-bottom: 10px;
-    }
-
-
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 10;
-    
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;} 
-    
-    </style>
 
 <body>
 	
-	<div class="limiter">
-		<div class="container-login100" ng-controller="UserController as userCtrl">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="{% static 'login/images/psu_logo-web.png' %}" alt="IMG">
-				</div>
+<div class="wrapper">
+    <div class="wrapper ">
+            <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+                <!--
+                    Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
-				<form ng-app="" class="login100-form validate-form">
-					      {% csrf_token %}
-					<span class="login100-form-title">
-						Create A Team
-					</span>
+                    Tip 2: you can also add an image using data-image tag
+                -->
+                <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+                        Psu Plays
+                    </a></div>
+                    <div class="sidebar-wrapper">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="">
+                                    <p>Teams</p>
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="">
+                                    <p>Create Team</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+                    <div class="main-panel">
 
-					 <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn">Pick a Sport</button>
-                        <span class="focus-input100"></span>
-                         <div id="myDropdown" class="dropdown-content">
-                            <a>Sport 1</a>
-                            <a>Sport 2</a>
-                            <a>Sport 3</a>
+     <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+                    <div class="container-fluid">
+                        <div class="navbar-wrapper">
+                            <a class="navbar-brand" href="javascript:;">Dashboard</a>
                         </div>
-                    </div> 
-
-
-					<div class="wrap-input100 validate-input" data-validate = "Team name required.">
-                            <input class="input100" type="text" name="team_name" placeholder="Team Name" ng-model="userCtrl.formInfo.team_name">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </span>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end">
+                            <form class="navbar-form">
+                                <div class="input-group no-border">
+                                    <input type="text" value="" class="form-control" placeholder="Search...">
+                                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                        <i class="material-icons">search</i>
+                                        <div class="ripple-container"></div>
+                                    </button>
+                                </div>
+                            </form>
+                            <ul class="navbar-nav">
+                                <a class="nav-link" href="./dashboard.html" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">home</i>
+                                </a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">notifications</i>
+                                        <p class="d-lg-none d-md-block">
+                                        Some Actions
+                                        </p>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" href="#">You have been invited to join a team.</a>
+                                        <a class="dropdown-item" href="#">Your team request has been rejected.</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">person</i>
+                                        <p class="d-lg-none d-md-block">
+                                        Account
+                                        </p>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                                        <a class="dropdown-item" href="#">Profile</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Log out</a>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-					
-					<div class="wrap-input100">
-                            <input class="input100" type="text" name="description" placeholder="Description (optional)" ng-model="userCtrl.formInfo.description">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                            </span>
+                    </div>
+                </nav>
+                <!-- End Navbar -->
+    
+
+	<div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-6 col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Create a Team</h4>
+                </div>
+                <div class="card-body">
+                  <form>
+                    
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Sport</label>
+                          <input type="text" class="form-control">
                         </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Team Name</label>
+                          <input type="text" class="form-control" name="team_name" ng-model="userCtrl.formInfo.team_name">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Description (optional)</label>
+                          <div class="form-group">
+                            <textarea class="form-control" rows="5" type="text" name="description" ng-model="userCtrl.formInfo.description"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right" ng-click="userCtrl.createTeam()">Create Team</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+	    </div>
+    </div>
+<!--   Core JS Files   -->
+        <script src="{% static 'dashboard/assets/js/core/jquery.min.js' %}"></script>
+        <script src="{% static 'dashboard/assets/js/core/popper.min.js' %}"></script>
+        <script src="{% static 'dashboard/assets/js/core/bootstrap-material-design.min.js' %}"></script>
+        <script src="{% static 'dashboard/assets/js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
+        <!-- Plugin for the momentJs  -->
+        <script src="{% static 'dashboard/assets/js/plugins/moment.min.js' %}"></script>
+        <!--  Plugin for Sweet Alert -->
+        <script src="{% static 'dashboard/assets/js/plugins/sweetalert2.js' %}"></script>
+        <!-- Forms Validations Plugin -->
+        <script src="{% static 'dashboard/assets/js/plugins/jquery.validate.min.js' %}"></script>
+        <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+        <script src="{% static 'dashboard/assets/js/plugins/jquery.bootstrap-wizard.js' %}"></script>
+        <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+        <script src="{% static 'dashboard/assets/js/plugins/bootstrap-selectpicker.js' %}"></script>
+        <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+        <script src="{% static 'dashboard/assets/js/plugins/bootstrap-datetimepicker.min.js' %}"></script>
+        <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+        <script src="{% static 'dashboard/assets/js/plugins/jquery.dataTables.min.js' %}"></script>
+        <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+        <script src="{% static 'dashcoard/assets/js/plugins/bootstrap-tagsinput.js' %}"></script>
+        <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+        <script src="{% static 'dashboard/assets/js/plugins/jasny-bootstrap.min.js' %}"></script>
+        <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+        <script src="{% static 'dashboard/assets/js/plugins/fullcalendar.min.js' %}"></script>
+        <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+        <script src="{% static 'dashboard/assets/js/plugins/jquery-jvectormap.js' %}"></script>
+        <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+        <script src="{% static 'dashboard/assets/js/plugins/nouislider.min.js' %}"></script>
+        <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+        <!-- Library for adding dinamically elements -->
+        <script src="{% static 'dashboard/assets/js/plugins/arrive.min.js' %}"></script>
+        <!--  Google Maps Plugin    -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+        <!-- Chartist JS -->
+        <script src="{% static 'dashboard/assets/js/plugins/chartist.min.js' %}"></script>
+        <!--  Notifications Plugin    -->
+        <script src="{% static 'dashboard/assets/js/plugins/bootstrap-notify.js' %}"></script>
+        <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="{% static 'dashboard/assets/js/material-dashboard.js?v=2.1.2' %}" type="text/javascript"></script>
+        <!--  -->
+        <script src="{% static 'dashboard/assets/demo/demo.js' %}"></script>
+        <script>
+            $(document).ready(function() {
+                $().ready(function() {
+                    $sidebar = $('.sidebar');
+
+                    $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+                    $full_page = $('.full-page');
+
+                    $sidebar_responsive = $('body > .navbar-collapse');
+
+                    window_width = $(window).width();
+
+                    fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+                    if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+                        if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+                            $('.fixed-plugin .dropdown').addClass('open');
+                        }
+
+                    }
+
+                    $('.fixed-plugin a').click(function(event) {
+                        // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+                        if ($(this).hasClass('switch-trigger')) {
+                            if (event.stopPropagation) {
+                                event.stopPropagation();
+                            } else if (window.event) {
+                                window.event.cancelBubble = true;
+                            }
+                        }
+                    });
+
+                    $('.fixed-plugin .active-color span').click(function() {
+                        $full_page_background = $('.full-page-background');
+
+                        $(this).siblings().removeClass('active');
+                        $(this).addClass('active');
+
+                        var new_color = $(this).data('color');
+
+                        if ($sidebar.length != 0) {
+                            $sidebar.attr('data-color', new_color);
+                        }
+
+                        if ($full_page.length != 0) {
+                            $full_page.attr('filter-color', new_color);
+                        }
+
+                        if ($sidebar_responsive.length != 0) {
+                            $sidebar_responsive.attr('data-color', new_color);
+                        }
+                    });
+
+                    $('.fixed-plugin .background-color .badge').click(function() {
+                        $(this).siblings().removeClass('active');
+                        $(this).addClass('active');
+
+                        var new_color = $(this).data('background-color');
+
+                        if ($sidebar.length != 0) {
+                            $sidebar.attr('data-background-color', new_color);
+                        }
+                    });
+
+                    $('.fixed-plugin .img-holder').click(function() {
+                        $full_page_background = $('.full-page-background');
+
+                        $(this).parent('li').siblings().removeClass('active');
+                        $(this).parent('li').addClass('active');
 
 
+                        var new_image = $(this).find("img").attr('src');
 
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" ng-click="userCtrl.createTeam()"> <!-- needs to be changed to create team></1-->
-							Create Team
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	
-	
+                        if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                            $sidebar_img_container.fadeOut('fast', function() {
+                                $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                                $sidebar_img_container.fadeIn('fast');
+                            });
+                        }
 
-	
-<!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-    <script>
-    /* When the user clicks on the button,
-    toggle between hiding and showing the dropdown content */
-        function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
-            }
-    </script>
-    <script>
-        // Close the dropdown menu if the user clicks outside of it
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-      }
-    }
-  }
-} 
-    </script>
-    <!--===============================================================================================-->
+                        if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                            $full_page_background.fadeOut('fast', function() {
+                                $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                                $full_page_background.fadeIn('fast');
+                            });
+                        }
+
+                        if ($('.switch-sidebar-image input:checked').length == 0) {
+                            var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+                            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                        }
+
+                        if ($sidebar_responsive.length != 0) {
+                            $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+                        }
+                    });
+
+                    $('.switch-sidebar-image input').change(function() {
+                        $full_page_background = $('.full-page-background');
+
+                        $input = $(this);
+
+                        if ($input.is(':checked')) {
+                            if ($sidebar_img_container.length != 0) {
+                                $sidebar_img_container.fadeIn('fast');
+                                $sidebar.attr('data-image', '#');
+                            }
+
+                            if ($full_page_background.length != 0) {
+                                $full_page_background.fadeIn('fast');
+                                $full_page.attr('data-image', '#');
+                            }
+
+                            background_image = true;
+                        } else {
+                            if ($sidebar_img_container.length != 0) {
+                                $sidebar.removeAttr('data-image');
+                                $sidebar_img_container.fadeOut('fast');
+                            }
+
+                            if ($full_page_background.length != 0) {
+                                $full_page.removeAttr('data-image', '#');
+                                $full_page_background.fadeOut('fast');
+                            }
+
+                            background_image = false;
+                        }
+                    });
+
+                    $('.switch-sidebar-mini input').change(function() {
+                        $body = $('body');
+
+                        $input = $(this);
+
+                        if (md.misc.sidebar_mini_active == true) {
+                            $('body').removeClass('sidebar-mini');
+                            md.misc.sidebar_mini_active = false;
+
+                            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+                        } else {
+
+                            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
+                            setTimeout(function() {
+                                $('body').addClass('sidebar-mini');
+
+                                md.misc.sidebar_mini_active = true;
+                            }, 300);
+                        }
+
+                        // we simulate the window Resize so the charts will get updated in realtime.
+                            var simulateWindowResize = setInterval(function() {
+                                window.dispatchEvent(new Event('resize'));
+                            }, 180);
+
+                        // we stop the simulation of Window Resize after the animations are completed
+                        setTimeout(function() {
+                            clearInterval(simulateWindowResize);
+                        }, 1000);
+
+                    });
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                // Javascript method's body can be found in assets/js/demos.js
+                md.initDashboardPageCharts();
+
+            });
+        </script>
         <script src="{% static 'login/js/UserController.js' %}"></script>
 
 </body>
