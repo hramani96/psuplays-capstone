@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Psuplays</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="admin">Admin</string>
+    <string name="student">Student</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="fgt_psswd">Forgot Password</string>
+    <string name="logo">logo</string>
+    <string name="test">test</string>
+    <string name="email">Enter .psu email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="re_enter_password">Re-enter Password</string>
+    <string name="answer">Answer</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="place_holder">Place holder</string>
+    <string name="changePassword">Change Password</string>
+    <string name="LoginAs">LOGIN AS</string>
+    <string name="birth_date">Birth Date<sup><small>*</small></sup> (MM/DD/YYYY)</string>
+    <string name="height">Height<sup><small>*</small></sup> (cm)</string>
+    <string name="weight">Weight<sup><small>*</small></sup> (lbs)</string>
+    <string name="medical_condition">Any Medical Condition \n(Optional)</string>
+    <string name="emergency_cname">Emergency Contact Name<sup><small>*</small></sup></string>
+    <string name="emergency_cnum">Emergency Contact Number<sup><small>*</small></sup></string>
+    <string name="submit">Submit</string>
+    <string name="medical_info">Medical Info.</string>
+    <string name="Message">Student Dashboard Implementation</string>
+    <string name="title_activity_student__dasboard">Student_Dasboard</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="Live_Games">Live Games</string>
+    <string name="Sports">Sports</string>
+    <string name="Users">Users</string>
+
+    <string name="student_dashboard">STUDENT DASHBOARD</string>
+    <string name="admin_dashboard">ADMIN DASHBOARD</string>
+    <string name="Basketball">Monday</string>
+    <string name="Soccer">Tuesday</string>
+    <string name="Tennis">Wednesday</string>
+    <string name="sports">Sports</string>
+    <string name="edit_sport_list">Edit Sport List</string>
+    <string name="generate_schedule">Generate Schedule</string>
+    <string name="select_a_sport">Select a sport:</string>
+    <string name="select_a_semester">Select a semester:</string>
+    <string name="sport_schedule">Sport Schedule</string>
+    <string name="select_a_date">Select a date:</string>
+    <string name="create_a_new_team">Create a New Team</string>
+    <string name="team_name">Team Name</string>
+    <string name="description_optional">Description: Message for admin \n\t\t\t\t\t\t\t (optional)</string>
+    <string name="create_team">Create Team</string>
+    <string name="livechat">LiveChat</string>
+    <string name="select_semester">Select A Semester</string>
+    <string name="select_sport">Select a Sport</string>
+    <string name="join_existing_team">Join Existing Team</string>
+    <string name="create_new_team">Create New Team</string>
+    <string name="test2">test</string>
+    <string name="AddAdmin">Add Admin</string>
+    <string name="addSports">Add Sport</string>
+    <string name="title_activity_admin__dasboard">Admin_Dashboard</string>
+
+
+</resources>

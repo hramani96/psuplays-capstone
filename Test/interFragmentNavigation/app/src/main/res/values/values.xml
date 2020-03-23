@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sportList">
+        <item>Basketball</item>
+        <item>Tennis</item>
+        <item>Indoor Soccer</item>
+    </string-array>
+
+    <string-array name="semesterlist">
+        <item>Spring</item>
+        <item>Summer</item>
+        <item>Fall</item>
+    </string-array>
+</resources>
