@@ -54,8 +54,8 @@ def create_user(request):
             error = "Passwords do not match"
 
         # role is not Student validation
-        if role != "Student":
-            error = "Do not play with me!"
+        #if role != "Student":
+        #    error = "Do not play with me!"
 
         if error is not None:
             data["status"] = "failure"
@@ -147,8 +147,44 @@ def login_admin(request):
 
 @csrf_exempt
 def get_all_admins(request):
-    data={}
-    admins = Users.objects.filter(role='Admin').values("id", "first_name", "last_name", "email", "role")
-    data["status"] = "success"
-    data["admins"] = list(admins)
-    return HttpResponse(json.dumps(data), status=200)
+    try:
+        data={}
+        admins = Users.objects.filter(role='Admin').values("id", "first_name", "last_name", "email", "role")
+        data["status"] = "success"
+        data["admins"] = list(admins)
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][get_all_admins] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+
+@csrf_exempt
+def remove_user(request):
+    req_data = json.loads(request.body)
+    try:
+        data={}
+        email = req_data["email"]
+        Users.objects.filter(email=email).delete()
+        data["status"] = "success"
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][dashboard] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+
+@csrf_exempt
+def show_user(request):
+    req_data = json.loads(request.body)
+    try:
+        data={}
+        email = req_data["email"]
+        Users.objects.filter(email=email).delete()
+        data["status"] = "success"
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][dashboard] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)

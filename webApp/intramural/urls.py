@@ -6,6 +6,7 @@ urlpatterns = [
     path('signup/', views.SignUpPageView.as_view(), name='signup'), # SignUp url
     path('forgotpassword/', views.ForgotPasswordPageView.as_view(), name='forgotpassword'), # Forgot Password url
     path('user/create/', views.create_user, name='create_user'), # user cration api
+    path('user/remove/', views.remove_user, name='remove_user'), # user remove api
     path('loginStudent/', views.login_student, name='student_login'), # student login api
     path('loginAdmin/', views.login_admin, name='admin_login'), # admin login api
     path('admin/dashboard/', views.AdminDashboardPageView.as_view(), name='Admindashboard'), # Admin dashboard url

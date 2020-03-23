@@ -9,44 +9,64 @@ app.controller('UserController', function($http, $window) {
 
     var vm = this;
 
-    console.log("tsging");
 
     vm.admins = []
 
-    this.test = "abcd";
-    vm.test1 = "abcefvd";
+    vm.admin = []
+
     vm.formInfo = {};
 
     vm.index = function() {
     }
 
-    vm.show = function() {
+    vm.show = function(admin) {
+        vm.admin = admin;
+        console.log(vm.admin);
+        //return vm.admin;
+    }
+
+    vm.reset = function() {
+        vm.formInfo = {};
+    }
+
+    vm.getAllAdmins = function() {
+        $http.get('/admin/getAllAdmins')
+        .then(function success(response) {
+            vm.admins = response.data.admins;
+        }, function error(response) {
+            console.log(response);
+            toastr.error("Failure : " + response.data.reason);
+        });
     }
 
     vm.create = function() {
-        // TODO:Validate the form data here.
-        // 1. Check email format
-        // 2. Check name
-        // 3. password and confirm password must match
-        //
-        // Change the api to '/user/create/'. Then on creation check 
-        // the type of user. i.e whether we are creating student or faculty
         $http.post('/user/create/', vm.formInfo)
         .then(function success(response) {
             console.log(response);
             toastr.success(" Account has been created");
-            $window.location.href='/';
+            if (vm.formInfo.role = "Admin") {
+                vm.getallAdmins();
+                vm.reset();
+            }
         },
         function error(response) {
             console.log(response);
-            toastr.warning("Failure : " + response.data.reason);
+            toastr.error("Failure : " + response.data.reason);
         });
     }
 
     vm.update = function() {
     }
 
-    vm.delete = function() {
+    vm.delete = function(admin) {
+        $http.post('/user/remove/', admin)
+        .then(function success(response) {
+            console.log(response);
+            toastr.success(" Admin has been removed");
+        }, function error(response) {
+            console.log(response);
+            toastr.error("Failure : " + response.data.reason);
+        });
     }
 
     vm.login_student = function() {
@@ -58,7 +78,7 @@ app.controller('UserController', function($http, $window) {
         },
         function error(response) {
             console.log(response);
-            toastr.warning("failure : " + response.data.reason);
+            toastr.error("failure : " + response.data.reason);
         });
     }
 
@@ -71,16 +91,8 @@ app.controller('UserController', function($http, $window) {
         },
         function error(response) {
             console.log(response);
-            toastr.warning("failure : " + response.data.reason);
+            toastr.error("failure : " + response.data.reason);
         });
     }
 
-    vm.getAllAdmins = function() {
-        $http.get('/admin/getAllAdmins')
-        .then(function success(response) {
-            vm.admins = response.data.admins;
-        }, function error(response) {
-            vm.admins = ["abcd"];
-        });
-    }
 });
