@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         if(status.equals("success")){
                             Toast.makeText(MainActivity.this,"Sign-in successful",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MainActivity.this, Student_Dasboard.class);
+                            Intent intent = new Intent(MainActivity.this, Student_Dashboard.class);
                             startActivity(intent);
                             finish();
                         }

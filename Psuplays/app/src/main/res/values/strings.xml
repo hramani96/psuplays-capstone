@@ -38,4 +38,39 @@
     <string name="Sports">Sports</string>
     <string name="Users">Users</string>
 
+    <!-- Test strings-->
+    <string name="student_dashboard">STUDENT DASHBOARD</string>
+    <string name="admin_dashboard">ADMIN DASHBOARD</string>
+    <string name="Basketball">Monday</string>
+    <string name="Soccer">Tuesday</string>
+    <string name="Tennis">Wednesday</string>
+    <string name="sports">Sports</string>
+    <string name="edit_sport_list">Edit Sport List</string>
+    <string name="generate_schedule">Generate Schedule</string>
+    <string name="select_a_sport">Select a sport:</string>
+    <string name="select_a_semester">Select a semester:</string>
+    <string name="sport_schedule">Sport Schedule</string>
+    <string name="select_a_date">Select a date:</string>
+    <string name="create_a_new_team">Create a New Team</string>
+    <string name="team_name">Team Name</string>
+    <string name="description_optional">Description: Message for admin \n\t\t\t\t\t\t\t (optional)</string>
+    <string name="create_team">Create Team</string>
+    <string name="livechat">LiveChat</string>
+    <string name="select_semester">Select A Semester</string>
+    <string name="select_sport">Select a Sport</string>
+    <string name="join_existing_team">Join Existing Team</string>
+    <string name="create_new_team">Create New Team</string>
+    <string name="test2">test</string>
+    <string name="AddAdmin">Add Admin</string>
+    <string name="addSports">Add Sport</string>
+    <string name="title_activity_admin__dasboard">Admin_Dashboard</string>
+    <string name="description">description</string>
+    <string name="create_newteam">Create new Team</string>
+    <string name="select_date">Select date</string>
+    <string name="team_approval">Team Approval</string>
+    <string name="manage_admin">Manage Admin</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

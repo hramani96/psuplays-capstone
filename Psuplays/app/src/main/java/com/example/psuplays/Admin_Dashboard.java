@@ -1,40 +1,35 @@
 package com.example.psuplays;
 
-import android.os.Bundle;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.text.Layout;
+import android.os.Bundle;
 import android.view.Menu;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class Student_Dasboard extends AppCompatActivity {
+import com.google.android.material.navigation.NavigationView;
+
+public class Admin_Dashboard extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student__dasboard);
+        setContentView(R.layout.activity_admin_dashboard);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.student_nav_view);
+        DrawerLayout drawer = findViewById(R.id.admin_drawer_layout);
+        NavigationView navigationView = findViewById(R.id.admin_nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_live_games, R.id.nav_sports, R.id.nav_users)
+                R.id.nav_admin_live_games, R.id.nav_admin_sports, R.id.nav_manage_admin,R.id.nav_team_approval)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_live_games"
+            android:icon="@drawable/ic_live"
+            android:title="@string/Live_Games" />
+        <item
+            android:id="@+id/nav_sports"
+            android:icon="@drawable/ic_sports"
+            android:title="@string/Sports" />
+        <item
+            android:id="@+id/nav_manage_admin"
+            android:icon="@drawable/ic_user"
+            android:title="@string/manage_admin" />
+        <item
+            android:id="@+id/nav_team_approval"
+            android:icon="@drawable/ic_approvals"
+            android:title="@string/team_approval" />
+    </group>
+
+</menu>

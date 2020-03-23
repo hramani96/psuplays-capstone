@@ -21,8 +21,9 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
+        <activity android:name="com.example.psuplays.Admin_Dashboard" />
         <activity
-            android:name="com.example.psuplays.Student_Dasboard"
+            android:name="com.example.psuplays.Student_Dashboard"
             android:label="@string/title_activity_student__dasboard"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.example.psuplays.Dashboard" />

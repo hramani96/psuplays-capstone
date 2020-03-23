@@ -23,6 +23,7 @@ public class StudentUsersFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_student_users, container, false);
         final TextView textView = root.findViewById(R.id.text_slideshow);
 
+        textView.setText("User page implementation");
         return root;
     }
 }

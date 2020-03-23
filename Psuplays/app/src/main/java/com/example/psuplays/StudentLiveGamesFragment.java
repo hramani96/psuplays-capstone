@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 
 import com.example.psuplays.R;
 
@@ -22,6 +23,7 @@ public class StudentLiveGamesFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_student_live_games, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
 
+        textView.setText("Live sports will be implemented here");
         return root;
     }
 }

@@ -13,10 +13,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Admin_Dashboard"></activity>
         <activity
-            android:name=".Student_Dasboard"
+            android:name=".Student_Dashboard"
             android:label="@string/title_activity_student__dasboard"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Dashboard" />
         <activity
             android:name=".medical_info"

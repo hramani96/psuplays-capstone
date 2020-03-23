@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-39:12
-INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-39:12
-INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-39:12
-INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-39:12
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-40:12
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-40:12
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-40:12
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-40:12
 MERGED from [com.android.volley:volley:1.1.1] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/027307605faf6002b874c9cacd4bdf80/jetified-volley-1.1.1/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.navigation:navigation-ui:2.0.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/42a87a670a902974157bd7d03b9f73ff/jetified-navigation-ui-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.material:material:1.0.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/c7eb9cd3508ac3959447c14fd76c9fb9/material-1.0.0/AndroidManifest.xml:17:1-24:12
@@ -48,22 +48,22 @@ MERGED from [androidx.lifecycle:lifecycle-service:2.0.0] /Users/devghodasara/.gr
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/ffa46f3d6480310395b7b525cf59ccde/lifecycle-runtime-2.1.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/64ed055c454b36433d45a77285ee24d6/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/3819fb4fef2e012192b32762458ba145/savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
-INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-39:12
-INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-39:12
-INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-40:12
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-40:12
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-40:12
 	package
 		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:4:5-35
 		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml
-		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-39:12
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-40:12
 		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml
 	xmlns:tools
 		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml
-		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-39:12
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:1-40:12
 		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:2:11-69
@@ -72,7 +72,7 @@ ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidMa
 	android:name
 		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:6:22-64
 application
-ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:8:5-37:19
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:8:5-38:19
 MERGED from [com.android.volley:volley:1.1.1] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/027307605faf6002b874c9cacd4bdf80/jetified-volley-1.1.1/AndroidManifest.xml:9:5-20
 MERGED from [com.android.volley:volley:1.1.1] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/027307605faf6002b874c9cacd4bdf80/jetified-volley-1.1.1/AndroidManifest.xml:9:5-20
 MERGED from [com.google.android.material:material:1.0.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/c7eb9cd3508ac3959447c14fd76c9fb9/material-1.0.0/AndroidManifest.xml:22:5-20
@@ -103,50 +103,54 @@ MERGED from [androidx.lifecycle:lifecycle-process:2.0.0] /Users/devghodasara/.gr
 		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:13:9-40
 	android:usesCleartextTraffic
 		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:14:9-44
-activity#com.example.psuplays.Student_Dasboard
-ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:16:9-19:68
+activity#com.example.psuplays.Admin_Dashboard
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:16:9-62
+	android:name
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:16:19-50
+activity#com.example.psuplays.Student_Dashboard
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:17:9-20:59
 	android:label
-		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:18:13-69
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:19:13-69
 	android:theme
-		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:19:13-56
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:20:13-56
 	android:name
-		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:17:13-45
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:18:13-46
 activity#com.example.psuplays.Dashboard
-ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:20:9-47
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:21:9-47
 	android:name
-		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:20:19-44
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:21:19-44
 activity#com.example.psuplays.medical_info
-ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:21:9-23:52
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:22:9-24:52
 	android:label
-		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:23:13-49
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:24:13-49
 	android:name
-		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:22:13-41
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:23:13-41
 activity#com.example.psuplays.forgotPassword
-ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:24:9-26:49
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:25:9-27:49
 	android:label
-		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:26:13-46
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:27:13-46
 	android:name
-		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:25:13-43
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:26:13-43
 activity#com.example.psuplays.signup
-ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:27:9-29:47
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:28:9-30:47
 	android:label
-		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:29:13-44
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:30:13-44
 	android:name
-		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:28:13-35
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:29:13-35
 activity#com.example.psuplays.MainActivity
-ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:30:9-36:20
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:31:9-37:20
 	android:name
-		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:30:19-47
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:31:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:31:13-35:29
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:32:13-36:29
 action#android.intent.action.MAIN
-ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:32:17-69
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:33:17-69
 	android:name
-		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:32:25-66
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:33:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:34:17-77
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:35:17-77
 	android:name
-		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:34:27-74
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:35:27-74
 uses-sdk
 INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml
