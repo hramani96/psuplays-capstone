@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="signup">
 <head>
 	<title>Login V1</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
         {% load static %}	
+        <link rel="icon" type="image/png" href="{% static 'login/images/icons/favicon.ico' %}"/>
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
         <!-- CSS Files -->
@@ -16,7 +17,6 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <body>
 	
 <div class="wrapper">
@@ -27,13 +27,13 @@
 
                     Tip 2: you can also add an image using data-image tag
                 -->
-                <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+                <div class="logo"><a class="simple-text logo-normal">
                         Psu Plays
                     </a></div>
                     <div class="sidebar-wrapper">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="http://127.0.0.1:8000/Teams">
                                     <p>Teams</p>
                                 </a>
                             </li>
@@ -106,7 +106,7 @@
     
 
 	<div class="content">
-        <div class="container-fluid">
+        <div class="container-fluid" ng-controller="UserController as userCtrl">
           <div class="row">
             <div class="col-lg-6 col-md-8">
               <div class="card">
@@ -120,13 +120,13 @@
                       <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Sport</label>
-                          <input type="text" class="form-control">
+                          <input type="text" name="sport" class="form-control" ng-model="userCtrl.formInfo.sport">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Team Name</label>
-                          <input type="text" class="form-control" name="team_name" ng-model="userCtrl.formInfo.team_name">
+                          <input type="text" name="name" class="form-control" ng-model="userCtrl.formInfo.name">
                         </div>
                       </div>
                     </div>
@@ -140,6 +140,9 @@
                         </div>
                       </div>
                     </div>
+                      <div class="form-group">
+                          <input type="hidden" name="accepted" class="form-control" ng-model="userCtrl.formInfo.accepted" ng-init="userCtrl.formInfo.accepted ='?'">
+                        </div>
                     <button type="submit" class="btn btn-primary pull-right" ng-click="userCtrl.createTeam()">Create Team</button>
                     <div class="clearfix"></div>
                   </form>
@@ -375,5 +378,7 @@
         </script>
         <script src="{% static 'login/js/UserController.js' %}"></script>
 
-</body>
+    </div>
+    </body>
+    </head>
 </html>
