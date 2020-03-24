@@ -25,3 +25,13 @@ class User_medical_info(models.Model):
 
     def __str__(self):
         return self.id
+
+		
+class Teams(models.Model):
+	name = models.CharField(max_length=50, default='', null=False)
+	description = models.TextField(max_length=200, default='', null=False)
+	sport = models.CharField(max_length=50, default='', null=False)
+	accepted = models.CharField(max_length=1, default='N', null=False)
+	
+	def __str__(self):
+		return self.name
