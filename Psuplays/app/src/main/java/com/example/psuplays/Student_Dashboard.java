@@ -35,7 +35,7 @@ public class Student_Dashboard extends AppCompatActivity {
                 R.id.nav_live_games, R.id.nav_sports, R.id.nav_users)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_admin_host_fragment);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
@@ -43,7 +43,7 @@ public class Student_Dashboard extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.admin_dashboard, menu);
+        getMenuInflater().inflate(R.menu.student__dasboard, menu);
         ((TextView)findViewById(R.id.user_name)).setText("Username here");
         return true;
     }

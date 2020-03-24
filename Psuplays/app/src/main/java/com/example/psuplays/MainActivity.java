@@ -105,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
         String uname = ((TextView)findViewById(R.id.etUsername)).getText().toString();
         String password = ((TextView)findViewById(R.id.etPassword)).getText().toString();
 
-        tryresponse(uname,password,"/loginAdmin/");
+        Intent intent = new Intent(MainActivity.this,Admin_Dashboard.class);
+        startActivity(intent);
+        //tryresponse(uname,password,"/loginAdmin/");
     }
 }

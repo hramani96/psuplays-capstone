@@ -1185,6 +1185,7 @@ id bottom
 id btChangePassword
 id btSignUp
 id btSubmit
+id btaddAdmin
 id bteditsportlist
 id btgenerateschedule
 id button

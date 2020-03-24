@@ -20,6 +20,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_student__dasboard" />
+    <include layout="@layout/content_admin_dashboard" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
