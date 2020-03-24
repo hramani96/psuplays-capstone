@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView # Import TemplateView
 from django.http import HttpResponse
 from .models import Users
+from .models import Teams
 from django.core import serializers
 import json
 from .helpers import is_empty
@@ -22,6 +23,27 @@ class AdminDashboardPageView(TemplateView):
 class manageAdminPageView(TemplateView):
     template_name = "manageAdmin.html"
 
+class AdminSports(TemplateView):
+	template_name = "adminSports.html"
+    
+class Leaderboard(TemplateView):
+    template_name = "leaderboard.html"
+    
+class ModifyAdmin(TemplateView):
+    template_name = "modifyAdmin.html"
+
+class CreateTeam(TemplateView):
+    template_name ="createTeam.html"
+
+class TeamApprovePageView(TemplateView):
+    template_name ="teamApprove.html"
+	
+class TeamsPageView(TemplateView):
+	template_name ="Teams.html"
+	
+class AdminTeamsPageView(TemplateView):
+	template_name ="adminTeams.html"
+  
 @csrf_exempt
 def create_user(request):
     req_data = json.loads(request.body)
@@ -185,6 +207,121 @@ def show_user(request):
         return HttpResponse(json.dumps(data), status=200)
     except Exception as e:
         print("[EXCEPTION][dashboard] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+@csrf_exempt
+def create_team(request):
+    req_data = json.loads(request.body)
+    try:
+        error = None
+        data = {}
+        name = req_data["name"]
+        description = req_data["description"]
+        sport = req_data["sport"]
+        accepted = req_data["accepted"]
+
+        # Validate the data here
+        if is_empty([name, description, sport, accepted]):
+            error = "Required fields cannot be empty"
+
+        # team name already exists validation
+        if Teams.objects.filter(name=name).count() > 0:
+            error = "Team name already exists"
+
+        if error is not None:
+            data["status"] = "failure"
+            data["reason"] = error
+            return HttpResponse(json.dumps(data), status=500)
+
+        team = Teams(name=name, description=description, sport=sport, accepted=accepted)
+        team.save()
+        data["status"] = "success"
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][CREATE_TEAM] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+		
+@csrf_exempt
+def get_all_teams(request):
+    try:
+        data={}
+        teams = Teams.objects.values("id", "name", "description", "sport", "accepted")
+        data["status"] = "success"
+        data["teams"] = list(teams)
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][get_all_teams] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+
+@csrf_exempt
+def get_new_teams(request):
+    try:
+        data={}
+        teams = Teams.objects.filter(accepted = '?').values("id", "name", "description", "sport", "accepted")
+        data["status"] = "success"
+        data["teams"] = list(teams)
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][get_all_teams] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+
+@csrf_exempt
+def get_approved_teams(request):
+    try:
+        data={}
+        teams = Teams.objects.filter(accepted = 'Y').values("id", "name", "description", "sport", "accepted")
+        data["status"] = "success"
+        data["teams"] = list(teams)
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][get_all_teams] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+
+@csrf_exempt
+def approve_team(request):
+    req_data = json.loads(request.body)
+    try:
+        error = None
+        data = {}
+        id = req_data["id"]
+        name = req_data["name"]
+        description = req_data["description"]
+        sport = req_data["sport"]
+        team = Teams(id = id, name=name, description=description, sport=sport, accepted='Y')
+        team.save()
+        data["status"] = "success"
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][APPROVE_TEAM] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+
+@csrf_exempt
+def deny_team(request):
+    req_data = json.loads(request.body)
+    try:
+        error = None
+        data = {}
+        id = req_data["id"]
+        name = req_data["name"]
+        description = req_data["description"]
+        sport = req_data["sport"]
+        team = Teams(id = id, name=name, description=description, sport=sport, accepted='N')
+        team.save()
+        data["status"] = "success"
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][APPROVE_TEAM] ::: {}".format(e))
         data["status"] = "failure"
         data["reason"] = "Because you made a mistake"
         return HttpResponse(json.dumps(data), status=500)
