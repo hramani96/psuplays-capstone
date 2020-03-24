@@ -5,7 +5,7 @@ app.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 }]);
 
-app.controller('UserController', function($http, $window) {
+app.controller('UserController', function($http, $window, $scope) {
 
     var vm = this;
 
@@ -13,17 +13,17 @@ app.controller('UserController', function($http, $window) {
     vm.admins = []
 
     vm.admin = []
-
+	
     vm.formInfo = {};
 
     vm.index = function() {
     }
 
-    vm.show = function(admin) {
-        vm.admin = admin;
-        console.log(vm.admin);
-        //return vm.admin;
-    }
+    //vm.show = function(admin) {
+    //    vm.admin = admin;
+    //    console.log(vm.admin);
+    //    //return vm.admin;
+    //}
 
     vm.reset = function() {
         vm.formInfo = {};
@@ -54,7 +54,20 @@ app.controller('UserController', function($http, $window) {
             toastr.error("Failure : " + response.data.reason);
         });
     }
-
+	
+	vm.createTeam = function() {
+		$http.post('/team/create/', vm.formInfo)
+		.then(function success(response) {
+			console.log(response);
+			toastr.success("Team has been submitted");
+			vm.reset();
+		},
+		function error(response) {
+			console.log(response);
+			toastr.error("Failure : " + response.data.reason);
+		});
+	}
+	
     vm.update = function() {
     }
 
@@ -95,4 +108,60 @@ app.controller('UserController', function($http, $window) {
         });
     }
 
+	vm.getAllTeams = function() {
+        $http.get('/team/getAllTeams')
+        .then(function success(response) {
+            vm.teams = response.data.teams;
+        }, function error(response) {
+            console.log(response);
+            toastr.error("Failure : " + response.data.reason);
+        });
+    }
+	
+	vm.getNewTeams = function() {
+        $http.get('/team/getNewTeams')
+        .then(function success(response) {
+            vm.teams = response.data.teams;
+        }, function error(response) {
+            console.log(response);
+            toastr.error("Failure : " + response.data.reason);
+        });
+    }
+	
+	vm.getApprovedTeams = function() {
+        $http.get('/team/getApprovedTeams')
+        .then(function success(response) {
+            vm.teams = response.data.teams;
+        }, function error(response) {
+            console.log(response);
+            toastr.error("Failure : " + response.data.reason);
+        });
+    }
+	
+	vm.approve = function(index) {
+		vm.formInfo = vm.teams[index];
+		$http.post('/team/ApproveTeam/', vm.formInfo)
+		.then(function success(response) {
+			console.log(response);
+			toastr.success("Team has been approved");
+		},
+		function error(response) {
+			console.log(response);
+			toastr.error("Failure : " + response.data.reason);
+		});	
+	}
+
+	vm.deny = function(index) {
+		vm.formInfo = vm.teams[index];
+		$http.post('/team/DenyTeam/', vm.formInfo)
+		.then(function success(response) {
+			console.log(response);
+			toastr.success("Team has been denied");
+		},
+		function error(response) {
+			console.log(response);
+			toastr.error("Failure : " + response.data.reason);
+		});	
+	}
+		
 });
