@@ -9,6 +9,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 @Database(entities = {Admin.class}, version = 1, exportSchema = false)
 public abstract class AdminDatabase extends RoomDatabase {
 
@@ -39,12 +42,13 @@ public abstract class AdminDatabase extends RoomDatabase {
     };
 
     private static void createAdminTable() {
-    /*
-        for (int i = 0; i < DefaultContent.TITLE.length; i++) {
-            insert(new Admin(0, DefaultContent.TITLE[i], DefaultContent.SETUP[i], DefaultContent.PUNCHLINE[i], false));
-        }
-
-     */
+        /*
+            There would be an API response of JSONArray from remote database
+            containing list of all admins which would be populated to RoomDatabase
+            using for loop.
+            For now a default admin is added and later we can add admin via insert
+         */
+            insert(new Admin(0, "admin@psu.edu", "Default", "admin"));
     }
 
 
