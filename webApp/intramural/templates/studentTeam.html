@@ -30,12 +30,12 @@
                     <div class="sidebar-wrapper">
                         <ul class="nav">
                             <li class="nav-item active">
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="/student/team/">
                                     <p>Teams</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="http://127.0.0.1:8000/createTeam">
+                                <a class="nav-link" href="/student/team/createTeam">
                                     <p>Create Team</p>
                                 </a>
                             </li>
@@ -47,7 +47,7 @@
                 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">
-                            <a class="navbar-brand" href="javascript:;">Dashboard</a>
+                            <a class="navbar-brand" href="javascript:;">Teams</a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="sr-only">Toggle navigation</span>
@@ -99,7 +99,7 @@
                     </div>
                 </nav>
                 <!-- End Navbar -->
-                <div class="content" ng-controller="UserController as userCtrl" >
+                <div class="content" ng-controller="TeamController as teamCtrl" >
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-8">
@@ -107,7 +107,7 @@
                                     <div class="card-header card-header-primary">
                                         <h4 class="card-title">Team List</h4>
                                     </div>
-                                    <div class="card-body table-responsive" ng-init="userCtrl.getApprovedTeams()">
+                                    <div class="card-body table-responsive" ng-init="teamCtrl.getApprovedTeams()">
                                         <table class="table table-hover">
                                             <thead class="text-warning">
                                                 <th>ID</th>
@@ -116,7 +116,7 @@
                                                 <th>Description</th>
                                             </thead>
                                             <tbody>
-                                                <tr ng-repeat="team in userCtrl.teams">
+                                                <tr ng-repeat="team in teamCtrl.teams">
                                                     <td><span ng-bind="team.id"></span></td>
                                                     <td><span ng-bind="team.name"></span></td>
                                                     <td><span ng-bind="team.sport"></span></td>
@@ -138,7 +138,7 @@
             </div>
         </div>
         <!--   Core JS Files   -->
-        <script src="{% static 'login/js/UserController.js' %}"></script>
+        <script src="{% static 'login/js/TeamController.js' %}"></script>
         <script src="{% static 'dashboard/assets/js/core/jquery.min.js' %}"></script>
         <script src="{% static 'dashboard/assets/js/core/popper.min.js' %}"></script>
         <script src="{% static 'dashboard/assets/js/core/bootstrap-material-design.min.js' %}"></script>

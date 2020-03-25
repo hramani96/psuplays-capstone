@@ -33,12 +33,12 @@
                     <div class="sidebar-wrapper">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="http://127.0.0.1:8000/Teams">
+                                <a class="nav-link" href="/student/team/">
                                     <p>Teams</p>
                                 </a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="/student/team/creatTeam/">
                                     <p>Create Team</p>
                                 </a>
                             </li>
@@ -51,7 +51,7 @@
                 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">
-                            <a class="navbar-brand" href="javascript:;">Dashboard</a>
+                            <a class="navbar-brand" href="javascript:;">Create Team</a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="sr-only">Toggle navigation</span>
@@ -106,7 +106,7 @@
     
 
 	<div class="content">
-        <div class="container-fluid" ng-controller="UserController as userCtrl">
+        <div class="container-fluid" ng-controller="TeamController as teamCtrl">
           <div class="row">
             <div class="col-lg-6 col-md-8">
               <div class="card">
@@ -120,13 +120,13 @@
                       <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Sport</label>
-                          <input type="text" name="sport" class="form-control" ng-model="userCtrl.formInfo.sport">
+                          <input type="text" name="sport" class="form-control" ng-model="teamCtrl.formInfo.sport">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Team Name</label>
-                          <input type="text" name="name" class="form-control" ng-model="userCtrl.formInfo.name">
+                          <input type="text" name="name" class="form-control" ng-model="teamCtrl.formInfo.name">
                         </div>
                       </div>
                     </div>
@@ -135,15 +135,15 @@
                         <div class="form-group">
                           <label>Description (optional)</label>
                           <div class="form-group">
-                            <textarea class="form-control" rows="5" type="text" name="description" ng-model="userCtrl.formInfo.description"></textarea>
+                            <textarea class="form-control" rows="5" type="text" name="description" ng-model="teamCtrl.formInfo.description"></textarea>
                           </div>
                         </div>
                       </div>
                     </div>
                       <div class="form-group">
-                          <input type="hidden" name="accepted" class="form-control" ng-model="userCtrl.formInfo.accepted" ng-init="userCtrl.formInfo.accepted ='?'">
+                          <input type="hidden" name="accepted" class="form-control" ng-model="teamCtrl.formInfo.accepted" ng-init="teamCtrl.formInfo.accepted ='?'">
                         </div>
-                    <button type="submit" class="btn btn-primary pull-right" ng-click="userCtrl.createTeam()">Create Team</button>
+                    <button type="submit" class="btn btn-primary pull-right" ng-click="teamCtrl.create()">Create Team</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>
@@ -376,7 +376,7 @@
 
             });
         </script>
-        <script src="{% static 'login/js/UserController.js' %}"></script>
+        <script src="{% static 'login/js/TeamController.js' %}"></script>
 
     </div>
     </body>

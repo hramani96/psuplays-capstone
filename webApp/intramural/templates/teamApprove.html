@@ -2,7 +2,7 @@
 <html lang="en" ng-app="signup">
 
     <head>
-        <title> Dashboard </title>
+        <title> Team Approval </title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport">
@@ -30,23 +30,13 @@
                     </a></div>
                     <div class="sidebar-wrapper">
                         <ul class="nav">
-                            <li class="nav-item  ">
-                                <a class="nav-link" href="http://127.0.0.1:8000/admin/dashboard">
-                                    <p>Live Games</p>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="http://127.0.0.1:8000/admin/teams">
-                                    <p>Sports</p>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="http://127.0.0.1:8000/admin/manageAdmin/">
-                                    <p>Manage Admin</p>
-                                </a>
-                            </li>
                             <li class="nav-item active ">
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="/admin/teams/">
+                                    <p>Teams</p>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="/admin/teams/teamApprove/">
                                     <p>Team Approval</p>
                                 </a>
                             </li>
@@ -58,7 +48,7 @@
                 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">
-                            <a class="navbar-brand" href="javascript:;">Dashboard</a>
+                            <a class="navbar-brand" href="javascript:;">Team Approval</a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="sr-only">Toggle navigation</span>
@@ -110,7 +100,7 @@
                     </div>
                 </nav>
                 <!-- End Navbar -->
-                <div class="content" ng-controller="UserController as userCtrl" >
+                <div class="content" ng-controller="TeamController as teamCtrl" >
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-8">
@@ -118,7 +108,7 @@
                                     <div class="card-header card-header-warning">
                                         <h4 class="card-title">Team List</h4>
                                     </div>
-                                    <div class="card-body table-responsive" ng-init="userCtrl.getNewTeams()">
+                                    <div class="card-body table-responsive" ng-init="teamCtrl.getNewTeams()">
                                         <table class="table table-hover">
                                             <thead class="text-warning">
                                                 <th>ID</th>
@@ -129,13 +119,13 @@
                                                 <th>Deny</th>
                                             </thead>
                                             <tbody>
-                                                <tr ng-repeat="team in userCtrl.teams">
+                                                <tr ng-repeat="team in teamCtrl.teams">
                                                     <td><span ng-bind="team.id"></span></td>
                                                     <td><span ng-bind="team.name"></span></td>
                                                     <td><span ng-bind="team.sport"></span></td>
                                                     <td><span ng-bind="team.description"></span></td>
-                                                    <td><button type="submit" class="btn btn-primary btn-success" ng-click="userCtrl.approve($index)" style="padding: 10px 25px"> Approve </button></td>
-                                                    <td><button type="button" class="btn btn-primary btn-danger" style="padding: 10px 20px" ng-click="userCtrl.deny($index)">
+                                                    <td><button type="submit" class="btn btn-primary btn-success" ng-click="teamCtrl.approve($index)" style="padding: 10px 25px"> Approve </button></td>
+                                                    <td><button type="button" class="btn btn-primary btn-danger" style="padding: 10px 20px" ng-click="teamCtrl.deny($index)">
                                                             Deny
                                                         </button></td>
                                                 </tr>
@@ -155,7 +145,7 @@
             </div>
         </div>
         <!--   Core JS Files   -->
-        <script src="{% static 'login/js/UserController.js' %}"></script>
+        <script src="{% static 'login/js/TeamController.js' %}"></script>
         <script src="{% static 'dashboard/assets/js/core/jquery.min.js' %}"></script>
         <script src="{% static 'dashboard/assets/js/core/popper.min.js' %}"></script>
         <script src="{% static 'dashboard/assets/js/core/bootstrap-material-design.min.js' %}"></script>

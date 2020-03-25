@@ -26,7 +26,7 @@ class User_medical_info(models.Model):
     def __str__(self):
         return self.id
 
-		
+
 class Teams(models.Model):
 	name = models.CharField(max_length=50, default='', null=False)
 	description = models.TextField(max_length=200, default='', null=False)
@@ -35,3 +35,12 @@ class Teams(models.Model):
 	
 	def __str__(self):
 		return self.name
+
+
+class Sport(models.Model):
+    name = models.CharField(max_length=50, unique=True, default='', null=False)
+    max_teams_capacity = models.IntegerField(validators=[MaxValueValidator(12)], default=0, null=False)
+    max_players_capacity = models.IntegerField(validators=[MaxValueValidator(12)], default=0, null=False)
+
+    def __str__(self):
+        return self.name
