@@ -54,6 +54,12 @@ public class Admin_Dashboard extends AppCompatActivity {
     }
 
     public void adminForm(View view) {
+        admin_form adminForm = new admin_form();
+        adminForm.show(getSupportFragmentManager(), "Create Admin");
+    }
 
+    public void createSport(View view) {
+        create_sport_form createSport = new create_sport_form();
+        createSport.show(getSupportFragmentManager(), "Add Sport");
     }
 }
