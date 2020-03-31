@@ -12,10 +12,22 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.navigation.NavigationView;
 
-public class Admin_Dashboard extends AppCompatActivity {
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+
+public class Admin_Dashboard extends AppCompatActivity implements admin_form.admin_formListener{
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -61,5 +73,61 @@ public class Admin_Dashboard extends AppCompatActivity {
     public void createSport(View view) {
         create_sport_form createSport = new create_sport_form();
         createSport.show(getSupportFragmentManager(), "Add Sport");
+    }
+
+    public void addAdmin(String firstName,String lastName, String email, String password) throws JSONException {
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http:73.188.242.140:8888/user/create/";
+        JSONObject form = new JSONObject();
+        form.put("first_name",firstName);
+        form.put("last_name",lastName);
+        form.put("email",email);
+        form.put("password",password);
+        form.put("password_conf",password);
+        form.put("role","Admin");
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.POST, url, form, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        String status = "";
+                        try {
+                            status = response.getString("status");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        if(status.equals("success")){
+                            Toast.makeText(Admin_Dashboard.this,"Admin created successful",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(Admin_Dashboard.this, "Admin creation failed!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+                        String responseBody = null;
+                        try {
+                            responseBody = new String(error.networkResponse.data, "utf-8");
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        JSONObject data = null;
+                        try {
+                            data = new JSONObject(responseBody);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        String message = data.optString("reason");
+                        Toast.makeText(Admin_Dashboard.this,message, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+        queue.add(jsonObjectRequest);
     }
 }

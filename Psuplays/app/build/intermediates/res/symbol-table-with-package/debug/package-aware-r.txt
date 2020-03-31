@@ -1232,11 +1232,9 @@ id direct
 id disableHome
 id divider
 id divider2
-id editText
 id editText2
 id editText3
 id editText4
-id editText5
 id edit_query
 id end
 id end_padder
