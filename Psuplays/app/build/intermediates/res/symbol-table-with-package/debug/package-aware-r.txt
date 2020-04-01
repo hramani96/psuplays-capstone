@@ -1192,6 +1192,7 @@ id btSubmit
 id btaddAdmin
 id bteditsportlist
 id btgenerateschedule
+id btupdateScore
 id button
 id buttonAdmin
 id buttonForgetPassword
@@ -1244,10 +1245,13 @@ id etAdminEmail
 id etAdminPassword
 id etAnswer1
 id etAnswer2
+id etAwayteam
 id etBirth_date
 id etEmail
 id etFirstName
 id etHeight
+id etHomescore
+id etHometeam
 id etLastName
 id etMaxPlayers
 id etMaxTeams
@@ -1259,6 +1263,7 @@ id etPassword
 id etRePassword
 id etUsername
 id etWeight
+id etawayscore
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -1268,6 +1273,7 @@ id fill_vertical
 id filled
 id fixed
 id forever
+id frag_settings
 id ghost_view
 id gone
 id group_divider
@@ -1295,6 +1301,7 @@ id linearLayout4
 id linearLayout5
 id linearLayout6
 id linearLayout7
+id linearLayout8
 id listMode
 id list_item
 id masked
@@ -1406,6 +1413,10 @@ id textSpacerNoTitle
 id textStart
 id textView
 id textView2
+id textView3
+id textView4
+id textView5
+id textView6
 id text_gallery
 id text_home
 id text_input_password_toggle
@@ -1515,6 +1526,7 @@ layout activity_forgot_password
 layout activity_leaderboard
 layout activity_main
 layout activity_medical_info
+layout activity_settings
 layout activity_signup
 layout activity_student_createteam
 layout activity_student_dasboard
@@ -1548,6 +1560,7 @@ layout fragment_student_users
 layout layout_admin_form_dialog
 layout layout_create_sport_dialog
 layout layout_create_team_form_dialog
+layout layout_update_score_dialog
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout nav_header_admin__dashboard
@@ -1627,6 +1640,8 @@ string admin_dashboard
 string answer
 string app_name
 string appbar_scrolling_view_behavior
+string away_team_name
+string away_team_score
 string birth_date
 string bottom_sheet_behavior
 string changePassword
@@ -1653,6 +1668,8 @@ string generate_schedule
 string height
 string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
+string home_team_name
+string home_team_score
 string join_existing_team
 string lastname
 string livechat
@@ -1701,6 +1718,7 @@ string test
 string test2
 string title_activity_admin__dasboard
 string title_activity_student__dasboard
+string update_score
 string username
 string weight
 style AlertDialog_AppCompat
@@ -2297,3 +2315,4 @@ styleable Toolbar android_gravity android_minHeight buttonGravity collapseConten
 styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewStubCompat android_id android_layout android_inflatedId
+xml preferences

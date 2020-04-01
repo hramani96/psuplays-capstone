@@ -1,5 +1,6 @@
 package com.example.psuplays;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.navigation.NavController;
@@ -14,10 +15,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.preference.PreferenceFragment;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
-public class Student_Dashboard extends AppCompatActivity {
+public class Student_Dashboard extends AppCompatActivity implements logoutDialog.logoutDialogListener {
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -50,8 +53,32 @@ public class Student_Dashboard extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_admin_host_fragment);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.action_settings){
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed(){
+        logoutDialog dialog = new logoutDialog();
+        dialog.show(getSupportFragmentManager(),"logout dialog");
+    }
+
+    public void logout(){
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
 }

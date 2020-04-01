@@ -8,6 +8,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -27,7 +28,7 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
-public class Admin_Dashboard extends AppCompatActivity implements admin_form.admin_formListener{
+public class Admin_Dashboard extends AppCompatActivity implements admin_form.admin_formListener, updateScoreDialog.updateScoreListener, logoutDialog.logoutDialogListener{
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -129,5 +130,77 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
 
 
         queue.add(jsonObjectRequest);
+    }
+
+    public void updateScore(View view) {
+        updateScoreDialog update = new updateScoreDialog();
+        update.show(getSupportFragmentManager(), "update score");
+    }
+
+    public void sendScore(String hteam,String ateam, int hscore, int ascore) throws JSONException {
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http:73.188.242.140:8888/score/add/";
+        JSONObject form = new JSONObject();
+        form.put("home_team",hteam);
+        form.put("away_team",ateam);
+        form.put("home_team_score",hscore);
+        form.put("away_team_score",ascore);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.POST, url, form, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        String status = "";
+                        try {
+                            status = response.getString("status");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        if(status.equals("success")){
+                            Toast.makeText(Admin_Dashboard.this,"Score update successful",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(Admin_Dashboard.this, "Score update failed!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+                        String responseBody = null;
+                        try {
+                            responseBody = new String(error.networkResponse.data, "utf-8");
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        JSONObject data = null;
+                        try {
+                            data = new JSONObject(responseBody);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        String message = data.optString("reason");
+                        Toast.makeText(Admin_Dashboard.this,message, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+        queue.add(jsonObjectRequest);
+    }
+
+    @Override
+    public void onBackPressed(){
+        logoutDialog dialog = new logoutDialog();
+        dialog.show(getSupportFragmentManager(),"logout dialog");
+    }
+
+    public void logout(){
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

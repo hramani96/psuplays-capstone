@@ -17,4 +17,5 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/student_navigation" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

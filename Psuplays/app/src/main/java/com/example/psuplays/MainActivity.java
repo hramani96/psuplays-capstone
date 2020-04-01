@@ -98,7 +98,9 @@ public class MainActivity extends AppCompatActivity {
         String uname = ((TextView)findViewById(R.id.etUsername)).getText().toString();
         String password = ((TextView)findViewById(R.id.etPassword)).getText().toString();
 
-        tryresponse(uname,password,"/loginStudent/");
+        Intent intent = new Intent(MainActivity.this,Student_Dashboard.class);
+        startActivity(intent);
+        //tryresponse(uname,password,"/loginStudent/");
     }
 
     public void adminDash(View view) throws JSONException {

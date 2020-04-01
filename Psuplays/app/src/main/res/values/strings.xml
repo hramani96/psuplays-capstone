@@ -80,6 +80,11 @@
     <string name="create_sport">Create Sport</string>
     <string name="max_teams">Max # of teams</string>
     <string name="current_sports">Current Sports</string>
+    <string name="update_score">Update Score</string>
+    <string name="home_team_name">Home Team name</string>
+    <string name="away_team_name">Away Team Name</string>
+    <string name="home_team_score">Home Team Score</string>
+    <string name="away_team_score">Away Team score</string>
 
 
     <!-- Spinners -->
