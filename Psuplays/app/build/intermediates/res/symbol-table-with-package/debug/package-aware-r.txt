@@ -41,6 +41,8 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+array AccountType
+array IssueRegarding
 array semesterlist
 array sportList
 attr action
@@ -1667,6 +1669,7 @@ string firstname
 string generate_schedule
 string height
 string hello_blank_fragment
+string hello_world
 string hide_bottom_view_on_scroll_behavior
 string home_team_name
 string home_team_score
@@ -1679,6 +1682,7 @@ string max_players
 string max_teams
 string medical_condition
 string medical_info
+string menu_settings
 string min_players
 string mtrl_chip_close_icon_content_description
 string name_of_sport
@@ -1696,6 +1700,11 @@ string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
 string place_holder
+string pref_sync_frequency
+string pref_sync_frequency_summary
+string pref_user_name
+string pref_user_name_summary
+string pref_user_profile
 string re_enter_password
 string search_menu_title
 string select_a_date
@@ -1717,6 +1726,7 @@ string team_name
 string test
 string test2
 string title_activity_admin__dasboard
+string title_activity_main
 string title_activity_student__dasboard
 string update_score
 string username

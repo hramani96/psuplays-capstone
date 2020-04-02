@@ -86,6 +86,30 @@
     <string name="home_team_score">Home Team Score</string>
     <string name="away_team_score">Away Team score</string>
 
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+
+
+    <!-- Preferences -->
+    <string name="pref_sync_frequency">Contacting regarding</string>
+    <string name="pref_sync_frequency_summary">Please select an option</string>
+    <string name="pref_user_name">Name</string>
+    <string name="pref_user_name_summary">Please enter your first and last name</string>
+
+    <string name="pref_user_profile">Contact US</string>
+    <string-array name="IssueRegarding">
+        <item name="LS">LiveStreams</item>
+        <item name="LS">LiveScores</item>
+        <item name="L">LeaderBoard</item>
+        <item name="AF">AccountFunctionality</item>
+        <item name="O">Other</item>
+    </string-array>
+    <string-array name="AccountType">
+        <item name="Admin">Admin</item>
+        <item name="Student">Student</item>
+    </string-array>
+    <!--  -->
 
     <!-- Spinners -->
     <string-array name="sportList">
