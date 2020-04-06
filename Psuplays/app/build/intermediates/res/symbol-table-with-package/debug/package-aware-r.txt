@@ -84,6 +84,7 @@ attr alertDialogButtonGroupStyle
 attr alertDialogCenterButtons
 attr alertDialogStyle
 attr alertDialogTheme
+attr alignmentMode
 attr allowStacking
 attr alpha
 attr alphabeticModifiers
@@ -194,6 +195,8 @@ attr colorPrimary
 attr colorPrimaryDark
 attr colorSecondary
 attr colorSwitchThumbNormal
+attr columnCount
+attr columnOrderPreserved
 attr commitIcon
 attr constraintSet
 attr constraint_referenced_ids
@@ -343,6 +346,9 @@ attr layout_anchorGravity
 attr layout_behavior
 attr layout_collapseMode
 attr layout_collapseParallaxMultiplier
+attr layout_column
+attr layout_columnSpan
+attr layout_columnWeight
 attr layout_constrainedHeight
 attr layout_constrainedWidth
 attr layout_constraintBaseline_creator
@@ -393,9 +399,13 @@ attr layout_goneMarginLeft
 attr layout_goneMarginRight
 attr layout_goneMarginStart
 attr layout_goneMarginTop
+attr layout_gravity
 attr layout_insetEdge
 attr layout_keyline
 attr layout_optimizationLevel
+attr layout_row
+attr layout_rowSpan
+attr layout_rowWeight
 attr layout_scrollFlags
 attr layout_scrollInterpolator
 attr liftOnScroll
@@ -433,6 +443,7 @@ attr navigationMode
 attr navigationViewStyle
 attr nullable
 attr numericModifiers
+attr orientation
 attr overlapAnchor
 attr paddingBottomNoButtons
 attr paddingEnd
@@ -465,6 +476,8 @@ attr ratingBarStyleIndicator
 attr ratingBarStyleSmall
 attr reverseLayout
 attr rippleColor
+attr rowCount
+attr rowOrderPreserved
 attr scrimAnimationDuration
 attr scrimBackground
 attr scrimVisibleHeightTrigger
@@ -599,6 +612,7 @@ attr trackTintMode
 attr ttcIndex
 attr uri
 attr useCompatPadding
+attr useDefaultMargins
 attr viewInflaterClass
 attr voiceIcon
 attr windowActionBar
@@ -838,6 +852,7 @@ dimen compat_button_padding_vertical_material
 dimen compat_control_corner_material
 dimen compat_notification_large_icon_max_height
 dimen compat_notification_large_icon_max_width
+dimen default_gap
 dimen design_appbar_elevation
 dimen design_bottom_navigation_active_item_max_width
 dimen design_bottom_navigation_active_item_min_width
@@ -1178,6 +1193,8 @@ id admin_drawer_layout
 id admin_nav_view
 id admin_navigation
 id alertTitle
+id alignBounds
+id alignMargins
 id all
 id always
 id async
@@ -1282,6 +1299,7 @@ id group_divider
 id groups
 id home
 id homeAsUp
+id horizontal
 id icon
 id icon_group
 id ifRoom
@@ -1306,6 +1324,9 @@ id linearLayout7
 id linearLayout8
 id listMode
 id list_item
+id live_score_table
+id lvAdmins
+id lvSportsList
 id masked
 id media_actions
 id message
@@ -1341,6 +1362,7 @@ id parentPanel
 id parent_matrix
 id percent
 id pin
+id progressBar3
 id progress_circular
 id progress_horizontal
 id radio
@@ -1400,6 +1422,7 @@ id student_navigation
 id submenuarrow
 id submit_area
 id tabMode
+id tableRow
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
@@ -1415,10 +1438,6 @@ id textSpacerNoTitle
 id textStart
 id textView
 id textView2
-id textView3
-id textView4
-id textView5
-id textView6
 id text_gallery
 id text_home
 id text_input_password_toggle
@@ -1440,12 +1459,19 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id tvAdminDash
+id tvAwayScore
+id tvAwayTeam
+id tvCurrentSports
+id tvHomeScore
+id tvHometeam
 id tvLoginAs
 id tvMessage
-id tvSelectSemester
 id tvSpinner1
 id tvSpinner2
 id tvSports
+id tvVersus
+id tvempty
+id tvinfo
 id tvnewteam
 id tvselectdate
 id tvselectsem
@@ -1459,6 +1485,7 @@ id unlabeled
 id up
 id useLogo
 id user_name
+id vertical
 id videoView
 id view
 id view_offset_helper
@@ -1649,6 +1676,7 @@ string bottom_sheet_behavior
 string changePassword
 string character_counter_content_description
 string character_counter_pattern
+string click_to_edit
 string create_a_new_team
 string create_new_team
 string create_newteam
@@ -1693,6 +1721,7 @@ string nav_header_subtitle
 string nav_header_title
 string navigation_drawer_close
 string navigation_drawer_open
+string no_live_games
 string password
 string password_toggle_content_description
 string path_password_eye
@@ -1730,6 +1759,7 @@ string title_activity_main
 string title_activity_student__dasboard
 string update_score
 string username
+string versus
 string weight
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
@@ -2285,6 +2315,8 @@ styleable ForegroundLinearLayout android_foreground android_foregroundGravity fo
 styleable FragmentNavigator android_name
 styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY
 styleable GradientColorItem android_color android_offset
+styleable GridLayout alignmentMode columnCount columnOrderPreserved orientation rowCount rowOrderPreserved useDefaultMargins
+styleable GridLayout_Layout android_layout_width android_layout_height android_layout_margin android_layout_marginLeft android_layout_marginTop android_layout_marginRight android_layout_marginBottom layout_column layout_columnSpan layout_columnWeight layout_gravity layout_row layout_rowSpan layout_rowWeight
 styleable LinearConstraintLayout android_orientation
 styleable LinearLayoutCompat android_gravity android_orientation android_baselineAligned android_baselineAlignedChildIndex android_weightSum divider dividerPadding measureWithLargestChild showDividers
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width android_layout_height android_layout_weight
