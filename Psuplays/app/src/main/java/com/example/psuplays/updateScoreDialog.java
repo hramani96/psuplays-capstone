@@ -47,7 +47,7 @@ public class updateScoreDialog extends DialogFragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // TODO: connect to the database to add an admin
                         String hometeam = (((TextView) view.findViewById(R.id.etHometeam)).getText()).toString();
-                        String awayteam = (((TextView) view.findViewById(R.id.etawayscore)).getText()).toString();
+                        String awayteam = (((TextView) view.findViewById(R.id.etAwayteam)).getText()).toString();
                         int hscore = Integer.valueOf((((TextView) view.findViewById(R.id.etHomescore)).getText()).toString());
                         int ascore = Integer.valueOf((((TextView) view.findViewById(R.id.etawayscore)).getText()).toString());
 
