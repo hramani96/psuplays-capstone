@@ -101,6 +101,7 @@
     <string name="click_to_edit">Click on Admin to edit info:</string>
     <string name="versus">VS</string>
     <string name="no_live_games">No live games at current moment.\nPlease check back later.</string>
+    <string name="sportname">SportName</string>
     <string-array name="IssueRegarding">
         <item name="LS">LiveStreams</item>
         <item name="LS">LiveScores</item>

@@ -293,7 +293,6 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
     }
 
     public void getAdmins(final View view) {
-
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http:73.188.242.140:8888/admin/getAllAdmins";
 
@@ -436,6 +435,10 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                     //updateSports(i);
+                                    String sportName = sport_names[i];
+                                    Intent intent = new Intent(Admin_Dashboard.this, admin_sport.class);
+                                    intent.putExtra("sport", sportName);
+                                    startActivity(intent);
                                 }
                             });
 

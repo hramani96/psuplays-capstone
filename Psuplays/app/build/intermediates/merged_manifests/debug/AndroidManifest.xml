@@ -20,6 +20,7 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
+        <activity android:name="com.example.psuplays.admin_sport" />
         <activity
             android:name="com.example.psuplays.SettingsActivity"
             android:label="@string/action_settings" />
@@ -31,7 +32,6 @@
             android:name="com.example.psuplays.Student_Dashboard"
             android:label="@string/title_activity_student__dasboard"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.example.psuplays.Dashboard" />
         <activity
             android:name="com.example.psuplays.medical_info"
             android:label="@string/medical_info" />

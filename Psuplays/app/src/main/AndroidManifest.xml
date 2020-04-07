@@ -13,17 +13,18 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SettingsActivity"
-                  android:label="@string/action_settings"></activity>
+        <activity android:name=".admin_sport"></activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/action_settings" />
         <activity
             android:name=".Admin_Dashboard"
             android:label="@string/title_activity_admin__dasboard"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Student_Dashboard"
             android:label="@string/title_activity_student__dasboard"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Dashboard" />
         <activity
             android:name=".medical_info"
             android:label="@string/medical_info" />
