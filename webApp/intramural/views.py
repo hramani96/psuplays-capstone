@@ -51,6 +51,9 @@ class StudentTeamPageView(TemplateView):
 class StudentCreateTeamPageView(TemplateView):
     template_name = "createTeam.html"
 
+class StudentTeamInfoPageView(TemplateView):
+    template_name = "studentTeamInfo.html"
+
 # General Pages
 
 class Leaderboard(TemplateView):

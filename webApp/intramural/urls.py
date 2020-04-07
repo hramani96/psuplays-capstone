@@ -23,6 +23,7 @@ urlpatterns = [
     path('student/dashboard/', views.StudentDashboardPageView.as_view(), name='Studentdashboard'), # Student dashboard url
     path('student/team/', views.StudentTeamPageView.as_view(), name='StudentTeam'), # Student Team url
     path('student/team/createTeam/', views.StudentCreateTeamPageView.as_view(), name='StudentCreateTeam'), # Student Create Team url
+    path('student/team/teamInfo/', views.StudentTeamInfoPageView.as_view(), name='StudentTeamInfo'), # Student Team Info url
     path('sport/create/', views.create_sport, name='create_sport'), # sport cration api
     path('sport/remove/', views.remove_sport, name='remove_sport'), # sport remove api
     path('sport/getAllSports/', views.get_all_sports, name='getAllSports'), # Get All Sports api

@@ -105,22 +105,43 @@
                             <div class="col-md-8">
                                 <div class="card">
                                     <div class="card-header card-header-primary">
-                                        <h4 class="card-title">Team List</h4>
+                                        <h4 class="card-title">Schedule</h4>
                                     </div>
                                     <div class="card-body table-responsive" ng-init="teamCtrl.getApprovedTeams()">
                                         <table class="table table-hover">
                                             <thead class="text-warning">
-                                                <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Sport</th>
-                                                <th>Description</th>
+                                                <th>Home Team</th>
+                                                <th>Away Team</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                                <th>Court</th>
                                             </thead>
                                             <tbody>
                                                 <tr ng-repeat="team in teamCtrl.teams">
-                                                    <td><span ng-bind="team.id"></span></td>
+                                                <!--    <td><span ng-bind="team.id"></span></td>
                                                     <td><a ng-href="/student/team/teamInfo/" ng-bind="team.name"></a></td>
                                                     <td><span ng-bind="team.sport"></span></td>
-                                                    <td><span ng-bind="team.description"></span></td>
+                                                    <td><span ng-bind="team.description"></span></td> -->
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header card-header-primary">
+                                        <h4 class="card-title">Rangerz</h4>
+                                        <p class="card-category"> Team Roster</p>
+                                    </div>
+                                    <div class="card-body table-responsive" ng-init="teamCtrl.getApprovedTeams()">
+                                        <table class="table table-hover">
+                                            <thead class="text-warning">
+                                                <th>Name</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="team in teamCtrl.teams">
+                                                    <!--    <td><a ng-href="/student/team/teamInfo/" ng-bind="team.name"></a></td> -->
                                                 </tr>
                                             </tbody>
                                         </table>
