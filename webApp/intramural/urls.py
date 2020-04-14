@@ -33,4 +33,9 @@ urlpatterns = [
     path('team/getApprovedTeams/', views.get_approved_teams, name='getApprovedTeams'), #get all approved teams api
     path('team/ApproveTeam/', views.approve_team, name='approveTeam'), #approve team api
     path('team/DenyTeam/', views.deny_team, name='denyTeam'), #deny team api
+    # Score
+	path('score/update/', views.update_score, name='updateScore'),
+	path('score/createGame/', views.create_game, name='createGame'),
+	path('score/getActiveGames/', views.get_active_games, name='getActiveGames'),
+	path('score/endGame/', views.end_game, name='endGame'),
 ]
