@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from .models import Users
 from .models import Teams
 from .models import Sport
+from .models import Games
 from django.core import serializers
 import json
 from .helpers import is_empty
@@ -401,6 +402,124 @@ def deny_team(request):
         return HttpResponse(json.dumps(data), status=200)
     except Exception as e:
         print("[EXCEPTION][APPROVE_TEAM] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+@csrf_exempt
+def create_game(request):
+    req_data = json.loads(request.body)
+    try:
+        error = None
+        data = {}
+        team_1 = req_data["team_1"]
+        score_1 = req_data["score_1"]
+        team_2 = req_data["team_2"]
+        score_2 = req_data["score_2"]
+        active = req_data["active"]
+
+        # Validate the data here
+        if is_empty([team_1, score_1, team_2, score_2, active]):
+            error = "Required fields cannot be empty"
+
+        # team name already exists validation	needs reworked to make sure a team isnt playing twice at the same time
+        #if Teams.objects.filter(name=name).count() > 0:
+        #    error = "Team name already exists"
+
+        if error is not None:
+            data["status"] = "failure"
+            data["reason"] = error
+            return HttpResponse(json.dumps(data), status=500)
+
+        game = Games(team_1=team_1, score_1=score_1, team_2=team_2, score_2=score_2, active = "Y")
+        game.save()
+        data["status"] = "success"
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][CREATE_GAME] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+		
+@csrf_exempt
+def update_score(request):
+    req_data = json.loads(request.body)
+    try:
+        error = None
+        data = {}
+        id = req_data["id"]
+        team_1 = req_data["team_1"]
+        score_1 = req_data["score_1"]
+        team_2 = req_data["team_2"]
+        score_2 = req_data["score_2"]
+        
+		# Validate the data here
+        if is_empty([id, team_1, score_1, team_2, score_2]):
+            error = "Required fields cannot be empty"
+
+        # team name already exists validation	needs reworked to make sure a team isnt playing twice at the same time
+        #if Teams.objects.filter(name=name).count() > 0:
+        #    error = "Team name already exists"
+
+        if error is not None:
+            data["status"] = "failure"
+            data["reason"] = error
+            return HttpResponse(json.dumps(data), status=500)
+
+        game = Games(id=id, team_1=team_1, score_1=score_1, team_2=team_2, score_2=score_2, active = 'Y')
+        game.save()
+        data["status"] = "success"
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][UPDATE_SCORE] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+		
+@csrf_exempt
+def get_active_games(request):
+    try:
+        data={}
+        games = Games.objects.filter(active = 'Y').values("id", "team_1", "score_1", "team_2", "score_2")
+        data["status"] = "success"
+        data["games"] = list(games)
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][get_active_games] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+
+@csrf_exempt
+def end_game(request):
+    req_data = json.loads(request.body)
+    try:
+        error = None
+        data = {}
+        id= req_data["id"]
+        team_1 = req_data["team_1"]
+        score_1 = req_data["score_1"]
+        team_2 = req_data["team_2"]
+        score_2 = req_data["score_2"]
+
+		# Validate the data here
+        if is_empty([id, team_1, score_1, team_2, score_2]):
+            error = "Required fields cannot be empty"
+
+        # team name already exists validation	needs reworked to make sure a team isnt playing twice at the same time
+        #if Teams.objects.filter(name=name).count() > 0:
+        #    error = "Team name already exists"
+
+        if error is not None:
+            data["status"] = "failure"
+            data["reason"] = error
+            return HttpResponse(json.dumps(data), status=500)
+
+        game = Games(id=id,team_1=team_1, score_1=score_1, team_2=team_2, score_2=score_2, active = 'N')
+        game.save()
+        data["status"] = "success"
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][END_GAME] ::: {}".format(e))
         data["status"] = "failure"
         data["reason"] = "Because you made a mistake"
         return HttpResponse(json.dumps(data), status=500)
