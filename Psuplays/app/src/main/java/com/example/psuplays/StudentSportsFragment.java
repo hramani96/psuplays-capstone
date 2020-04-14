@@ -20,9 +20,7 @@ public class StudentSportsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_student_sports, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
 
-        textView.setText("Sports will be displayed here");
         return root;
     }
 }

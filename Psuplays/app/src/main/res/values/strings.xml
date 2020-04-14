@@ -102,6 +102,8 @@
     <string name="versus">VS</string>
     <string name="no_live_games">No live games at current moment.\nPlease check back later.</string>
     <string name="sportname">SportName</string>
+    <string name="pending_teams">Pending teams:\n(Click on team name to approve or deny)</string>
+    <string name="approved_teams">Approved Teams:</string>
     <string-array name="IssueRegarding">
         <item name="LS">LiveStreams</item>
         <item name="LS">LiveScores</item>
