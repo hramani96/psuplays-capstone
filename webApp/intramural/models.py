@@ -44,3 +44,13 @@ class Sport(models.Model):
 
     def __str__(self):
         return self.name
+
+class Games(models.Model):
+    team_1 = models.CharField(max_length=50, default='', null=False)
+    score_1 = models.IntegerField(validators=[MaxValueValidator(100)], default=0, null=False)
+    team_2 = models.CharField(max_length=50, default='', null=False)
+    score_2 = models.IntegerField(validators=[MaxValueValidator(100)], default=0, null=False)
+    active = models.CharField(max_length=1, default='Y', null=False)
+	
+    def __str__(self):
+        return self.team_1
