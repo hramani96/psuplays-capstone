@@ -46,13 +46,14 @@ public class signup extends AppCompatActivity {
     public void tryresponse(String fname, String lname, String email, String Password, String cPassword) throws JSONException {
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http:71.114.127.203:8888/add_student/";
+        String url = "http:73.188.242.140:8888/user/create/";
         JSONObject form = new JSONObject();
         form.put("first_name",fname);
         form.put("last_name",lname);
         form.put("email",email);
         form.put("password",Password);
         form.put("password_conf",cPassword);
+        form.put("role","Student");
 
 
 
@@ -61,6 +62,7 @@ public class signup extends AppCompatActivity {
 
                     @Override
                     public void onResponse(JSONObject response) {
+                        Log.e("Sign up", response.toString());
                         String status = "";
                         try {
                             status = response.getString("status");

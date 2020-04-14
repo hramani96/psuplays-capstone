@@ -17,7 +17,7 @@
     <PreferenceCategory android:title="Log In Preference" >
         <SwitchPreference
             android:defaultValue="false"
-            android:key="switch_preference_1"
+            android:key="log_in_preference"
             android:title="Keep Me Logged In" />
     </PreferenceCategory>
 

@@ -1,6 +1,7 @@
 package com.example.psuplays;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.navigation.NavController;
@@ -16,6 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -23,11 +27,13 @@ import android.widget.TextView;
 public class Student_Dashboard extends AppCompatActivity implements logoutDialog.logoutDialogListener {
 
     private AppBarConfiguration mAppBarConfiguration;
+    SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dasboard);
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.student_drawer_layout);
@@ -47,7 +53,7 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.student__dasboard, menu);
-        ((TextView)findViewById(R.id.user_name)).setText("Username here");
+        ((TextView)findViewById(R.id.student_user_id)).setText(sharedPref.getString("username",""));
         return true;
     }
 
@@ -75,7 +81,12 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
     }
 
     public void logout(){
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean("log_in_preference",false);
+        editor.commit();
+
         Intent intent = new Intent(this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

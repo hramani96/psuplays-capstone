@@ -1,9 +1,16 @@
 package com.example.psuplays;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.nfc.Tag;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,10 +29,28 @@ import java.io.UnsupportedEncodingException;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences sharedPref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         setContentView(R.layout.activity_main);
+
+        Boolean pref = sharedPref.getBoolean("log_in_preference",false);
+        if(pref){
+            ProgressDialog pd = new ProgressDialog(this);
+            pd.setMessage("Logging in! Please wait ....");
+            pd.show();
+            String username = sharedPref.getString("username","");
+            String password = sharedPref.getString("password","");
+            String role = sharedPref.getString("role","");
+            Log.d("values",username +" " + password + " " + role);
+            try {
+                tryresponse(username,password,role);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void signupPage(View view) {
@@ -39,10 +64,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void tryresponse(String uname,String Password,String role) throws JSONException {
+    public void tryresponse(final String uname, final String Password, final String role) throws JSONException {
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http:71.114.127.203:8888" + role;
+        String url = "http:73.188.242.140:8888" + role;
         JSONObject form = new JSONObject();
         form.put("email",uname);
         form.put("password",Password);
@@ -60,9 +85,24 @@ public class MainActivity extends AppCompatActivity {
                         }
                         if(status.equals("success")){
                             Toast.makeText(MainActivity.this,"Sign-in successful",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MainActivity.this, Student_Dashboard.class);
-                            startActivity(intent);
-                            finish();
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putString("username",uname);
+                            editor.putString("password",Password);
+                            editor.commit();
+                            if(role.equals("/loginStudent/")) {
+                                editor.putString("role","/loginStudent/");
+                                editor.commit();
+                                Intent intent = new Intent(MainActivity.this, Student_Dashboard.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            if(role.equals("/loginAdmin/")) {
+                                editor.putString("role","/loginAdmin/");
+                                editor.commit();
+                                Intent intent = new Intent(MainActivity.this, Admin_Dashboard.class);
+                                startActivity(intent);
+                                finish();
+                            }
                         }
                         else {
                             Toast.makeText(MainActivity.this, "Sign-in not successful", Toast.LENGTH_SHORT).show();
@@ -98,17 +138,17 @@ public class MainActivity extends AppCompatActivity {
         String uname = ((TextView)findViewById(R.id.etUsername)).getText().toString();
         String password = ((TextView)findViewById(R.id.etPassword)).getText().toString();
 
-        Intent intent = new Intent(MainActivity.this,Student_Dashboard.class);
-        startActivity(intent);
-        //tryresponse(uname,password,"/loginStudent/");
+        //Intent intent = new Intent(MainActivity.this,Student_Dashboard.class);
+        //startActivity(intent);
+        tryresponse(uname,password,"/loginStudent/");
     }
 
     public void adminDash(View view) throws JSONException {
         String uname = ((TextView)findViewById(R.id.etUsername)).getText().toString();
         String password = ((TextView)findViewById(R.id.etPassword)).getText().toString();
 
-        Intent intent = new Intent(MainActivity.this,Admin_Dashboard.class);
-        startActivity(intent);
-        //tryresponse(uname,password,"/loginAdmin/");
+        //Intent intent = new Intent(MainActivity.this,Admin_Dashboard.class);
+        //startActivity(intent);
+        tryresponse(uname,password,"/loginAdmin/");
     }
 }

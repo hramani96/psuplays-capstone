@@ -1192,6 +1192,7 @@ id add
 id admin_drawer_layout
 id admin_nav_view
 id admin_navigation
+id admin_user_id
 id alertTitle
 id alignBounds
 id alignMargins
@@ -1403,6 +1404,7 @@ id stretch
 id student_drawer_layout
 id student_nav_view
 id student_navigation
+id student_user_id
 id submenuarrow
 id submit_area
 id tabMode
@@ -1460,7 +1462,6 @@ id uniform
 id unlabeled
 id up
 id useLogo
-id user_name
 id vertical
 id videoView
 id view

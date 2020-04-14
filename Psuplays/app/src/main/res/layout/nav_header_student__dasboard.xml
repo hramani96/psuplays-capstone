@@ -13,7 +13,8 @@
 
 
     <TextView
-        android:id="@+id/user_name"
+        android:id="@+id/student_user_id"
+        android:textColor="@color/purple"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
@@ -21,6 +22,7 @@
 
     <TextView
         android:id="@+id/textView"
+        android:textColor="@color/pink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/student" />
