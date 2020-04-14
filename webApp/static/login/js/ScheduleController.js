@@ -5,7 +5,7 @@ app.config(['$httpProvider', function($httpProvider) {
 	$httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 }]);
 
-app.controller('TeamController', function($http, $window, $scope) {
+app.controller('ScheduleController', function($http, $window, $scope) {
 
 	var vm = this;
 
@@ -59,52 +59,6 @@ app.controller('TeamController', function($http, $window, $scope) {
 	}
 
 	vm.delete = function() {
-	}
-
-	vm.getNewTeams = function() {
-		$http.get('/team/getNewTeams')
-			.then(function success(response) {
-				vm.teams = response.data.teams;
-			}, function error(response) {
-				console.log(response);
-				toastr.error("Failure : " + response.data.reason);
-			});
-	}
-
-	vm.getApprovedTeams = function() {
-		$http.get('/team/getApprovedTeams')
-			.then(function success(response) {
-				vm.teams = response.data.teams;
-			}, function error(response) {
-				console.log(response);
-				toastr.error("Failure : " + response.data.reason);
-			});
-	}
-
-	vm.approve = function(index) {
-		vm.formInfo = vm.teams[index];
-		$http.post('/team/ApproveTeam/', vm.formInfo)
-			.then(function success(response) {
-				console.log(response);
-				toastr.success("Team has been approved");
-			},
-				function error(response) {
-					console.log(response);
-					toastr.error("Failure : " + response.data.reason);
-				});	
-	}
-
-	vm.deny = function(index) {
-		vm.formInfo = vm.teams[index];
-		$http.post('/team/DenyTeam/', vm.formInfo)
-			.then(function success(response) {
-				console.log(response);
-				toastr.success("Team has been denied");
-			},
-				function error(response) {
-					console.log(response);
-					toastr.error("Failure : " + response.data.reason);
-				});	
 	}
 
     vm.getAllSports = function() {

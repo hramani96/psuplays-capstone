@@ -238,7 +238,7 @@ def create_team(request):
         data = {}
         name = req_data["name"]
         description = req_data["description"]
-        sport = req_data["sport"]
+        sport = Sport.objects.get(name=req_data["sport"])
         accepted = req_data["accepted"]
 
         # Validate the data here
@@ -297,7 +297,7 @@ def create_sport(request):
 def get_all_teams(request):
     try:
         data={}
-        teams = Teams.objects.values("id", "name", "description", "sport", "accepted")
+        teams = Teams.objects.values("id", "name", "description", "sport__name", "accepted")
         data["status"] = "success"
         data["teams"] = list(teams)
         return HttpResponse(json.dumps(data), status=200)
@@ -311,7 +311,7 @@ def get_all_teams(request):
 def get_new_teams(request):
     try:
         data={}
-        teams = Teams.objects.filter(accepted = '?').values("id", "name", "description", "sport", "accepted")
+        teams = Teams.objects.filter(accepted = '?').values("id", "name", "description", "sport__name", "accepted")
         data["status"] = "success"
         data["teams"] = list(teams)
         return HttpResponse(json.dumps(data), status=200)
@@ -325,7 +325,7 @@ def get_new_teams(request):
 def get_approved_teams(request):
     try:
         data={}
-        teams = Teams.objects.filter(accepted = 'Y').values("id", "name", "description", "sport")
+        teams = Teams.objects.filter(accepted = 'Y').values("id", "name", "description", "sport__name")
         data["status"] = "success"
         data["teams"] = list(teams)
         return HttpResponse(json.dumps(data), status=200)
@@ -358,7 +358,7 @@ def approve_team(request):
         id = req_data["id"]
         name = req_data["name"]
         description = req_data["description"]
-        sport = req_data["sport"]
+        sport = Sport.objects.get(name=req_data["sport__name"])
         team = Teams(id = id, name=name, description=description, sport=sport, accepted='Y')
         team.save()
         data["status"] = "success"
@@ -395,7 +395,7 @@ def deny_team(request):
         id = req_data["id"]
         name = req_data["name"]
         description = req_data["description"]
-        sport = req_data["sport"]
+        sport = Sport.objects.get(name=req_data["sport"])
         team = Teams(id = id, name=name, description=description, sport=sport, accepted='N')
         team.save()
         data["status"] = "success"
