@@ -14,5 +14,11 @@
                 android:entryValues="@array/AccountType"
                 android:title="@string/pref_sync_frequency" />
         </PreferenceCategory>
+    <PreferenceCategory android:title="Log In Preference" >
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_preference_1"
+            android:title="Keep Me Logged In" />
+    </PreferenceCategory>
 
 </PreferenceScreen>
