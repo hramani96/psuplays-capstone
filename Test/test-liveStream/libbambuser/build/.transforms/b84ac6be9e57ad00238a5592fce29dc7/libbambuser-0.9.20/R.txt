@@ -1,0 +1,7 @@
+int attr cropToParent 0x7f040001
+int attr denominator 0x7f040002
+int attr numerator 0x7f040003
+int[] styleable SurfaceViewWithAutoAR { 0x7f040001, 0x7f040002, 0x7f040003 }
+int styleable SurfaceViewWithAutoAR_cropToParent 0
+int styleable SurfaceViewWithAutoAR_denominator 1
+int styleable SurfaceViewWithAutoAR_numerator 2
