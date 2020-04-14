@@ -27,16 +27,6 @@ class User_medical_info(models.Model):
         return self.id
 
 
-class Teams(models.Model):
-	name = models.CharField(max_length=50, default='', null=False)
-	description = models.TextField(max_length=200, default='', null=False)
-	sport = models.CharField(max_length=50, default='', null=False)
-	accepted = models.CharField(max_length=1, default='N', null=False)
-	
-	def __str__(self):
-		return self.name
-
-
 class Sport(models.Model):
     name = models.CharField(max_length=50, unique=True, default='', null=False)
     max_teams_capacity = models.IntegerField(validators=[MaxValueValidator(12)], default=0, null=False)
@@ -54,3 +44,36 @@ class Games(models.Model):
 	
     def __str__(self):
         return self.team_1
+
+class Teams(models.Model):
+    name = models.CharField(max_length=50, default='', null=False)
+    description = models.TextField(max_length=200, default='', null=False)
+    sport = models.ForeignKey(Sport, on_delete=models.CASCADE)
+    accepted = models.CharField(max_length=1, default='N', null=False)
+
+    class Meta:
+        unique_together = ("name","sport")
+
+    def __str__(self):
+        return self.name
+
+
+class Venue(models.Model):
+    court = models.IntegerField(primary_key=True)
+
+    def __str__(self):
+        return str(self.court)
+
+class Schedule(models.Model):
+    sport = models.ForeignKey(Sport, on_delete=models.CASCADE)
+    team1 = models.ForeignKey(Teams, on_delete=models.CASCADE, related_name="+")
+    team2 = models.ForeignKey(Teams, on_delete=models.CASCADE, related_name="+")
+    date = models.DateField(null=True)
+    time = models.TimeField(null=True)
+    court = models.ForeignKey(Venue, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ("sport", "team1", "team2", "date", "time", "court")
+
+    def __str__(self):
+        return str(self.team1) + " vs " + str(self.team2)
