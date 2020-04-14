@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="signup">
 	<head>
 		<title> Dashboard </title>
 		<meta charset="utf-8">
@@ -109,31 +109,43 @@
 					</div>
 				</nav>
 				<!-- End Navbar -->
-				<div class="content">
-					<div class="container-fluid">
+				<div class="container-fluid" ng-controller="ScoreController as scoreCtrl">
 						<div class="row">
 							<div class="col-lg-6 col-md-12">
 								<div class="card">
 									<div class="card-header card-header-warning">
-										<h4 class="card-title">Admin List</h4>
+										<h4 class="card-title">Active Games</h4>
 									</div>
-									<div class="card-body table-responsive">
+									<div class="card-body table-responsive" ng-init="scoreCtrl.getActiveGames()">
 										<table class="table table-hover">
-											<thead class="text-warning">
-												<th>ID</th>
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>Email</th>
-											</thead>
-											<tbody>
-												<tr>
-													<td>1</td>
-													<td>Harsh</td>
-													<td>Ramani</td>
-													<td>harsh@psu.edu</td>
-												</tr>
-											</tbody>
-										</table>
+                                            <thead class="text-warning">
+                                                
+                                                <th>Team 1</th>
+                                                <th>Score</th>
+                                                <th>Team 2</th>
+                                                <th>Score</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="game in scoreCtrl.games">
+                                                  
+                                                    <td><span ng-bind="game.team_1"></span></td>
+                                                    
+                                                    <td><span ng-bind="game.score_1"></span></td>
+                                                    
+                                                    <td><span ng-bind="game.team_2"></span></td>
+                                                    
+                                                    <td><span ng-bind="game.score_2"></span></td>
+                                                    
+                                                   
+                                                </tr>
+                                                <!--<tr ng-repeat="student in userCtrl.students">
+                                                    <td><span ng-bind="student.first_name"></span></td>
+                                                    <td><span ng-bind="student.last_name"></span></td>
+                                                    <td><span ng-bind="student.email"></span></td>
+                                                    <td><span ng-bind="student.role"></span></td>
+                                                </tr>-->
+                                            </tbody>
+                                        </table>
 									</div>
 								</div>
 							</div>
@@ -374,6 +386,8 @@
 
 			});
 		</script>
+	        <script src="{% static 'login/js/ScoreController.js' %}"></script>
+
 	</body>
 
 </html>
