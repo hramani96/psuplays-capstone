@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="signup">
 
     <head>
         <title> Dashboard </title>
@@ -110,52 +110,95 @@
                     </div>
                 </nav>
                 <!-- End Navbar -->
-                <div class="content">
-                    <div class="container-fluid">
+               <div class="container-fluid" ng-controller = "ScoreController as scoreCtrl">
                         <div class="row">
                             <div class="col-lg-6 col-md-12">
                                 <div class="card">
                                     <div class="card-header card-header-warning">
-                                        <h4 class="card-title">Admin List</h4>
+                                        <h4 class="card-title">Game List</h4>
                                     </div>
-                                    <div class="card-body table-responsive">
+                                    <div class="card-body table-responsive" ng-init="scoreCtrl.getActiveGames()">
                                         <table class="table table-hover">
                                             <thead class="text-warning">
-                                                <th>ID</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Email</th>
-                                                <th>Password</th>
+                                                <th>id</th>
+                                                <th>Team 1</th>
+                                                <th></th>
+                                                <th>Score</th>
+                                                <th></th>
+                                                <th>Team 2</th>
+                                                <th></th>
+                                                <th>Score</th>
+                                                <th></th>
+                                                <th>End Game</th>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Harsh</td>
-                                                    <td>Ramani</td>
-                                                    <td>harsh@psu.edu</td>
-                                                    <td>123</td>
+                                                <tr ng-repeat="game in scoreCtrl.games">
+                                                    <td><span ng-bind="game.id"></span></td>
+                                                    <td><span ng-bind="game.team_1"></span></td>
+                                                    <td><button type="submit" class="btn btn-primary btn-danger" ng-click="scoreCtrl.team1Decrease($index)" style="padding: 10px 25px"> - </button></td>
+                                                    <td><span ng-bind="game.score_1"></span></td>
+                                                    <td><button type="submit" class="btn btn-primary btn-success" ng-click="scoreCtrl.team1Increase($index)" style="padding: 10px 25px"> + </button></td>
+                                                    <td><span ng-bind="game.team_2"></span></td>
+                                                    <td><button type="submit" class="btn btn-primary btn-danger" ng-click="scoreCtrl.team2Decrease($index)" style="padding: 10px 25px"> - </button></td>
+                                                    <td><span ng-bind="game.score_2"></span></td>
+                                                    <td><button type="submit" class="btn btn-primary btn-success" ng-click="scoreCtrl.team2Increase($index)" style="padding: 10px 25px"> + </button></td>
+                                                    <td><button type="submit" class="btn btn-primary btn-danger" ng-click="scoreCtrl.end($index)" style="padding: 10px 25px"> End Game </button></td>
                                                 </tr>
+                                                <!--<tr>
+                                                    <td>Team A</td>
+                                                    <td><button type="submit" class="btn btn-primary btn-danger" ng-click="scoreCtrl.team1Decrease($index)" style="padding: 10px 25px"> - </button></td>
+                                                    <td>0</td>
+                                                    <td><button type="submit" class="btn btn-primary btn-success" ng-click="scoreCtrl.team1Increase($index)" style="padding: 10px 25px"> + </button></td>
+                                                    <td>Team B</td>
+                                                    <td><button type="submit" class="btn btn-primary btn-danger" ng-click="scoreCtrl.team1Decrease($index)" style="padding: 10px 25px"> - </button></td>
+                                                    <td>0</td>
+                                                    <td><button type="submit" class="btn btn-primary btn-success" ng-click="scoreCtrl.team1Increase($index)" style="padding: 10px 25px"> + </button></td>
+                                                    <td><button type="submit" class="btn btn-primary btn-danger" ng-click="scoreCtrl.team1Decrease($index)" style="padding: 10px 25px"> End Game </button></td>
+                                                </tr>-->
                                             </tbody>
                                         </table>
+                                        <button type="submit" class="btn btn-primary pull-right" ng-click="scoreCtrl.openModal()">Start Game</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="copyright float-right">
-                            &copy;
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script>, made with <i class="material-icons">favorite</i> by
-                            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+                        <div class="card-body">
+                  <form>
+                    
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Team1</label>
+                          <input type="text" name="sport" class="form-control" ng-model="scoreCtrl.formInfo.team_1">
                         </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Score1</label>
+                          <input type="text" name="name" class="form-control" ng-model="scoreCtrl.formInfo.score_1">
+                        </div>
+                      </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Team2</label>
+                          <input type="text" name="name" class="form-control" ng-model="scoreCtrl.formInfo.team_2">
+                        </div>
+                      </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Score2</label>
+                          <input type="text" name="name" class="form-control" ng-model="scoreCtrl.formInfo.score_2">
+                        </div>
+                      </div>
                     </div>
-                </footer>
-            </div>
-        </div>
+                      <div class="form-group">
+                          <input type="hidden" name="accepted" class="form-control" ng-model="scoreCtrl.formInfo.active" ng-init="scoreCtrl.formInfo.active ='Y'">
+                        </div>
+                    <button type="submit" class="btn btn-primary pull-right" ng-click="scoreCtrl.create()">Start Game</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+                    </div>
         <!--   Core JS Files   -->
         <script src="{% static 'dashboard/assets/js/core/jquery.min.js' %}"></script>
         <script src="{% static 'dashboard/assets/js/core/popper.min.js' %}"></script>
@@ -377,6 +420,8 @@
 
             });
         </script>
+                        <script src="{% static 'login/js/ScoreController.js' %}"></script>
+
     </body>
 
 </html>
