@@ -35,6 +35,7 @@ public class StudentLiveGamesFragment extends Fragment {
 
         final View root = inflater.inflate(R.layout.fragment_student_live_games, container, false);
 
+        /*
 
         Timer timer = new Timer();
         TimerTask t = new TimerTask() {
@@ -113,6 +114,8 @@ public class StudentLiveGamesFragment extends Fragment {
             }
         };
         timer.scheduleAtFixedRate(t,1000,5000);
+
+         */
 
         return root;
     }

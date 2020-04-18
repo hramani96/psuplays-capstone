@@ -20,7 +20,7 @@ public class AdminSportsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View root = inflater.inflate(R.layout.fragment_admin_sports, container, false);
-        ((Admin_Dashboard)getActivity()).getSports(root);
+        ((Admin_Dashboard)getActivity()).getSports();
         return root;
     }
 

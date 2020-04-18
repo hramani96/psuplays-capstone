@@ -158,7 +158,7 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
 
         queue.add(jsonObjectRequest);
 
-        getAdmins(this.getCurrentFocus());
+        getAdmins();
     }
 
     public void updateScore(View view) {
@@ -270,7 +270,7 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
 
 
         queue.add(jsonObjectRequest);
-        getSports(this.getCurrentFocus());
+        getSports();
     }
 
     @Override
@@ -301,9 +301,9 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
         startActivity(intent);
     }
 
-    public void getAdmins(final View view) {
+    public void getAdmins() {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http:73.188.242.140:8888/admin/getAllAdmins";
+        String url = "http:73.188.242.140:8888/admin/getAllAdmins/";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -345,7 +345,7 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
                                 Log.e(TAG,temp);
                             }
                             ArrayAdapter adapter = new ArrayAdapter<String>(Admin_Dashboard.this,android.R.layout.simple_list_item_1,admins_list);
-                            ListView list = (ListView) view.findViewById(R.id.lvAdmins);
+                            ListView list = (ListView) findViewById(R.id.lvAdmins);
                             list.setAdapter(adapter);
                             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
@@ -392,10 +392,10 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
 
     public void updateAdmin(int i){
         Toast.makeText(this,firstNames[i] + " " + lastNames[i] + " Item was selected", Toast.LENGTH_SHORT).show();
-        getAdmins(this.getCurrentFocus());
+        getAdmins();
     }
 
-    public void getSports(final View view) {
+    public void getSports() {
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http:73.188.242.140:8888/sport/getAllSports";
@@ -438,7 +438,99 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
                             }
 
                             ArrayAdapter adapter = new ArrayAdapter<String>(Admin_Dashboard.this,android.R.layout.simple_list_item_1,sports_list);
-                            ListView list = (ListView) view.findViewById(R.id.lvSportsList);
+                            ListView list = (ListView) findViewById(R.id.lvSportsList);
+                            list.setAdapter(adapter);
+                            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                    //updateSports(i);
+                                    String sportName = sport_names[i];
+                                    Intent intent = new Intent(Admin_Dashboard.this, admin_sport.class);
+                                    intent.putExtra("sport", sportName);
+                                    startActivity(intent);
+                                }
+                            });
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        if(status.equals("success")){
+                            Log.e(TAG,"Sports list update Successful");
+                        }
+                        else {
+                            Toast.makeText(Admin_Dashboard.this, "Sports list update failed!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+                        String responseBody = null;
+                        try {
+                            responseBody = new String(error.networkResponse.data, "utf-8");
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        JSONObject data = null;
+                        try {
+                            data = new JSONObject(responseBody);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        String message = data.optString("reason");
+                        Toast.makeText(Admin_Dashboard.this,message, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+        queue.add(jsonObjectRequest);
+    }
+
+    public void getApprovedTeams() {
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http:73.188.242.140:8888/team/getApprovedTeams/";
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        String status = "";
+                        try {
+                            Log.e(TAG,response.toString());
+                            status = response.getString("status");
+                            JSONArray sports = response.getJSONArray("sports");
+                            int no_sports = sports.length();
+                            String[] id = new String[no_sports];
+                            String[] name = new String[no_sports];
+                            String[] team_capacity = new String[no_sports];
+                            String[] player_capacity = new String[no_sports];
+
+                            for(int i = 0; i < no_sports; i++){
+                                JSONObject temp = sports.getJSONObject(i);
+                                id[i] = temp.getString("id");
+                                name[i] = temp.getString("name");
+                                team_capacity[i] = temp.getString("max_teams_capacity");
+                                player_capacity[i] = temp.getString("max_players_capacity");
+                            }
+
+                            sport_ids = id;
+                            sport_names = name;
+                            sport_max_teams = team_capacity;
+                            sport_max_players = player_capacity;
+
+                            Log.e(TAG,response.toString());
+                            ArrayList<String> sports_list = new ArrayList<>();
+                            for(int i = 0; i < no_sports; i++){
+                                String temp = name[i];
+                                sports_list.add(temp);
+                                Log.e(TAG,temp);
+                            }
+
+                            ArrayAdapter adapter = new ArrayAdapter<String>(Admin_Dashboard.this,android.R.layout.simple_list_item_1,sports_list);
+                            ListView list = (ListView) findViewById(R.id.lvSportsList);
                             list.setAdapter(adapter);
                             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override

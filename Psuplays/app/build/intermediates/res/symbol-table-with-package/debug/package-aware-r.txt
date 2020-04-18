@@ -1250,7 +1250,6 @@ id direct
 id disableHome
 id divider
 id divider2
-id editText4
 id edit_query
 id end
 id end_padder
@@ -1262,6 +1261,7 @@ id etAnswer1
 id etAnswer2
 id etAwayteam
 id etBirth_date
+id etDescription
 id etEmail
 id etFirstName
 id etHeight
@@ -1276,6 +1276,7 @@ id etNameTheSport
 id etNumber
 id etPassword
 id etRePassword
+id etTeamName
 id etUsername
 id etWeight
 id etawayscore
@@ -1317,6 +1318,8 @@ id listMode
 id list_item
 id live_score_table
 id lvAdmins
+id lvApprovedTeams
+id lvPendingTeams
 id lvSportsList
 id masked
 id media_actions
@@ -1391,6 +1394,7 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id spSport
 id spacer
 id split_action_bar
 id spread
@@ -1426,7 +1430,6 @@ id textStart
 id textView
 id textView2
 id text_gallery
-id text_home
 id text_input_password_toggle
 id text_slideshow
 id textinput_counter
@@ -1446,12 +1449,15 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id tvAdminDash
+id tvApprovedTeams
 id tvAwayScore
 id tvAwayTeam
 id tvCurrentSports
 id tvHomeScore
 id tvHometeam
 id tvLoginAs
+id tvPendingTeams
+id tvSelectSport
 id tvSpinner1
 id tvSpinner2
 id tvSportName
@@ -1642,6 +1648,7 @@ string admin_dashboard
 string answer
 string app_name
 string appbar_scrolling_view_behavior
+string approved_teams
 string away_team_name
 string away_team_score
 string birth_date
@@ -1701,6 +1708,7 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string pending_teams
 string place_holder
 string pref_sync_frequency
 string pref_sync_frequency_summary

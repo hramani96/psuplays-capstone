@@ -38,7 +38,7 @@ public class AdminManageAdminFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View root = inflater.inflate(R.layout.fragment_admin_manage_admin, container, false);
-        ((Admin_Dashboard)getActivity()).getAdmins(root);
+        ((Admin_Dashboard)getActivity()).getAdmins();
         return root;
     }
 
