@@ -3,7 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.psuplays">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +29,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".admin_sport"></activity>
+        <activity android:name=".livevideouploader"
+            android:screenOrientation="userLandscape"></activity>
+        <activity android:name=".admin_sport" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/action_settings" />

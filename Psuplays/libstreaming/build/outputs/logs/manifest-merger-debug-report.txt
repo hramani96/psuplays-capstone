@@ -1,0 +1,53 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:1:1-10:12
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:1:1-10:12
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:1:1-10:12
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:1:1-10:12
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:1:1-10:12
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:1:1-10:12
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:1:1-10:12
+	package
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:2:5-45
+		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:4:5-30
+		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:1:11-69
+	android:versionCode
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:3:5-29
+		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:5:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:6:5-81
+	android:name
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:6:22-78
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:7:5-71
+	android:name
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:7:22-68
+uses-permission#android.permission.CAMERA
+ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:8:5-65
+	android:name
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:8:22-62
+uses-sdk
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+		ADDED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+		INJECTED from /Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml

@@ -580,4 +580,9 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
     }
 
 
+    public void startStream(View view){
+        Intent intent = new Intent(Admin_Dashboard.this,livevideouploader.class);
+        startActivity(intent);
+        finish();
+    }
 }

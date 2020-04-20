@@ -2,6 +2,7 @@ package com.example.psuplays;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.navigation.NavController;
@@ -22,6 +23,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class Student_Dashboard extends AppCompatActivity implements logoutDialog.logoutDialogListener {
@@ -89,6 +91,11 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    public void playStream(View view){
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("rtsp://192.168.0.17:1935/live/android_test"));
         startActivity(intent);
     }
 

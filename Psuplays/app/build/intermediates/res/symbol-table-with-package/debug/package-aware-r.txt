@@ -1209,6 +1209,7 @@ id btAddSport
 id btChangePassword
 id btGenerateSchedule
 id btLiveStream
+id btPlayStream
 id btSignUp
 id btSubmit
 id btaddAdmin
@@ -1412,6 +1413,8 @@ id student_navigation
 id student_user_id
 id submenuarrow
 id submit_area
+id surface
+id surface_layout
 id tabMode
 id tableRow
 id tag_accessibility_actions
@@ -1534,6 +1537,7 @@ layout abc_tooltip
 layout activity_admin_dashboard
 layout activity_admin_sport
 layout activity_forgot_password
+layout activity_livevideouploader
 layout activity_main
 layout activity_medical_info
 layout activity_settings
