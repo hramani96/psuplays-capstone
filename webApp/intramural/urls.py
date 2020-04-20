@@ -17,6 +17,7 @@ urlpatterns = [
     path('admin/sports/', views.adminSportPageView.as_view(), name='adminSport'), # admin Sports url
     path('admin/teams/', views.AdminTeamsPageView.as_view(), name='Adminteams'), # Admin teams url
     path('admin/teams/teamApprove/', views.TeamApprovePageView.as_view(), name='teamApprove'), # Admin team approve url
+    path('admin/generate_schedule/', views.Generate_SchedulePageView.as_view(), name='Genereate_Schedule'), # Generate Schedule url
     path('admin/getAllAdmins/', views.get_all_admins, name='getAllAdmins'), # Get All Admins api
 
     # Student

@@ -16,6 +16,8 @@ app.controller('TeamController', function($http, $window, $scope) {
 
     vm.sports = []
 
+    vm.sport = []
+
 	vm.formInfo = {};
 
 	vm.index = function() {

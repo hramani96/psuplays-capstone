@@ -37,9 +37,12 @@ class TeamApprovePageView(TemplateView):
 	
 class AdminTeamsPageView(TemplateView):
 	template_name ="adminTeams.html"
-  
+
 class adminSportPageView(TemplateView):
     template_name = "adminSports.html"
+
+class Generate_SchedulePageView(TemplateView):
+	template_name ="generateSchedule.html"
 
 # Student Pages
 
@@ -238,7 +241,7 @@ def create_team(request):
         data = {}
         name = req_data["name"]
         description = req_data["description"]
-        sport = Sport.objects.get(name=req_data["sport"])
+        sport = Sport.objects.get(name=req_data["sport"].get('name'))
         accepted = req_data["accepted"]
 
         # Validate the data here
@@ -395,7 +398,7 @@ def deny_team(request):
         id = req_data["id"]
         name = req_data["name"]
         description = req_data["description"]
-        sport = Sport.objects.get(name=req_data["sport"])
+        sport = Sport.objects.get(name=req_data["sport__name"])
         team = Teams(id = id, name=name, description=description, sport=sport, accepted='N')
         team.save()
         data["status"] = "success"
