@@ -1,21 +1,15 @@
 'use strict';
-var app = angular.module('signup', ['ui.router', 'ui.bootstrap']);
+var app = angular.module('signup')
 
 app.config(['$httpProvider', function($httpProvider) {
 	$httpProvider.defaults.xsrfCookieName = 'csrftoken';
 	$httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 }]);
 
-app.controller('UserController', ['$http', '$window', '$scope', '$rootScope', 'Auth', 'AUTH_EVENTS', function($http, $window, $scope, $rootScope, Auth, AUTH_EVENTS) {
+app.controller('ScoreController', ['$http', '$window', '$scope', '$rootScope', '$interval', '$modal', 'Auth', 'AUTH_EVENTS', function($http, $window, $scope, $rootScope, $interval, $modal, Auth, AUTH_EVENTS) {
 
 	var vm = this;
 
-
-	vm.admins = []
-
-	vm.admin = []
-
-	vm.formInfo = {};
 
 	vm.index = function() {
 	}
@@ -40,35 +34,101 @@ app.controller('UserController', ['$http', '$window', '$scope', '$rootScope', 'A
 			});
 	}
 
-	vm.getAllStudents = function() {
-		$http.get('/student/getAllStudents')
+	vm.getActiveGames = function() {
+		$http.get('/score/getActiveGames')
 		.then(function success(response) {
-				vm.students = response.data.students;
+				vm.games = response.data.games;
 			}, function error(response) {
 				console.log(response);
 				toastr.error("Failure : " + response.data.reason);
 			});
 	}
-	vm.create = function() {
-		$http.post('/user/create/', vm.formInfo)
+	vm.create = function() { //repurpose for creating game
+		$http.post('/score/createGame/', vm.formInfo)
 			.then(function success(response) {
 				console.log(response);
-				toastr.success(" Account has been created");
-				if (vm.formInfo.role = "Admin") {
-					vm.getallAdmins();
-					vm.reset();
-				}
+				toastr.success("Game has started successfully");
+				vm.reset();
 			},
 				function error(response) {
 					console.log(response);
 					toastr.error("Failure : " + response.data.reason);
 				});
 	}
+	
+	vm.end = function(index) {
+		vm.formInfo = vm.games[index];
+		$http.post('/score/endGame/', vm.formInfo)
+		.then(function success(response) {
+				console.log(response);
+				toastr.success("Game has ended successfully");
+			},
+				function error(response) {
+					console.log(response);
+					toastr.error("Failure : " + response.data.reason);
+				});	
+	}
 
 	vm.update = function() {
 	}
+	
+	vm.team1Decrease = function(index) {
+		vm.formInfo = vm.games[index];
+		vm.formInfo.score_1--;
+		$http.post('/score/update/', vm.formInfo)
+		.then(function success(response) {
+				console.log(response);
+				toastr.success("Score update has been approved");
+			},
+				function error(response) {
+					console.log(response);
+					toastr.error("Failure : " + response.data.reason);
+				});	
+	}
+	vm.team2Decrease = function(index) {
+		vm.formInfo = vm.games[index];
+		vm.formInfo.score_2--;
+		$http.post('/score/update/', vm.formInfo)
+		.then(function success(response) {
+				console.log(response);
+				toastr.success("Score update has been approved");
+			},
+				function error(response) {
+					console.log(response);
+					toastr.error("Failure : " + response.data.reason);
+				});	
+	}
+	vm.team1Increase = function(index) {
+		vm.formInfo = vm.games[index];
+		vm.formInfo.score_1++;
+		$http.post('/score/update/', vm.formInfo)
+		.then(function success(response) {
+				console.log(response);
+				toastr.success("Score update has been approved");
+			},
+				function error(response) {
+					console.log(response);
+					toastr.error("Failure : " + response.data.reason);
+				});	
+	}
+	vm.team2Increase = function(index) {
+		vm.formInfo = vm.games[index];
+		vm.formInfo.score_2++;
+		$http.post('/score/update/', vm.formInfo)
+		.then(function success(response) {
+				console.log(response);
+				toastr.success("Score update has been approved");
+			},
+				function error(response) {
+					console.log(response);
+					toastr.error("Failure : " + response.data.reason);
+				});	
+	}
 
-	vm.delete = function(admin) {
+	
+	
+	
+	vm.delete = function(admin) { //repurpose to delete game
 		$http.post('/user/remove/', admin)
 			.then(function success(response) {
 				console.log(response);
@@ -79,60 +139,7 @@ app.controller('UserController', ['$http', '$window', '$scope', '$rootScope', 'A
 			});
 	}
 
-	vm.login_student = function() {
-		console.log(vm.formInfo)
-		console.log(vm.formInfo.email)
-		
-		$http.post('/loginStudent/', vm.formInfo)
-			.then(function success(response) {
-				console.log(response);
-				toastr.success(" login successful");
-				//storeUserCredentials(formInfo.email + '.yourServerToken');
-				//$scope.setCurrentUsername(vm.email);
-				//$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-				//$scope.setCurrentUser(user);
-				var loginData = {username: vm.formInfo.email, userRole: "student"};
-				Auth.login(loginData);
-				//$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-				//var loginData = vm.formInfo["email"];
-				//$window.sessionStorage["userInfo"] = JSON.stringify(loginData);
-				//Session.create(loginData);
-				//$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-				
-				$window.location.href='/student/dashboard/';
-			},
-				function error(response) {
-					console.log(response);
-					toastr.error("failure : " + response.data.reason);
-					$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
-				});
-	}
-
-	vm.login_admin = function() {
-		$http.post('/loginAdmin/', vm.formInfo)
-			.then(function success(response) {
-				console.log(response);
-				toastr.success(" login successful");
-				//storeUserCredentials(formInfo.email + '.yourServerToken');
-				var loginData = {username: vm.formInfo.email, userRole: "admin"};
-				Auth.login(loginData);
-				//var loginData = {username: vm.formInfo.email, userRole: "admin"};
-				//Auth.login(loginData);
-				$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-				$window.location.href='/admin/dashboard/';
-				//$window.location.href='/admin/dashboard/';
-			},
-				function error(response) {
-					console.log(response);
-					toastr.error("failure : " + response.data.reason);
-					$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
-				});
-	}
-	
-	vm.logout = function() {
-		Auth.logout();
-		$window.location.href='/signup/';
-		
+	vm.getScore = function() { //set to obtain scores for each active game
 	}
 	
 	if ($window.sessionStorage["userInfo"]) {
@@ -141,6 +148,9 @@ app.controller('UserController', ['$http', '$window', '$scope', '$rootScope', 'A
 		console.log(credentials);
 		Auth.login(credentials);
 	}
+	
+	
+	$interval(vm.getActiveGames, 5000);
 }]);
 
 
