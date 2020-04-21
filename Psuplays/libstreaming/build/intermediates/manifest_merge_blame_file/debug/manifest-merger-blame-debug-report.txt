@@ -6,21 +6,21 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="27"
-8-->/Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+8-->/Users/surajpatel/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="28" />
-9-->/Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
+9-->/Users/surajpatel/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:5:5-67
-11-->/Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:5:22-64
+11-->/Users/surajpatel/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:5:5-67
+11-->/Users/surajpatel/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:5:22-64
 12    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-12-->/Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:6:5-81
-12-->/Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:6:22-78
+12-->/Users/surajpatel/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:6:5-81
+12-->/Users/surajpatel/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:6:22-78
 13    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-13-->/Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:7:5-71
-13-->/Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:7:22-68
+13-->/Users/surajpatel/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:7:5-71
+13-->/Users/surajpatel/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:7:22-68
 14    <uses-permission android:name="android.permission.CAMERA" />
-14-->/Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:8:5-65
-14-->/Users/devghodasara/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:8:22-62
+14-->/Users/surajpatel/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:8:5-65
+14-->/Users/surajpatel/psuplays-capstone/Psuplays/libstreaming/src/main/AndroidManifest.xml:8:22-62
 15
 16</manifest>

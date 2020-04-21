@@ -20,7 +20,7 @@ public class StudentSportsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_student_sports, container, false);
-
+        ((Student_Dashboard)getActivity()).getSports();
         return root;
     }
 }

@@ -1432,7 +1432,6 @@ id textSpacerNoTitle
 id textStart
 id textView
 id textView2
-id text_gallery
 id text_input_password_toggle
 id text_slideshow
 id textinput_counter

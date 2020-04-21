@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
-        <PreferenceCategory android:title="@string/pref_user_profile" >
-            <EditTextPreference
-                android:title="@string/pref_user_name"
-                android:summary="@string/pref_user_name_summary"
-                android:key="prefUsername"/>
-
-            <ListPreference
-                android:key="prefSyncFrequency"
-                android:entries="@array/IssueRegarding"
-                android:summary="@string/pref_sync_frequency_summary"
-                android:entryValues="@array/AccountType"
-                android:title="@string/pref_sync_frequency" />
-        </PreferenceCategory>
     <PreferenceCategory android:title="Log In Preference" >
         <SwitchPreference
             android:defaultValue="false"
             android:key="log_in_preference"
             android:title="Keep Me Logged In" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="System Preferences" >
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="camera_access"
+            android:title="ALlow Camera Access" />
 
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="microphone_access"
+            android:title="Allow Microphone Access" />
+    </PreferenceCategory>
 </PreferenceScreen>
