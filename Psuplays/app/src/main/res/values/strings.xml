@@ -73,15 +73,15 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_sport">Add Sport</string>
-    <string name="start_live_stream">Start a Live Stream</string>
+    <string name="start_live_stream">Start Live Stream</string>
     <string name="name_of_sport">Name of Sport</string>
     <string name="min_players">Min # of players in a team</string>
     <string name="max_players">Max # of players in a team</string>
     <string name="create_sport">Create Sport</string>
     <string name="max_teams">Max # of teams</string>
     <string name="current_sports">Current Sports</string>
-    <string name="update_score">Update Score</string>
-    <string name="home_team_name">Home Team name</string>
+    <string name="start_live_score">Start Live Score</string>
+    <string name="home_team_name">Home Team Name</string>
     <string name="away_team_name">Away Team Name</string>
     <string name="home_team_score">Home Team Score</string>
     <string name="away_team_score">Away Team score</string>
@@ -104,6 +104,12 @@
     <string name="sportname">SportName</string>
     <string name="pending_teams">Pending teams:\n(Click on team name to approve or deny)</string>
     <string name="approved_teams">Approved Teams:</string>
+    <string name="admin_stream_info">Instructions:\nFill out the form below.\nTHEN\nChoose live stream to upload live video and scores.\nOR\nChoose live score to update just the score.</string>
+    <string name="or">OR</string>
+    <string name="scores">Scores</string>
+    <string name="add_score">Add Score</string>
+    <string name="sub_score">Subtract Score</string>
+    <string name="end_stream">End Stream</string>
     <string-array name="IssueRegarding">
         <item name="LS">LiveStreams</item>
         <item name="LS">LiveScores</item>

@@ -217,6 +217,4 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
         queue.add(jsonObjectRequest);
     }
 
-
-
 }

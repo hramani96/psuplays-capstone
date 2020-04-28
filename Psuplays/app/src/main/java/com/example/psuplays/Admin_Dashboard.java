@@ -582,6 +582,10 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
 
     public void startStream(View view){
         Intent intent = new Intent(Admin_Dashboard.this,livevideouploader.class);
+        intent.putExtra("home_team_name",(((TextView)findViewById(R.id.etHomeTeam)).getText()).toString());
+        intent.putExtra("away_team_name",(((TextView)findViewById(R.id.etAwayTeam)).getText()).toString());
+        intent.putExtra("home_team_score",(((TextView)findViewById(R.id.etHomeTeamScore)).getText()).toString());
+        intent.putExtra("away_team_score",(((TextView)findViewById(R.id.etAwayTeamScore)).getText()).toString());
         startActivity(intent);
         finish();
     }

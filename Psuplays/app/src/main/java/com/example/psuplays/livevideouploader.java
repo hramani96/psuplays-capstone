@@ -2,6 +2,8 @@ package com.example.psuplays;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 
 import java.util.regex.Matcher;
@@ -16,10 +18,14 @@ import net.majorkernelpanic.streaming.video.VideoQuality;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class livevideouploader extends Activity implements RtspClient.Callback, Session.Callback, SurfaceHolder.Callback {
     // log tag
@@ -37,10 +43,14 @@ public class livevideouploader extends Activity implements RtspClient.Callback, 
 
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        // getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activity_livevideouploader);
+        ((TextView)findViewById(R.id.tvHTeam)).setText(getIntent().getExtras().getString("home_team_name"));
+        ((TextView)findViewById(R.id.tvHScore)).setText(getIntent().getExtras().getString("home_team_score"));
+        ((TextView)findViewById(R.id.tvATeam)).setText(getIntent().getExtras().getString("away_team_name"));
+        ((TextView)findViewById(R.id.tvAScore)).setText(getIntent().getExtras().getString("away_team_score"));
 
         mSurfaceView = (SurfaceView) findViewById(R.id.surface);
 
@@ -209,4 +219,23 @@ public class livevideouploader extends Activity implements RtspClient.Callback, 
     public void onBitrateUpdate(long bitrate) {
     }
 
+    public void endStream(View view) {
+        Intent intent = new Intent(livevideouploader.this,Admin_Dashboard.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void toggleCamera(View view) {
+        mSession.switchCamera();
+    }
+
+    public void toggleFlash(View view) {
+        mSession.toggleFlash();
+        if(mSession.getVideoTrack().getFlashState()){
+            ((FloatingActionButton)findViewById(R.id.fbFlash)).setImageResource(R.drawable.ic_flash_on);
+        }
+        else {
+            ((FloatingActionButton)findViewById(R.id.fbFlash)).setImageResource(R.drawable.ic_flash_off);
+        }
+    }
 }
