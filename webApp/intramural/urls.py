@@ -39,4 +39,7 @@ urlpatterns = [
 	path('score/createGame/', views.create_game, name='createGame'),
 	path('score/getActiveGames/', views.get_active_games, name='getActiveGames'),
 	path('score/endGame/', views.end_game, name='endGame'),
+
+    # Schedule
+    path('schedule/create/', views.create_schedule, name='create_schedule'), #create schedule api
 ]

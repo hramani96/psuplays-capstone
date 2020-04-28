@@ -8,6 +8,7 @@ from .models import Games
 from django.core import serializers
 import json
 from .helpers import is_empty
+from .helpers import create_schedule
 from django.views.decorators.csrf import csrf_exempt
 
 # Login Pages
@@ -523,6 +524,41 @@ def end_game(request):
         return HttpResponse(json.dumps(data), status=200)
     except Exception as e:
         print("[EXCEPTION][END_GAME] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+
+@csrf_exempt
+def create_schedule(request):
+    req_data = json.loads(request.body)
+    try:
+        error = None
+        data = {}
+        sport = Sport.objects.get(name=req_data["sport"].get('name'))
+
+        # Validate the data here
+        if is_empty([sport]):
+            error = "Required fields cannot be empty"
+
+        if error is not None:
+            data["status"] = "failure"
+            data["reason"] = error
+            return HttpResponse(json.dumps(data), status=500)
+
+        teams = list(Teams.objects.filter(sport=sport,accepted="Y"))
+        div1 = ["Lions", "Tigers", "Jaguars", "Cougars"]
+        print(div1)
+        for round in create_schedule(div1):
+            for match in round:
+                print(match[0] + " - " + match[1])
+        print
+
+        team = Teams(name=name, description=description, sport=sport, accepted=accepted)
+        team.save()
+        data["status"] = "success"
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][CREATE_TEAM] ::: {}".format(e))
         data["status"] = "failure"
         data["reason"] = "Because you made a mistake"
         return HttpResponse(json.dumps(data), status=500)

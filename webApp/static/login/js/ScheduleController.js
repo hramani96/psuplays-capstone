@@ -42,11 +42,11 @@ app.controller('ScheduleController', function($http, $window, $scope) {
 	}
 
 	vm.create = function() {
-		$http.post('/team/create/', vm.formInfo)
+		$http.post('/schedule/create/', vm.formInfo)
 			.then(function success(response) {
 				console.log(response);
-				toastr.success("Team has been submitted");
-				$window.location.href='/student/team/createTeam/';
+				toastr.success("Schedule has been Generated");
+				$window.location.href='/admin/generate_schedule/';
 				//vm.reset();
 			},
 				function error(response) {

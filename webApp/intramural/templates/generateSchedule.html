@@ -61,7 +61,7 @@
                 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">
-                            <a class="navbar-brand" href="javascript:;">Create Team</a>
+                            <a class="navbar-brand" href="javascript:;">Generate Schedule</a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="sr-only">Toggle navigation</span>
@@ -80,7 +80,7 @@
                                 </div>
                             </form>
                             <ul class="navbar-nav">
-                                <a class="nav-link" href="./dashboard.html" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link" href="/admin/dashboard/" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">home</i>
                                 </a>
                                 <li class="nav-item dropdown">
@@ -116,44 +116,25 @@
     
 
 	<div class="content">
-        <div class="container-fluid" ng-controller="TeamController as teamCtrl">
+        <div class="container-fluid" ng-controller="ScheduleController as scheduleCtrl">
           <div class="row">
-            <div class="col-lg-6 col-md-8">
+            <div class="col-md-4">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">Create a Team</h4>
+                  <h4 class="card-title">Generate a Schedule</h4>
                 </div>
                 <div class="card-body">
                   <form>
-                    
                     <div class="row">
-                      <div class="col-lg-6 col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Sport</label>
-                          <input type="text" name="sport" class="form-control" ng-model="teamCtrl.formInfo.sport">
-                        </div>
-                      </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Team Name</label>
-                          <input type="text" name="name" class="form-control" ng-model="teamCtrl.formInfo.name">
+                          <label class="bmd-label-floating">Sport</label>
+                          <select class="form-control" data-style="btn btn-link" ng-init="scheduleCtrl.getAllSports()" ng-model="scheduleCtrl.formInfo.sport" ng-options="sport.name for sport in scheduleCtrl.sports">
+                          </select>
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label>Description (optional)</label>
-                          <div class="form-group">
-                            <textarea class="form-control" rows="5" type="text" name="description" ng-model="teamCtrl.formInfo.description"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                      <div class="form-group">
-                          <input type="hidden" name="accepted" class="form-control" ng-model="teamCtrl.formInfo.accepted" ng-init="teamCtrl.formInfo.accepted ='?'">
-                        </div>
-                    <button type="submit" class="btn btn-primary pull-right" ng-click="teamCtrl.create()">Create Team</button>
+                    <button type="submit" class="btn btn-primary pull-right" ng-click="scheduleCtrl.create()">Generate</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>
@@ -386,7 +367,7 @@
 
             });
         </script>
-        <script src="{% static 'login/js/TeamController.js' %}"></script>
+        <script src="{% static 'login/js/ScheduleController.js' %}"></script>
 
     </div>
     </body>
