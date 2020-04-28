@@ -14,13 +14,25 @@ app.controller('ScoreController', ['$http', '$window', '$scope', '$rootScope', '
 	vm.index = function() {
 	}
 
-	
+	//vm.show = function(admin) {
+	//    vm.admin = admin;
+	//    console.log(vm.admin);
+	//    //return vm.admin;
+	//}
 
 	vm.reset = function() {
 		vm.formInfo = {};
 	}
 
-
+	vm.getAllAdmins = function() {
+		$http.get('/admin/getAllAdmins')
+			.then(function success(response) {
+				vm.admins = response.data.admins;
+			}, function error(response) {
+				console.log(response);
+				toastr.error("Failure : " + response.data.reason);
+			});
+	}
 
 	vm.getActiveGames = function() {
 		$http.get('/score/getActiveGames')
@@ -31,7 +43,7 @@ app.controller('ScoreController', ['$http', '$window', '$scope', '$rootScope', '
 				toastr.error("Failure : " + response.data.reason);
 			});
 	}
-	vm.create = function() { 
+	vm.create = function() { //repurpose for creating game
 		$http.post('/score/createGame/', vm.formInfo)
 			.then(function success(response) {
 				console.log(response);
@@ -113,7 +125,22 @@ app.controller('ScoreController', ['$http', '$window', '$scope', '$rootScope', '
 				});	
 	}
 
+	
+	
+	
+	vm.delete = function(admin) { //repurpose to delete game
+		$http.post('/user/remove/', admin)
+			.then(function success(response) {
+				console.log(response);
+				toastr.success(" Admin has been removed");
+			}, function error(response) {
+				console.log(response);
+				toastr.error("Failure : " + response.data.reason);
+			});
+	}
 
+	vm.getScore = function() { //set to obtain scores for each active game
+	}
 	
 	if ($window.sessionStorage["userInfo"]) {
 		var credentials = JSON.parse($window.sessionStorage["userInfo"]);
@@ -123,6 +150,5 @@ app.controller('ScoreController', ['$http', '$window', '$scope', '$rootScope', '
 	}
 	
 	
-	$interval(vm.getActiveGames, 5000); //refreshes table scores every 5 seconds
+	$interval(vm.getActiveGames, 5000);
 }]);
-
