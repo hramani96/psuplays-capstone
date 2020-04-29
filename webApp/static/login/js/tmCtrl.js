@@ -1,4 +1,4 @@
-var app = angular.module('signup');
+var app = angular.module('signup', []);
 
 app.config(['$httpProvider', function($httpProvider) {
 	$httpProvider.defaults.xsrfCookieName = 'csrftoken';
@@ -9,11 +9,14 @@ app.controller('TeamController', function($http, $window, $scope) {
 
 	var vm = this;
 
-	$scope.orderByField = 'position';
-    $scope.reverseSort = false;
-	vm.admins = []
 
-	vm.admin = []
+	vm.teams = []
+
+	vm.team = []
+
+    vm.sports = []
+
+    vm.sport = []
 
 	vm.formInfo = {};
 
@@ -60,16 +63,6 @@ app.controller('TeamController', function($http, $window, $scope) {
 	vm.delete = function() {
 	}
 
-	vm.getLeaderboard = function() {
-		$http.get('/team/getLeaderboard')
-			.then(function success(response) {
-				vm.leaderboard = response.data.leaderboard;
-			}, function error(response){
-				console.log(response);
-				toastr.error("Failure : " +response.data.reason);
-			});
-	}
-	
 	vm.getNewTeams = function() {
 		$http.get('/team/getNewTeams')
 			.then(function success(response) {
@@ -116,4 +109,13 @@ app.controller('TeamController', function($http, $window, $scope) {
 				});	
 	}
 
+    vm.getAllSports = function() {
+        $http.get('/sport/getAllSports')
+        .then(function success(response) {
+            vm.sports = response.data.sports;
+        }, function error(response) {
+            console.log(response);
+            toastr.error("Failure : " + response.data.reason);
+        });
+    }
 });
