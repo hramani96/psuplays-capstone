@@ -40,10 +40,12 @@
             android:label="@string/action_settings" />
         <activity
             android:name=".Admin_Dashboard"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_admin__dasboard"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Student_Dashboard"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_student__dasboard"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

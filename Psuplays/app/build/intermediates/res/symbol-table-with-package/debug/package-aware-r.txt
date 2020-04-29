@@ -1341,6 +1341,7 @@ id lvAdmins
 id lvApprovedTeams
 id lvPendingTeams
 id lvSportsList
+id lvSportsTeam
 id lvStudentSportsList
 id masked
 id media_actions
@@ -1494,6 +1495,7 @@ id tvScores
 id tvSelectSport
 id tvSpinner1
 id tvSpinner2
+id tvTeams
 id tvVersus
 id tvempty
 id tvinfo

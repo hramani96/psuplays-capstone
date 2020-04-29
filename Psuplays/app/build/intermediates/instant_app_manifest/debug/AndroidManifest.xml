@@ -49,10 +49,12 @@
         <activity
             android:name="com.example.psuplays.Admin_Dashboard"
             android:label="@string/title_activity_admin__dasboard"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.example.psuplays.Student_Dashboard"
             android:label="@string/title_activity_student__dasboard"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.example.psuplays.medical_info"

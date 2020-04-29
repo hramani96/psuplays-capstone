@@ -135,7 +135,7 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
 
     public void getSports() {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http:73.188.242.140:8888/sport/getAllSports";
+        String url = "http:73.188.242.140:8888/sport/getAllSports/";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {

@@ -48,7 +48,7 @@
 27-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:22:22-62
 28
 29    <application
-29-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:24:5-65:19
+29-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:24:5-67:19
 30        android:allowBackup="true"
 30-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:25:9-35
 31        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -87,73 +87,77 @@
 47            android:label="@string/action_settings" />
 47-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:40:13-52
 48        <activity
-48-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:41:9-44:59
+48-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:41:9-45:59
 49            android:name="com.example.psuplays.Admin_Dashboard"
 49-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:42:13-44
 50            android:label="@string/title_activity_admin__dasboard"
-50-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:43:13-67
-51            android:theme="@style/AppTheme.NoActionBar" />
-51-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:44:13-56
-52        <activity
-52-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:45:9-48:59
-53            android:name="com.example.psuplays.Student_Dashboard"
-53-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:46:13-46
-54            android:label="@string/title_activity_student__dasboard"
-54-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:47:13-69
-55            android:theme="@style/AppTheme.NoActionBar" />
-55-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:48:13-56
-56        <activity
-56-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:49:9-51:52
-57            android:name="com.example.psuplays.medical_info"
-57-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:50:13-41
-58            android:label="@string/medical_info" />
-58-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:51:13-49
-59        <activity
-59-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:52:9-54:49
-60            android:name="com.example.psuplays.forgotPassword"
-60-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:53:13-43
-61            android:label="@string/fgt_psswd" />
-61-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:54:13-46
-62        <activity
-62-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:55:9-57:47
-63            android:name="com.example.psuplays.signup"
-63-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:56:13-35
-64            android:label="@string/sign_up" />
-64-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:57:13-44
-65        <activity android:name="com.example.psuplays.MainActivity" >
-65-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:58:9-64:20
-65-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:58:19-47
-66            <intent-filter>
-66-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:59:13-63:29
-67                <action android:name="android.intent.action.MAIN" />
-67-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:60:17-69
-67-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:60:25-66
-68
-69                <category android:name="android.intent.category.LAUNCHER" />
-69-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:62:17-77
-69-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:62:27-74
-70            </intent-filter>
-71        </activity>
-72
-73        <service
-73-->[androidx.room:room-runtime:2.2.5] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/805a1d2e9b3fbae882408f53634ffae8/room-runtime-2.2.5/AndroidManifest.xml:25:9-28:40
-74            android:name="androidx.room.MultiInstanceInvalidationService"
-74-->[androidx.room:room-runtime:2.2.5] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/805a1d2e9b3fbae882408f53634ffae8/room-runtime-2.2.5/AndroidManifest.xml:26:13-74
-75            android:directBootAware="true"
-75-->[androidx.room:room-runtime:2.2.5] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/805a1d2e9b3fbae882408f53634ffae8/room-runtime-2.2.5/AndroidManifest.xml:27:13-43
-76            android:exported="false" />
-76-->[androidx.room:room-runtime:2.2.5] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/805a1d2e9b3fbae882408f53634ffae8/room-runtime-2.2.5/AndroidManifest.xml:28:13-37
-77
-78        <provider
-78-->[androidx.lifecycle:lifecycle-process:2.0.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/6fbf654d3db04d7d9e48eb73ccf59f45/lifecycle-process-2.0.0/AndroidManifest.xml:23:9-27:43
-79            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-79-->[androidx.lifecycle:lifecycle-process:2.0.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/6fbf654d3db04d7d9e48eb73ccf59f45/lifecycle-process-2.0.0/AndroidManifest.xml:24:13-79
-80            android:authorities="com.example.psuplays.lifecycle-process"
-80-->[androidx.lifecycle:lifecycle-process:2.0.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/6fbf654d3db04d7d9e48eb73ccf59f45/lifecycle-process-2.0.0/AndroidManifest.xml:25:13-69
-81            android:exported="false"
-81-->[androidx.lifecycle:lifecycle-process:2.0.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/6fbf654d3db04d7d9e48eb73ccf59f45/lifecycle-process-2.0.0/AndroidManifest.xml:26:13-37
-82            android:multiprocess="true" />
-82-->[androidx.lifecycle:lifecycle-process:2.0.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/6fbf654d3db04d7d9e48eb73ccf59f45/lifecycle-process-2.0.0/AndroidManifest.xml:27:13-40
-83    </application>
-84
-85</manifest>
+50-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:44:13-67
+51            android:screenOrientation="portrait"
+51-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:43:13-49
+52            android:theme="@style/AppTheme.NoActionBar" />
+52-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:45:13-56
+53        <activity
+53-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:46:9-50:59
+54            android:name="com.example.psuplays.Student_Dashboard"
+54-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:47:13-46
+55            android:label="@string/title_activity_student__dasboard"
+55-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:49:13-69
+56            android:screenOrientation="portrait"
+56-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:48:13-49
+57            android:theme="@style/AppTheme.NoActionBar" />
+57-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:50:13-56
+58        <activity
+58-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:51:9-53:52
+59            android:name="com.example.psuplays.medical_info"
+59-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:52:13-41
+60            android:label="@string/medical_info" />
+60-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:53:13-49
+61        <activity
+61-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:54:9-56:49
+62            android:name="com.example.psuplays.forgotPassword"
+62-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:55:13-43
+63            android:label="@string/fgt_psswd" />
+63-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:56:13-46
+64        <activity
+64-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:57:9-59:47
+65            android:name="com.example.psuplays.signup"
+65-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:58:13-35
+66            android:label="@string/sign_up" />
+66-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:59:13-44
+67        <activity android:name="com.example.psuplays.MainActivity" >
+67-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:60:9-66:20
+67-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:60:19-47
+68            <intent-filter>
+68-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:61:13-65:29
+69                <action android:name="android.intent.action.MAIN" />
+69-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:62:17-69
+69-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:62:25-66
+70
+71                <category android:name="android.intent.category.LAUNCHER" />
+71-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:64:17-77
+71-->/Users/devghodasara/psuplays-capstone/Psuplays/app/src/main/AndroidManifest.xml:64:27-74
+72            </intent-filter>
+73        </activity>
+74
+75        <service
+75-->[androidx.room:room-runtime:2.2.5] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/805a1d2e9b3fbae882408f53634ffae8/room-runtime-2.2.5/AndroidManifest.xml:25:9-28:40
+76            android:name="androidx.room.MultiInstanceInvalidationService"
+76-->[androidx.room:room-runtime:2.2.5] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/805a1d2e9b3fbae882408f53634ffae8/room-runtime-2.2.5/AndroidManifest.xml:26:13-74
+77            android:directBootAware="true"
+77-->[androidx.room:room-runtime:2.2.5] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/805a1d2e9b3fbae882408f53634ffae8/room-runtime-2.2.5/AndroidManifest.xml:27:13-43
+78            android:exported="false" />
+78-->[androidx.room:room-runtime:2.2.5] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/805a1d2e9b3fbae882408f53634ffae8/room-runtime-2.2.5/AndroidManifest.xml:28:13-37
+79
+80        <provider
+80-->[androidx.lifecycle:lifecycle-process:2.0.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/6fbf654d3db04d7d9e48eb73ccf59f45/lifecycle-process-2.0.0/AndroidManifest.xml:23:9-27:43
+81            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+81-->[androidx.lifecycle:lifecycle-process:2.0.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/6fbf654d3db04d7d9e48eb73ccf59f45/lifecycle-process-2.0.0/AndroidManifest.xml:24:13-79
+82            android:authorities="com.example.psuplays.lifecycle-process"
+82-->[androidx.lifecycle:lifecycle-process:2.0.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/6fbf654d3db04d7d9e48eb73ccf59f45/lifecycle-process-2.0.0/AndroidManifest.xml:25:13-69
+83            android:exported="false"
+83-->[androidx.lifecycle:lifecycle-process:2.0.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/6fbf654d3db04d7d9e48eb73ccf59f45/lifecycle-process-2.0.0/AndroidManifest.xml:26:13-37
+84            android:multiprocess="true" />
+84-->[androidx.lifecycle:lifecycle-process:2.0.0] /Users/devghodasara/.gradle/caches/transforms-2/files-2.1/6fbf654d3db04d7d9e48eb73ccf59f45/lifecycle-process-2.0.0/AndroidManifest.xml:27:13-40
+85    </application>
+86
+87</manifest>

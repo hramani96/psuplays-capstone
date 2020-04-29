@@ -56,10 +56,10 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
     public static String[] lastNames;
     public static String[] emails;
     public static String[] roles;
-    public static String[] sport_ids;
+    public static Integer[] sport_ids;
     public static String[] sport_names;
-    public static String[] sport_max_teams;
-    public static String[] sport_max_players;
+    public static Integer[] sport_max_teams;
+    public static Integer[] sport_max_players;
     public static String[] approved_team_names;
     public static String[] approved_team_sports;
     public static String[] pending_team_ids;
@@ -360,7 +360,7 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
     public void getSports() {
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http:73.188.242.140:8888/sport/getAllSports";
+        String url = "http:73.188.242.140:8888/sport/getAllSports/";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -373,17 +373,17 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
                             status = response.getString("status");
                             JSONArray sports = response.getJSONArray("sports");
                             int no_sports = sports.length();
-                            String[] id = new String[no_sports];
+                            Integer[] id = new Integer[no_sports];
                             String[] name = new String[no_sports];
-                            String[] team_capacity = new String[no_sports];
-                            String[] player_capacity = new String[no_sports];
+                            Integer[] team_capacity = new Integer[no_sports];
+                            Integer[] player_capacity = new Integer[no_sports];
 
                             for(int i = 0; i < no_sports; i++){
                                 JSONObject temp = sports.getJSONObject(i);
-                                id[i] = temp.getString("id");
+                                id[i] = temp.getInt("id");
                                 name[i] = temp.getString("name");
-                                team_capacity[i] = temp.getString("max_teams_capacity");
-                                player_capacity[i] = temp.getString("max_players_capacity");
+                                team_capacity[i] = temp.getInt("max_teams_capacity");
+                                player_capacity[i] = temp.getInt("max_players_capacity");
                             }
 
                             sport_ids = id;
@@ -406,9 +406,11 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                     //updateSports(i);
-                                    String sportName = sport_names[i];
                                     Intent intent = new Intent(Admin_Dashboard.this, admin_sport.class);
-                                    intent.putExtra("sport", sportName);
+                                    intent.putExtra("sport", sport_names[i]);
+                                    intent.putExtra("sport_id",sport_ids[i]);
+                                    intent.putExtra("max_teams",sport_max_teams[i]);
+                                    intent.putExtra("max_players",sport_max_players[i]);
                                     startActivity(intent);
                                 }
                             });
