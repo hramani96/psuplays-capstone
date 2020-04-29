@@ -5,10 +5,15 @@ from .models import Users
 from .models import Teams
 from .models import Sport
 from .models import Games
+from .models import Schedule
 from django.core import serializers
 import json
-from .helpers import is_empty
-from .helpers import create_schedule
+from .helpers import *
+from django.utils import timezone
+import datetime
+from datetime import timedelta
+# from .helpers import is_empty
+# from .helpers import create_schedule
 from django.views.decorators.csrf import csrf_exempt
 
 # Login Pages
@@ -409,6 +414,25 @@ def deny_team(request):
         data["status"] = "failure"
         data["reason"] = "Because you made a mistake"
         return HttpResponse(json.dumps(data), status=500)
+
+@csrf_exempt
+def get_teams_for_sport(request):
+    req_data = json.loads(request.body)
+    try:
+        data={}
+        print("Hello")
+        print(req_data["sport"])
+        sport = Sport.objects.get(name=req_data["sport"].get('name'))
+        teams = Teams.objects.filter(sport=sport,accepted='Y').values("id", "name", "description", "sport__name")
+        data["status"] = "success"
+        data["teams"] = list(teams)
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][get_teams_for_sport] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+
 @csrf_exempt
 def create_game(request):
     req_data = json.loads(request.body)
@@ -531,6 +555,8 @@ def end_game(request):
 @csrf_exempt
 def create_schedule(request):
     req_data = json.loads(request.body)
+    final_schedule = []
+    today = timezone.now().date()
     try:
         error = None
         data = {}
@@ -545,16 +571,24 @@ def create_schedule(request):
             data["reason"] = error
             return HttpResponse(json.dumps(data), status=500)
 
-        teams = list(Teams.objects.filter(sport=sport,accepted="Y"))
-        div1 = ["Lions", "Tigers", "Jaguars", "Cougars"]
-        print(div1)
-        for round in create_schedule(div1):
-            for match in round:
-                print(match[0] + " - " + match[1])
-        print
+        teams_list = list(Teams.objects.filter(sport=sport,accepted="Y").values('name'))
 
-        team = Teams(name=name, description=description, sport=sport, accepted=accepted)
-        team.save()
+        gen_schedule = generate_schedule(teams_list)
+        print(today)
+        #print(gen_schedule)
+        for round in gen_schedule:
+            for match in round:
+                #print(str(match[0]['name']) + " - " + str(match[1]['name']))
+                #final_schedule.append(str(match[0]['name']) + " - " + str(match[1]['name']))
+                today = today + datetime.timedelta(days=1)
+                t1 = Teams.objects.get(name=str(match[0]['name']), sport=sport)
+                t2 = Teams.objects.get(name=str(match[1]['name']), sport=sport)
+                schedule = Schedule(sport=sport, team1=t1, team2=t2, date=today, time="6:00")
+                schedule.save()
+
+        #print(final_schedule)
+
+        #schedule = Schedule(sport=sport, team1=str(match[0]['name']), team2=str(match[1]['name']) accepted=accepted)
         data["status"] = "success"
         return HttpResponse(json.dumps(data), status=200)
     except Exception as e:

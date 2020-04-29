@@ -63,4 +63,16 @@ app.controller('SportController', function($http, $window) {
             toastr.error("Failure : " + response.data.reason);
         });
     }
+
+    vm.getTeamsForSport = function() {
+           $http.post('/sport/getTeamsForSport', vm.formInfo)
+                   .then(function success(response) {
+            consol.log(response.data.teams);
+                           vm.teams = response.data.teams;
+                   }, function error(response) {
+                           console.log(response);
+                           toastr.error("Failure : " + response.data.reason);
+                   });
+    }
+
 });

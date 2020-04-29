@@ -70,10 +70,9 @@ class Schedule(models.Model):
     team2 = models.ForeignKey(Teams, on_delete=models.CASCADE, related_name="+")
     date = models.DateField(null=True)
     time = models.TimeField(null=True)
-    court = models.ForeignKey(Venue, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ("sport", "team1", "team2", "date", "time", "court")
+        unique_together = ("sport", "team1", "team2", "date", "time")
 
     def __str__(self):
         return str(self.team1) + " vs " + str(self.team2)
