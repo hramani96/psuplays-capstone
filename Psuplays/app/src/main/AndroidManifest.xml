@@ -29,8 +29,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".livevideouploader"
-            android:screenOrientation="userLandscape"></activity>
+        <activity android:name=".Student_sport"></activity>
+        <activity android:name=".UpdateLiveScore" />
+        <activity
+            android:name=".livevideouploader"
+            android:screenOrientation="userLandscape" />
         <activity android:name=".admin_sport" />
         <activity
             android:name=".SettingsActivity"

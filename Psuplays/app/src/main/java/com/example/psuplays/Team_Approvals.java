@@ -11,24 +11,34 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import org.json.JSONException;
+
 public class Team_Approvals extends DialogFragment {
 
         public team_approvalListener listener;
 
     public interface team_approvalListener{
-        public void approveTeam();
-        public void rejectTeam();
+        public void approveTeam(String id,String name,String description,String sport) throws JSONException;
+        public void rejectTeam(String id,String name,String description,String sport) throws  JSONException;
     }
 
     @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            final String team_id = getArguments().getString("id");
+            final String name = getArguments().getString("name");
+            final String description = getArguments().getString("description");
+            final String sport = getArguments().getString("sport");
 
             builder.setTitle("Team Approval");
-            builder.setMessage("Requesting Team:")
+            builder.setMessage("Team name: " + name + "\nDescription: " + description + "\nSport: " + sport)
                     .setPositiveButton("Approve", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // TODO: If team is approved
+                            try {
+                                listener.approveTeam(team_id,name,description,sport);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                     })
 
@@ -40,7 +50,11 @@ public class Team_Approvals extends DialogFragment {
 
                     .setNegativeButton("Reject", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // TODO: If team is rejected
+                            try {
+                                listener.rejectTeam(team_id,name,description,sport);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                     });
             return builder.create();

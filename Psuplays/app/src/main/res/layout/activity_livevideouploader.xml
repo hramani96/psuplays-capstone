@@ -103,6 +103,7 @@
 
     <ImageButton
         android:id="@+id/btSubHScore"
+        android:onClick="updateScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -115,6 +116,7 @@
 
     <ImageButton
         android:id="@+id/btAddHScore"
+        android:onClick="updateScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -127,6 +129,7 @@
 
     <ImageButton
         android:id="@+id/btSubAScore"
+        android:onClick="updateScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -139,6 +142,7 @@
 
     <ImageButton
         android:id="@+id/btAddAScore"
+        android:onClick="updateScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateLiveScore">
+
+    <TextView
+        android:id="@+id/tvLSInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/live_score_info"
+        app:layout_constraintBottom_toTopOf="@+id/tvLSHteam"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLSHteam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/tvLSHScore"
+        app:layout_constraintEnd_toEndOf="@+id/tvLSInfo"
+        app:layout_constraintStart_toStartOf="@+id/tvLSInfo"
+        app:layout_constraintTop_toBottomOf="@+id/tvLSInfo" />
+
+    <TextView
+        android:id="@+id/tvLSHScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/tvLSATeam"
+        app:layout_constraintEnd_toEndOf="@+id/tvLSHteam"
+        app:layout_constraintStart_toStartOf="@+id/tvLSHteam"
+        app:layout_constraintTop_toBottomOf="@+id/tvLSHteam" />
+
+    <TextView
+        android:id="@+id/tvLSATeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/tvLSAScore"
+        app:layout_constraintEnd_toEndOf="@+id/tvLSHScore"
+        app:layout_constraintStart_toStartOf="@+id/tvLSHScore"
+        app:layout_constraintTop_toBottomOf="@+id/tvLSHScore" />
+
+    <TextView
+        android:id="@+id/tvLSAScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/btEndGame"
+        app:layout_constraintEnd_toEndOf="@+id/tvLSATeam"
+        app:layout_constraintStart_toStartOf="@+id/tvLSATeam"
+        app:layout_constraintTop_toBottomOf="@+id/tvLSATeam" />
+
+    <Button
+        android:id="@+id/btEndGame"
+        android:onClick="endGame"
+        android:background="@drawable/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/end_game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvLSAScore"
+        app:layout_constraintStart_toStartOf="@+id/tvLSAScore"
+        app:layout_constraintTop_toBottomOf="@+id/tvLSAScore" />
+
+    <ImageButton
+        android:id="@+id/ibHSub"
+        android:onClick="updateScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/button"
+        android:contentDescription="@string/sub_score"
+        app:layout_constraintBottom_toBottomOf="@+id/tvLSHScore"
+        app:layout_constraintEnd_toStartOf="@+id/tvLSHScore"
+        app:layout_constraintTop_toTopOf="@+id/tvLSHScore"
+        app:srcCompat="@drawable/ic_sub" />
+
+    <ImageButton
+        android:id="@+id/ibHAdd"
+        android:onClick="updateScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/button"
+        android:contentDescription="@string/add_score"
+        app:layout_constraintBottom_toBottomOf="@+id/tvLSHScore"
+        app:layout_constraintStart_toEndOf="@+id/tvLSHScore"
+        app:layout_constraintTop_toTopOf="@+id/tvLSHScore"
+        app:srcCompat="@drawable/ic_add" />
+
+    <ImageButton
+        android:id="@+id/ibASub"
+        android:onClick="updateScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/button"
+        android:contentDescription="@string/sub_score"
+        app:layout_constraintBottom_toBottomOf="@+id/tvLSAScore"
+        app:layout_constraintEnd_toStartOf="@+id/tvLSAScore"
+        app:layout_constraintTop_toTopOf="@+id/tvLSAScore"
+        app:srcCompat="@drawable/ic_sub" />
+
+    <ImageButton
+        android:id="@+id/ibAAdd"
+        android:onClick="updateScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/button"
+        android:contentDescription="@string/add_score"
+        app:layout_constraintBottom_toBottomOf="@+id/tvLSAScore"
+        app:layout_constraintStart_toEndOf="@+id/tvLSAScore"
+        app:layout_constraintTop_toTopOf="@+id/tvLSAScore"
+        app:srcCompat="@drawable/ic_add" />
+</androidx.constraintlayout.widget.ConstraintLayout>

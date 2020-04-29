@@ -35,6 +35,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,6 +43,8 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.android.volley.VolleyLog.TAG;
 
@@ -50,13 +53,13 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
     private AppBarConfiguration mAppBarConfiguration;
     SharedPreferences sharedPref;
 
+    public static Timer timer;
+    public static TimerTask t;
 
     public static String[] sport_ids;
     public static String[] sport_names;
     public static String[] sport_max_teams;
     public static String[] sport_max_players;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +117,8 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
         editor.putBoolean("log_in_preference",false);
         editor.commit();
 
+        timer.cancel();
+        timer.purge();
         Intent intent = new Intent(this,MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -170,14 +175,14 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
                             }
 
                             ArrayAdapter adapter = new ArrayAdapter<String>(Student_Dashboard.this,android.R.layout.simple_list_item_1,sports_list);
-                            ListView list = (ListView) findViewById(R.id.lvSportsList);
+                            ListView list = (ListView) findViewById(R.id.lvStudentSportsList);
                             list.setAdapter(adapter);
                             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                     //updateSports(i);
                                     String sportName = sport_names[i];
-                                    Intent intent = new Intent(Student_Dashboard.this, admin_sport.class);
+                                    Intent intent = new Intent(Student_Dashboard.this, Student_sport.class);
                                     intent.putExtra("sport", sportName);
                                     startActivity(intent);
                                 }
@@ -215,6 +220,95 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
                     }
                 });
         queue.add(jsonObjectRequest);
+    }
+
+    public void refreshScore(){
+        t = new TimerTask() {
+            @Override
+            public void run() {
+
+                RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                String url = "http:73.188.242.140:8888/score/getActiveGames/";
+
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                        (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                String status = "";
+                                try {
+                                    status = response.getString("status");
+                                    JSONArray games = response.getJSONArray("games");
+                                    int no_games = games.length();
+                                    Log.e(TAG,games.toString());
+                                    String[] homeTeams = new String[no_games];
+                                    String[] awayTeams = new String[no_games];
+                                    Integer[] homeScore = new Integer[no_games];
+                                    Integer[] awayScore = new Integer[no_games];
+
+                                    for(int i = 0; i < no_games; i++){
+                                        JSONObject temp = games.getJSONObject(i);
+                                        homeTeams[i] = temp.getString("team_1");
+                                        awayTeams[i] = temp.getString("team_2");
+                                        homeScore[i] = temp.getInt("score_1");
+                                        awayScore[i] = temp.getInt("score_2");
+                                    }
+                                    if(homeTeams.length != 0) {
+                                        findViewById(R.id.tvinfo).setVisibility(View.INVISIBLE);
+                                        findViewById(R.id.live_score_table).setVisibility(View.VISIBLE);
+                                        findViewById(R.id.vviewLiveGame).setVisibility(View.VISIBLE);
+                                        findViewById(R.id.btPlayStream).setVisibility(View.VISIBLE);
+                                        ((VideoView)findViewById(R.id.vviewLiveGame)).start();
+                                        ((TextView) findViewById(R.id.tvHometeam)).setText(homeTeams[0]);
+                                        ((TextView) findViewById(R.id.tvAwayTeam)).setText(awayTeams[0]);
+                                        ((TextView) findViewById(R.id.tvHomeScore)).setText(String.valueOf(homeScore[0]));
+                                        ((TextView) findViewById(R.id.tvAwayScore)).setText(String.valueOf(awayScore[0]));
+                                    }
+                                    else{
+                                        ((VideoView)findViewById(R.id.vviewLiveGame)).stopPlayback();
+                                        findViewById(R.id.tvinfo).setVisibility(View.VISIBLE);
+                                        findViewById(R.id.live_score_table).setVisibility(View.INVISIBLE);
+                                        findViewById(R.id.vviewLiveGame).setVisibility(View.INVISIBLE);
+                                        findViewById(R.id.btPlayStream).setVisibility(View.GONE);
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                if(status.equals("success")){
+                                    Toast.makeText(getApplicationContext(),"Score update successful",Toast.LENGTH_SHORT).show();
+                                }
+                                else {
+                                    Toast.makeText(getApplicationContext(), "Score update failed!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }, new Response.ErrorListener() {
+
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // TODO: Handle error
+                                String responseBody = null;
+                                try {
+                                    responseBody = new String(error.networkResponse.data, "utf-8");
+                                } catch (UnsupportedEncodingException e) {
+                                    e.printStackTrace();
+                                }
+                                JSONObject data = null;
+                                try {
+                                    data = new JSONObject(responseBody);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                String message = data.optString("reason");
+                                Toast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+
+                queue.add(jsonObjectRequest);
+            }
+        };
+        timer.scheduleAtFixedRate(t,1000,5000);
     }
 
 }

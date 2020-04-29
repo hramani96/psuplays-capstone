@@ -110,6 +110,10 @@
     <string name="add_score">Add Score</string>
     <string name="sub_score">Subtract Score</string>
     <string name="end_stream">End Stream</string>
+    <string name="play_stream">Play Stream\n(External App)</string>
+    <string name="live_score_info">Live Score Dashboard</string>
+    <string name="end_game">End Game</string>
+    <string name="create_game">Create Game</string>
     <string-array name="IssueRegarding">
         <item name="LS">LiveStreams</item>
         <item name="LS">LiveScores</item>

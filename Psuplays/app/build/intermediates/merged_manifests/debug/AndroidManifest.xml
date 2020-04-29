@@ -36,6 +36,8 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
+        <activity android:name="com.example.psuplays.Student_sport" />
+        <activity android:name="com.example.psuplays.UpdateLiveScore" />
         <activity
             android:name="com.example.psuplays.livevideouploader"
             android:screenOrientation="userLandscape" />

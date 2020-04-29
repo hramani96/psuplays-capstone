@@ -1213,7 +1213,11 @@ id bottom
 id btAddAScore
 id btAddHScore
 id btAddSport
+id btCa
+id btCancelGame
 id btChangePassword
+id btCreateGame
+id btEndGame
 id btEndStream
 id btGenerateSchedule
 id btLiveStream
@@ -1272,7 +1276,6 @@ id etAnswer1
 id etAnswer2
 id etAwayTeam
 id etAwayTeamScore
-id etAwayteam
 id etBirth_date
 id etDescription
 id etEmail
@@ -1280,8 +1283,6 @@ id etFirstName
 id etHeight
 id etHomeTeam
 id etHomeTeamScore
-id etHomescore
-id etHometeam
 id etLastName
 id etMaxPlayers
 id etMaxTeams
@@ -1294,7 +1295,6 @@ id etRePassword
 id etTeamName
 id etUsername
 id etWeight
-id etawayscore
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -1314,6 +1314,10 @@ id groups
 id home
 id homeAsUp
 id horizontal
+id ibAAdd
+id ibASub
+id ibHAdd
+id ibHSub
 id icon
 id icon_group
 id ifRoom
@@ -1330,7 +1334,6 @@ id line1
 id line3
 id linearLayout
 id linearLayout7
-id linearLayout8
 id listMode
 id list_item
 id live_score_table
@@ -1338,6 +1341,7 @@ id lvAdmins
 id lvApprovedTeams
 id lvPendingTeams
 id lvSportsList
+id lvStudentSportsList
 id masked
 id media_actions
 id message
@@ -1478,6 +1482,11 @@ id tvHTeam
 id tvHomeScore
 id tvHomeTeam
 id tvHometeam
+id tvLSAScore
+id tvLSATeam
+id tvLSHScore
+id tvLSHteam
+id tvLSInfo
 id tvLoginAs
 id tvOR
 id tvPendingTeams
@@ -1485,7 +1494,6 @@ id tvScores
 id tvSelectSport
 id tvSpinner1
 id tvSpinner2
-id tvSportName
 id tvVersus
 id tvempty
 id tvinfo
@@ -1497,6 +1505,7 @@ id useLogo
 id vertical
 id view_offset_helper
 id visible
+id vviewLiveGame
 id withText
 id wrap
 id wrap_content
@@ -1563,6 +1572,8 @@ layout activity_medical_info
 layout activity_settings
 layout activity_signup
 layout activity_student_dasboard
+layout activity_student_sport
+layout activity_update_live_score
 layout app_bar_admin_dashboard
 layout app_bar_student__dasboard
 layout content_admin_dashboard
@@ -1592,7 +1603,6 @@ layout fragment_student_users
 layout layout_admin_form_dialog
 layout layout_create_sport_dialog
 layout layout_create_team_form_dialog
-layout layout_update_score_dialog
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout nav_header_admin__dashboard
@@ -1684,6 +1694,7 @@ string character_counter_content_description
 string character_counter_pattern
 string click_to_edit
 string create_a_new_team
+string create_game
 string create_new_team
 string create_newteam
 string create_sport
@@ -1695,6 +1706,7 @@ string edit_sport_list
 string email
 string emergency_cname
 string emergency_cnum
+string end_game
 string end_stream
 string enter_password
 string fab_transformation_scrim_behavior
@@ -1710,6 +1722,7 @@ string home_team_name
 string home_team_score
 string join_existing_team
 string lastname
+string live_score_info
 string livechat
 string logo
 string manage_admin
@@ -1738,6 +1751,7 @@ string path_password_eye_mask_visible
 string path_password_strike_through
 string pending_teams
 string place_holder
+string play_stream
 string pref_sync_frequency
 string pref_sync_frequency_summary
 string pref_user_name

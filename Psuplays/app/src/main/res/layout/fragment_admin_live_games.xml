@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/btCa"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -23,11 +24,12 @@
         android:id="@+id/btLiveStream"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/button"
         android:onClick="startStream"
-        android:text="@string/start_live_stream"
         android:paddingHorizontal="10dp"
+        android:text="@string/start_live_stream"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +44,7 @@
         android:onClick="updateScore"
         android:paddingHorizontal="10dp"
         android:text="@string/start_live_score"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvOR" />
@@ -51,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:text="@string/home_team_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAdminStreamInfo" />
@@ -150,8 +153,37 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/or"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btLiveStream" />
+
+    <Button
+        android:id="@+id/btCreateGame"
+        android:onClick="createGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button"
+        android:paddingHorizontal="10dp"
+        android:text="@string/create_game"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAwayTeamScore" />
+
+    <Button
+
+        android:id="@+id/btCancelGame"
+        android:onClick="cancelGame"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:background="@drawable/button"
+        android:text="@android:string/cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btupdateScore" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

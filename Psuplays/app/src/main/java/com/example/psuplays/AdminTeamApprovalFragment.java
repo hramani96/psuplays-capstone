@@ -20,6 +20,8 @@ public class AdminTeamApprovalFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        ((Admin_Dashboard)getActivity()).getApprovedTeams();
+        ((Admin_Dashboard)getActivity()).getPendingApprovals();
         return inflater.inflate(R.layout.fragment_admin_team_approval, container, false);
     }
 
