@@ -31,6 +31,9 @@ import static com.android.volley.VolleyLog.TAG;
 public class admin_sport extends AppCompatActivity {
 
     public static String[] team_names;
+    public static String[] matches;
+    public static String[] time;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,11 @@ public class admin_sport extends AppCompatActivity {
         tv.setText("Teams for " + sport + ":");
         try {
             getTeams();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            getSchedule();
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -96,6 +104,68 @@ public class admin_sport extends AppCompatActivity {
                         }
                         else {
                             Toast.makeText(admin_sport.this, "Team list loading failed!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+                        String responseBody = null;
+                        try {
+                            responseBody = new String(error.networkResponse.data, "utf-8");
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        JSONObject data = null;
+                        try {
+                            data = new JSONObject(responseBody);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        String message = data.optString("reason");
+                        Toast.makeText(admin_sport.this,message, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        queue.add(jsonObjectRequest);
+    }
+
+    public void getSchedule() throws JSONException {
+    }
+
+    public void generateSchedule(View view) throws JSONException {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http:73.188.242.140:8888/schedule/create/";
+        JSONObject form = new JSONObject();
+        JSONObject sport = new JSONObject();
+        sport.put("id",getIntent().getExtras().getInt("sport_id"));
+        sport.put("name",getIntent().getExtras().getString("sport"));
+        sport.put("max_teams_capacity",getIntent().getExtras().getInt("max_teams"));
+        sport.put("max_players_capacity",getIntent().getExtras().getInt("max_players"));
+        form.put("sport",sport);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.POST, url, form, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        String status = "";
+                        try {
+                            Log.e(TAG,response.toString());
+                            status = response.getString("status");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        if(status.equals("success")){
+                            try {
+                                getSchedule();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            Toast.makeText(admin_sport.this,"Schedule generated Successful!",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(admin_sport.this, "Schedule creation failed!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {

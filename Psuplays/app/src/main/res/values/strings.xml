@@ -114,6 +114,7 @@
     <string name="live_score_info">Live Score Dashboard</string>
     <string name="end_game">End Game</string>
     <string name="create_game">Create Game</string>
+    <string name="schedule">Game Schedule</string>
     <string-array name="IssueRegarding">
         <item name="LS">LiveStreams</item>
         <item name="LS">LiveScores</item>

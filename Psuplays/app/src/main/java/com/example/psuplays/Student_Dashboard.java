@@ -127,7 +127,7 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
     }
 
     public void playStream(View view){
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("rtsp://192.168.0.17:1935/live/android_test"));
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(AppConfig.PLAYBACK_URL));
         startActivity(intent);
     }
 
@@ -265,7 +265,6 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
                                         ((TextView) findViewById(R.id.tvAwayScore)).setText(String.valueOf(awayScore[0]));
                                     }
                                     else{
-                                        ((VideoView)findViewById(R.id.vviewLiveGame)).stopPlayback();
                                         findViewById(R.id.tvinfo).setVisibility(View.VISIBLE);
                                         findViewById(R.id.live_score_table).setVisibility(View.INVISIBLE);
                                         findViewById(R.id.vviewLiveGame).setVisibility(View.INVISIBLE);

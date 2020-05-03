@@ -1,0 +1,4 @@
+#Sat May 02 21:21:14 EDT 2020
+base.0=/Users/devghodasara/psuplays-capstone/Psuplays/app/build/intermediates/dex/release/mergeDexRelease/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

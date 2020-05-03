@@ -26,7 +26,7 @@ public class StudentLiveGamesFragment extends Fragment {
         mediaController.setAnchorView(videoView);
         mediaController.setMediaPlayer(videoView);
 
-        final Uri video = Uri.parse(AppConfig.STREAM_URL);
+        final Uri video = Uri.parse(AppConfig.PLAYBACK_URL);
         videoView.setMediaController(mediaController);
         videoView.setVideoURI(video);
 

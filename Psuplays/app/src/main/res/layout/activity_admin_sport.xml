@@ -8,6 +8,8 @@
 
     <Button
         android:id="@+id/btGenerateSchedule"
+        android:visibility="visible"
+        android:onClick="generateSchedule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
@@ -23,11 +25,13 @@
     <ListView
         android:id="@+id/lvSportsTeam"
         android:layout_width="0dp"
-        android:layout_height="220dp"
+        android:layout_height="0dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvSchedule"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTeams" />
 
@@ -37,6 +41,34 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/lvSportsTeam"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSchedule"
+        android:visibility="invisible"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/schedule"
+        app:layout_constraintBottom_toTopOf="@+id/lvschedule"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lvSportsTeam" />
+
+    <ListView
+        android:id="@+id/lvschedule"
+        android:clickable="false"
+        android:visibility="invisible"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSchedule" />
 </androidx.constraintlayout.widget.ConstraintLayout>

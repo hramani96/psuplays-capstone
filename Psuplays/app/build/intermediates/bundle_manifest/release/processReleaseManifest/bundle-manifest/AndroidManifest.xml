@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.psuplays"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="27"
+        android:targetSdkVersion="28" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:icon="@mipmap/psu_logo_foreground"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true" >
+        <activity android:name="com.example.psuplays.Student_sport" />
+        <activity android:name="com.example.psuplays.UpdateLiveScore" />
+        <activity
+            android:name="com.example.psuplays.livevideouploader"
+            android:screenOrientation="userLandscape" />
+        <activity android:name="com.example.psuplays.admin_sport" />
+        <activity
+            android:name="com.example.psuplays.SettingsActivity"
+            android:label="@string/action_settings" />
+        <activity
+            android:name="com.example.psuplays.Admin_Dashboard"
+            android:label="@string/title_activity_admin__dasboard"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.psuplays.Student_Dashboard"
+            android:label="@string/title_activity_student__dasboard"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.psuplays.medical_info"
+            android:label="@string/medical_info" />
+        <activity
+            android:name="com.example.psuplays.forgotPassword"
+            android:label="@string/fgt_psswd" />
+        <activity
+            android:name="com.example.psuplays.signup"
+            android:label="@string/sign_up" />
+        <activity android:name="com.example.psuplays.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="androidx.room.MultiInstanceInvalidationService"
+            android:directBootAware="true"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+            android:authorities="com.example.psuplays.lifecycle-process"
+            android:exported="false"
+            android:multiprocess="true" />
+    </application>
+
+</manifest>
