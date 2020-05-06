@@ -574,15 +574,19 @@ def create_schedule(request):
         teams_list = list(Teams.objects.filter(sport=sport,accepted="Y").values('name'))
 
         gen_schedule = generate_schedule(teams_list)
-        print(today)
         #print(gen_schedule)
         for round in gen_schedule:
             for match in round:
-                #print(str(match[0]['name']) + " - " + str(match[1]['name']))
+                print(str(match[0]['name']) + " - " + str(match[1]['name']))
                 #final_schedule.append(str(match[0]['name']) + " - " + str(match[1]['name']))
+
+                if str(match[0]['name'])=="BYE" or str(match[1]['name'])=="BYE":
+                    continue
+                
                 today = today + datetime.timedelta(days=1)
                 t1 = Teams.objects.get(name=str(match[0]['name']), sport=sport)
                 t2 = Teams.objects.get(name=str(match[1]['name']), sport=sport)
+
                 schedule = Schedule(sport=sport, team1=t1, team2=t2, date=today, time="6:00")
                 schedule.save()
 

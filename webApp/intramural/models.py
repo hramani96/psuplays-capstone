@@ -66,8 +66,8 @@ class Venue(models.Model):
 
 class Schedule(models.Model):
     sport = models.ForeignKey(Sport, on_delete=models.CASCADE)
-    team1 = models.ForeignKey(Teams, on_delete=models.CASCADE, related_name="+")
-    team2 = models.ForeignKey(Teams, on_delete=models.CASCADE, related_name="+")
+    team1 = models.ForeignKey(Teams, on_delete=models.CASCADE, related_name="+", null=True)
+    team2 = models.ForeignKey(Teams, on_delete=models.CASCADE, related_name="+", null=True)
     date = models.DateField(null=True)
     time = models.TimeField(null=True)
 
