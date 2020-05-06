@@ -8,7 +8,8 @@ app.config(['$httpProvider', function($httpProvider) {
 app.controller('TeamController', function($http, $window, $scope) {
 
 	var vm = this;
-
+	$scope.orderByField = 'position';
+    	$scope.reverseSort = false;
 
 	vm.teams = []
 
