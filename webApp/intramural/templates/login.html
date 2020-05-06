@@ -15,11 +15,12 @@
         <link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
         <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.js"></script>
+
 
     </head>
-    <body>
-
+    <body ng-controller="ParentController">
+        <div ng-if="currentUser"><b>Welcome, {{ currentUser.username }}, {{currentUser.userRole}} {{currentUser}} {{sessionStorage.userInfo}}</b></div>
         <div class="limiter">
             <div class="container-login100" ng-controller="UserController as userCtrl">
                 <div class="wrap-login100">
@@ -81,6 +82,7 @@
                 </div>
             </div>
         </div>
+        
 
 
 
@@ -89,9 +91,22 @@
         <script src="{% static 'login/vendor/bootstrap/js/popper.js' %}"></script>
         <script src="{% static 'login/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
         <script src="{% static 'login/vendor/select2/select2.min.js' %}"></script>
-        <script src="{% static 'login/vendor/tilt/tilt.jquery.min.js' %}"></script>
+        <script src="{% static 'login/vendor/tilt/tilt.jquery.min.js' %}"></script>     
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>        
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="{% static 'login/js/UserController.js' %}"></script>
+        <script src="{% static 'login/js/parentController.js' %}"></script>
+        <script src="{% static 'login/js/globalFunctions.js' %}"></script>
+
+        <script src="{% static 'login/js/routing.js' %}"></script>
+        <script src="{% static 'login/js/auth.js' %}"></script>
+        <script src="{% static 'login/js/authInterceptor.js' %}"></script>
+        <script src="{% static 'login/js/session.js' %}"></script>
+        <script src="{% static 'login/js/app.js' %}"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> 
+        <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+
+
         <script >
             $('.js-tilt').tilt({
             scale: 1.1
