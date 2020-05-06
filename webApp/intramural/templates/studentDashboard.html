@@ -13,10 +13,10 @@
         <!-- CSS Files -->
         <link rel="stylesheet" href="{% static 'dashboard/assets/css/material-dashboard.css' %}">
         <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.js"></script>
     </head>
 
-    <body class="">
+    <body class="" ng-controller = "ParentController as pCtrl">
         <div class="wrapper ">
             <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
                 <!--
@@ -54,6 +54,7 @@
             </div>
             <div class="main-panel">
                 <!-- Navbar -->
+                <div class="navbar-wrapper" ng-if="currentUser"><b>Welcome,  <p ng-bind="currentUser.username"></p></b></div>
                 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">
@@ -80,7 +81,7 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                                         <a class="dropdown-item" href="#">Profile</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Log out</a>
+                                        <a class="dropdown-item" href="#" ng-click="logout()">Log out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -118,12 +119,7 @@
 
 
                                                 </tr>
-                                                <!--<tr ng-repeat="student in userCtrl.students">
-                                                    <td><span ng-bind="student.first_name"></span></td>
-                                                    <td><span ng-bind="student.last_name"></span></td>
-                                                    <td><span ng-bind="student.email"></span></td>
-                                                    <td><span ng-bind="student.role"></span></td>
-                                                    </tr>-->
+                                             
                                             </tbody>
                                         </table>
                                     </div>
@@ -367,6 +363,18 @@
             });
         </script>
         <script src="{% static 'login/js/ScoreController.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>        
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="{% static 'login/js/UserController.js' %}"></script>
+        <script src="{% static 'login/js/ParentController.js' %}"></script>
+        <script src="{% static 'login/js/globalFunctions.js' %}"></script>
+        <script src="{% static 'login/js/routing.js' %}"></script>
+        <script src="{% static 'login/js/auth.js' %}"></script>
+        <script src="{% static 'login/js/authInterceptor.js' %}"></script>
+        <script src="{% static 'login/js/session.js' %}"></script>
+        <script src="{% static 'login/js/app.js' %}"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> 
+        <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
 
     </body>
 
