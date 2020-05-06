@@ -55,9 +55,7 @@
                                     <p>Schedule</p>
                                 </a>
                             </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#" ng-click="logout()">Logout</a>
-                            </li>
+                            
                         </ul>
                     </div>
             </div>
@@ -89,7 +87,7 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                                         <a class="dropdown-item" href="#">Profile</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Log out</a>
+                                        <a class="dropdown-item" href="#" ng-click="logout()">Log out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -443,7 +441,6 @@
             <script src="{% static 'login/js/UserController.js' %}"></script>	
             <script src="{% static 'login/js/ParentController.js' %}"></script>	
             <script src="{% static 'login/js/ScoreController.js' %}"></script>	
-            <!--<script src="{% static 'login/js/login.js' %}"></script> -->	
             <script src="{% static 'login/js/globalFunctions.js' %}"></script>	
 
             <script src="{% static 'login/js/routing.js' %}"></script>	
