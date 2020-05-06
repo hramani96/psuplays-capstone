@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
         <!-- CSS Files -->
         <link rel="stylesheet" href="{% static 'dashboard/assets/css/material-dashboard.css' %}">
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.js"></script>
         <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     </head>
 
@@ -70,7 +70,7 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                                         <a class="dropdown-item" href="#">Profile</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Log out</a>
+                                        <a class="dropdown-item" href="#" ng-click="logout()">Log out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -142,6 +142,14 @@
         <script src="{% static 'dashboard/assets/demo/demo.js' %}"></script>
         <script src="{% static 'dashboard/assets/js/manage_admin.js' %}"> </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="{% static 'login/js/auth.js' %}"></script>
+    <script src="{% static 'login/js/authInterceptor.js' %}"></script>
+    <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>        
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="{% static 'login/js/session.js' %}"></script>
+    <script src="{% static 'login/js/app.js' %}"></script>
+	<script src="{% static 'login/js/UserController.js' %}"></script>
     </body>
 
 </html>
