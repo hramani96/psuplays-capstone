@@ -9,16 +9,11 @@ app.controller('TeamController', function($http, $window, $scope) {
 
 	var vm = this;
 	$scope.orderByField = 'position';
-    	$scope.reverseSort = false;
-
+    $scope.reverseSort = false;
 	vm.teams = []
-
 	vm.team = []
-
     vm.sports = []
-
     vm.sport = []
-
 	vm.formInfo = {};
 
 	vm.index = function() {

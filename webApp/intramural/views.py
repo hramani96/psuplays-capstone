@@ -572,6 +572,9 @@ def create_schedule(request):
         if is_empty([sport]):
             error = "Required fields cannot be empty"
 
+        if Teams.objects.filter(sport=sport).count()<2:
+            error = "Sport does not have minimum two teams."
+
         if Schedule.objects.filter(sport=sport).exists():
             error = "Schedule for this sport has already been Generated"
 

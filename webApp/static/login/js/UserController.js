@@ -45,8 +45,7 @@ app.controller('UserController', ['$http', '$window', '$scope', '$rootScope', 'A
 				console.log(response);
 				toastr.success(" Account has been created");
 				if (vm.formInfo.role = "Admin") {
-					vm.getallAdmins();
-					vm.reset();
+                    $window.location.href='/admin/manageAdmin/';
 				}
 			},
 				function error(response) {
@@ -63,6 +62,7 @@ app.controller('UserController', ['$http', '$window', '$scope', '$rootScope', 'A
 			.then(function success(response) {
 				console.log(response);
 				toastr.success(" Admin has been removed");
+                $window.location.href='/admin/manageAdmin/';
 			}, function error(response) {
 				console.log(response);
 				toastr.error("Failure : " + response.data.reason);

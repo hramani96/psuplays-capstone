@@ -113,12 +113,15 @@
                                             </thead>
                                             <tbody>
                                                 <tr ng-repeat="sport in sportCtrl.sports">
-                                                    <td><span ng-bind="sport.id"></span></td>
-                                                    <td><a ng-bind="sport.name" href="" ng-click="sportCtrl.getlink(sport.name)"></a></td>
-                                                    <td><span ng-bind="sport.max_teams_capacity"></span></td>
-                                                    <td><span ng-bind="sport.max_players_capacity"></span></td>
-                                                    <td><button type="button" class="btn btn-primary btn-success" ng-click="sportCtrl.show(sport)" style="padding: 10px 25px"> Edit </button></td>
-                                                    <td><button type="button" class="btn btn-primary btn-danger" style="padding: 10px 20px" ng-click="sportCtrl.delete(sport)"> Remove </button></td>
+                                                    {% verbatim %}
+                                                        <td><span ng-bind="sport.id"></span></td>
+                                                        <!-- td><a ng-bind="sport.name" href=""  ng-click="sportCtrl.getlink(sport.name)"></a></td -->
+                                                        <td><a ng-bind="sport.name" href="/admin/sports/{{ sport.name }}/"></a></td>
+                                                        <td><span ng-bind="sport.max_teams_capacity"></span></td>
+                                                        <td><span ng-bind="sport.max_players_capacity"></span></td>
+                                                        <td><button type="button" class="btn btn-primary btn-success" ng-click="sportCtrl.show(sport)" style="padding: 10px 25px"> Edit </button></td>
+                                                        <td><button type="button" class="btn btn-primary btn-danger" style="padding: 10px 20px" ng-click="sportCtrl.delete(sport)"> Remove </button></td>
+                                                    {% endverbatim %}
                                                 </tr>
                                             </tbody>
                                         </table>
