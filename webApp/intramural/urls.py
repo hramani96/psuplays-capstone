@@ -15,6 +15,7 @@ urlpatterns = [
     path('admin/dashboard/', views.AdminDashboardPageView.as_view(), name='Admindashboard'), # Admin dashboard url
     path('admin/manageAdmin/', views.manageAdminPageView.as_view(), name='manageAdmin'), # manage Admin url
     path('admin/sports/', views.adminSportPageView.as_view(), name='adminSport'), # admin Sports url
+    path('admin/sports/<sport_name>/', views.SportInfoPageView.as_view(), name='SportInfo'), # SportInfo url
     path('admin/teams/', views.AdminTeamsPageView.as_view(), name='Adminteams'), # Admin teams url
     path('admin/teams/teamApprove/', views.TeamApprovePageView.as_view(), name='teamApprove'), # Admin team approve url
     path('admin/generate_schedule/', views.Generate_SchedulePageView.as_view(), name='Genereate_Schedule'), # Generate Schedule url
@@ -35,6 +36,8 @@ urlpatterns = [
     path('team/ApproveTeam/', views.approve_team, name='approveTeam'), #approve team api
     path('team/DenyTeam/', views.deny_team, name='denyTeam'), #deny team api
     path('sport/getTeamsForSport/', views.get_teams_for_sport, name='getTeamsForSport'), #get teams for perticular sport api
+    path('sport/getTeams/', views.get_teams, name='getTeams'), #get teams for perticular sport api with parameter
+    path('sport/getSchedule/', views.get_schedule, name='getSchedule'), #get schodule for perticular sport api with parameter
     # Score
 	path('score/update/', views.update_score, name='updateScore'),
 	path('score/createGame/', views.create_game, name='createGame'),

@@ -69,6 +69,12 @@ class StudentTeamInfoPageView(TemplateView):
 class Leaderboard(TemplateView):
     template_name = "leaderboard.html"
 
+class SportInfoPageView(TemplateView):
+    template_name = "sportInfo.html"
+
+    #def sport_name(self):
+    #    return self.kwargs['sport_name']
+
 # APIs
 
 @csrf_exempt
@@ -566,6 +572,9 @@ def create_schedule(request):
         if is_empty([sport]):
             error = "Required fields cannot be empty"
 
+        if Schedule.objects.filter(sport=sport).exists():
+            error = "Schedule for this sport has already been Generated"
+
         if error is not None:
             data["status"] = "failure"
             data["reason"] = error
@@ -574,15 +583,13 @@ def create_schedule(request):
         teams_list = list(Teams.objects.filter(sport=sport,accepted="Y").values('name'))
 
         gen_schedule = generate_schedule(teams_list)
-        #print(gen_schedule)
         for round in gen_schedule:
             for match in round:
                 print(str(match[0]['name']) + " - " + str(match[1]['name']))
-                #final_schedule.append(str(match[0]['name']) + " - " + str(match[1]['name']))
 
                 if str(match[0]['name'])=="BYE" or str(match[1]['name'])=="BYE":
                     continue
-                
+
                 today = today + datetime.timedelta(days=1)
                 t1 = Teams.objects.get(name=str(match[0]['name']), sport=sport)
                 t2 = Teams.objects.get(name=str(match[1]['name']), sport=sport)
@@ -590,9 +597,6 @@ def create_schedule(request):
                 schedule = Schedule(sport=sport, team1=t1, team2=t2, date=today, time="6:00")
                 schedule.save()
 
-        #print(final_schedule)
-
-        #schedule = Schedule(sport=sport, team1=str(match[0]['name']), team2=str(match[1]['name']) accepted=accepted)
         data["status"] = "success"
         return HttpResponse(json.dumps(data), status=200)
     except Exception as e:
@@ -600,3 +604,49 @@ def create_schedule(request):
         data["status"] = "failure"
         data["reason"] = "Because you made a mistake"
         return HttpResponse(json.dumps(data), status=500)
+
+@csrf_exempt
+def get_teams(request):
+    req_data = json.loads(request.body)
+    try:
+        data={}
+        sport = Sport.objects.get(name=req_data["sport"])
+        teams = Teams.objects.filter(sport=sport,accepted='Y').values("id", "name", "description")
+        data["status"] = "success"
+        data["teams"] = list(teams)
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][get_teams] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+
+@csrf_exempt
+def get_schedule(request):
+    req_data = json.loads(request.body)
+    print(req_data["sport"])
+    try:
+        data = {}
+        sport = Sport.objects.get(name=req_data["sport"])
+        schedule = Schedule.objects.filter(sport=sport).order_by('date')
+        print(schedule[0].date)
+        print(list(schedule))
+        #schedual = []
+        data["schedule"] = []
+        for s in schedule:
+            sched = {}
+            sched["team1"] = s.team1.name,
+            sched["team2"] = s.team2.name,
+            sched["date"] = str(s.date),
+            sched["time"] = str(s.time)
+            data["schedule"].append(sched)
+
+        print(data)
+        data["status"] = "success"
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][get_teams] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+

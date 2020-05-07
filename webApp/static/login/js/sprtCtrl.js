@@ -13,6 +13,10 @@ app.controller('SportController', function($http, $window) {
 
     vm.sport = []
 
+    vm.teams = []
+
+    vm.schedules = []
+
     vm.formInfo = {};
 
     vm.index = function() {
@@ -63,4 +67,39 @@ app.controller('SportController', function($http, $window) {
             toastr.error("Failure : " + response.data.reason);
         });
     }
+
+    vm.getTeamsForSport = function() {
+           $http.post('/sport/getTeamsForSport', vm.formInfo)
+                   .then(function success(response) {
+            consol.log(response.data.teams);
+                           vm.teams = response.data.teams;
+                   }, function error(response) {
+                           console.log(response);
+                           toastr.error("Failure : " + response.data.reason);
+                   });
+    }
+
+    vm.getTeams = function(sport) {
+        console.log(sport)
+        $http.post('/sport/getTeams/', {sport:sport})
+        .then(function success(response) {
+            console.log(response.data.teams);
+            vm.teams = response.data.teams;
+        }, function error(response) {
+            console.log(response);
+            toastr.error("Failure : " + response.data.reason);
+        });
+    }
+
+    vm.getSchedule = function(sport) {
+        $http.post('/sport/getSchedule/', {sport:sport})
+        .then(function success(response) {
+            console.log(response.data.schedule);
+            vm.schedules = response.data.schedule;
+        }, function error(response) {
+            console.log(response);
+            toastr.error("Failure : " + response.data.reason);
+        });
+    }
+
 });

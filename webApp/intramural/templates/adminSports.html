@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="signup">
     <head>
-        <title> Manage Admin </title>
+        <title> Sports </title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport">
@@ -29,12 +29,12 @@
                     </a></div>
                     <div class="sidebar-wrapper">
                         <ul class="nav">
-                            <li class="nav-item active  ">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/admin/dashboard/">
                                     <p>Live Games</p>
                                 </a>
                             </li>
-                            <li class="nav-item ">
+                            <li class="nav-item active">
                                 <a class="nav-link" href="/admin/sports/">
                                     <p>Sports</p>
                                 </a>
@@ -114,7 +114,7 @@
                                             <tbody>
                                                 <tr ng-repeat="sport in sportCtrl.sports">
                                                     <td><span ng-bind="sport.id"></span></td>
-                                                    <td><span ng-bind="sport.name"></span></td>
+                                                    <td><a ng-bind="sport.name" href="" ng-click="sportCtrl.getlink(sport.name)"></a></td>
                                                     <td><span ng-bind="sport.max_teams_capacity"></span></td>
                                                     <td><span ng-bind="sport.max_players_capacity"></span></td>
                                                     <td><button type="button" class="btn btn-primary btn-success" ng-click="sportCtrl.show(sport)" style="padding: 10px 25px"> Edit </button></td>
