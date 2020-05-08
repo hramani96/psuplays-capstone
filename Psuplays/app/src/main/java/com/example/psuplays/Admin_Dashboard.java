@@ -138,6 +138,7 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
                             e.printStackTrace();
                         }
                         if(status.equals("success")){
+                            getAdmins();
                             Toast.makeText(Admin_Dashboard.this,"Admin created successful",Toast.LENGTH_SHORT).show();
                         }
                         else {
@@ -168,8 +169,6 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
 
 
         queue.add(jsonObjectRequest);
-
-        getAdmins();
     }
 
     public void updateScore(View view) {

@@ -604,6 +604,7 @@
     <integer name="status_bar_notification_info_maxnum">999</integer>
     <string name="AddAdmin">Add Admin</string>
     <string name="Basketball">Monday</string>
+    <string name="Enter_team_name">Enter Team Name</string>
     <string name="Live_Games">Live Games</string>
     <string name="LoginAs">LOGIN AS</string>
     <string name="Message">Student Dashboard Implementation</string>
@@ -640,6 +641,7 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="action_settings">Settings</string>
     <string name="addSports">Add Sport</string>
+    <string name="add_player">Add Player</string>
     <string name="add_score">Add Score</string>
     <string name="add_sport">Add Sport</string>
     <string name="admin">Admin</string>
@@ -665,7 +667,7 @@
     <string name="create_team">Create Team</string>
     <string name="current_sports">Current Sports</string>
     <string name="description">description</string>
-    <string name="description_optional">Description: Message for admin \n\t\t\t\t\t\t\t (optional)</string>
+    <string name="description_optional">Team Description</string>
     <string name="edit_sport_list">Edit Sport List</string>
     <string name="email">Enter .psu email</string>
     <string name="emergency_cname">Emergency Contact Name<sup><small>*</small></sup></string>
@@ -716,12 +718,14 @@
     <string name="pending_teams">Pending teams:\n(Click on team name to approve or deny)</string>
     <string name="place_holder">Place holder</string>
     <string name="play_stream">Play Stream\n(External App)</string>
+    <string name="players_email">Enter player\'s email</string>
     <string name="pref_sync_frequency">Contacting regarding</string>
     <string name="pref_sync_frequency_summary">Please select an option</string>
     <string name="pref_user_name">Name</string>
     <string name="pref_user_name_summary">Please enter your first and last name</string>
     <string name="pref_user_profile">Contact US</string>
     <string name="re_enter_password">Re-enter Password</string>
+    <string name="request_team">Request Team</string>
     <string name="schedule">Game Schedule</string>
     <string name="scores">Scores</string>
     <string name="search_menu_title">Search</string>
@@ -752,6 +756,7 @@
     <string name="username">Username</string>
     <string name="versus">VS</string>
     <string name="weight">Weight<sup><small>*</small></sup> (lbs)</string>
+    <string name="your_teams">Your Teams:</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

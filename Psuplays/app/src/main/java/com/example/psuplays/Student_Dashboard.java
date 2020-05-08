@@ -33,6 +33,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -43,6 +44,8 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -60,6 +63,9 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
     public static String[] sport_names;
     public static String[] sport_max_teams;
     public static String[] sport_max_players;
+
+    public String[] teams;
+    public String[] sports;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,10 +186,11 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
                             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                    //updateSports(i);
-                                    String sportName = sport_names[i];
                                     Intent intent = new Intent(Student_Dashboard.this, Student_sport.class);
-                                    intent.putExtra("sport", sportName);
+                                    intent.putExtra("sport", sport_names[i]);
+                                    intent.putExtra("sport_id",sport_ids[i]);
+                                    intent.putExtra("max_teams",sport_max_teams[i]);
+                                    intent.putExtra("max_players",sport_max_players[i]);
                                     startActivity(intent);
                                 }
                             });
@@ -308,6 +315,104 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
             }
         };
         timer.scheduleAtFixedRate(t,1000,5000);
+    }
+
+    public void loadteams()throws JSONException {
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http:73.188.242.140:8888/sport/getSchedule/";
+        JSONObject form = new JSONObject();
+        JSONObject sport = new JSONObject();
+        sport.put("id",getIntent().getExtras().getInt("sport_id"));
+        sport.put("name",getIntent().getExtras().getString("sport"));
+        sport.put("max_teams_capacity",getIntent().getExtras().getInt("max_teams"));
+        sport.put("max_players_capacity",getIntent().getExtras().getInt("max_players"));
+        form.put("sport",sport);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.POST, url, form, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        String status = "";
+                        try {
+                            Log.e(TAG,response.toString());
+                            status = response.getString("status");
+
+                            JSONArray team = response.getJSONArray("schedule");
+                            int no_teams = team.length();
+                            String[] my_teams = new String[no_teams];
+                            String[] my_sports = new String[no_teams];
+
+                            for(int i = 0; i < no_teams; i++){
+                                JSONObject temp = team.getJSONObject(i);
+                                my_teams[i] = temp.getString("team1");
+                                my_sports[i] = temp.getString("date");
+                            }
+
+                            teams = my_teams;
+                            sports = my_sports;
+
+                            ArrayList<Map<String,Object>> itemDataList = new ArrayList<Map<String,Object>>();;
+
+                            int l = teams.length;
+                            for(int i =0; i < l; i++) {
+                                Map<String,Object> listItemMap = new HashMap<String,Object>();
+                                listItemMap.put("team", teams[i]);
+                                listItemMap.put("sport", sports[i]);
+                                itemDataList.add(listItemMap);
+                            }
+
+                            SimpleAdapter simpleAdapter = new SimpleAdapter(Student_Dashboard.this,itemDataList,android.R.layout.simple_list_item_2,
+                                    new String[]{"team","sport"},new int[]{android.R.id.text1,android.R.id.text2});
+
+
+                            ListView list = (ListView) findViewById(R.id.lvYourTeams);
+                            list.setAdapter(simpleAdapter);
+                            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                    //updateSports(i);
+                                    Intent intent = new Intent(Student_Dashboard.this, TeamPage.class);
+                                    intent.putExtra("member",true);
+                                    intent.putExtra("team", teams[i]);
+                                    startActivity(intent);
+                                }
+                            });
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        if(status.equals("success")){
+                            Toast.makeText(Student_Dashboard.this,"My teams loaded Successful!",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(Student_Dashboard.this, "My teams loading failed!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+                        String responseBody = null;
+                        try {
+                            responseBody = new String(error.networkResponse.data, "utf-8");
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        JSONObject data = null;
+                        try {
+                            data = new JSONObject(responseBody);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        String message = data.optString("reason");
+                        Toast.makeText(Student_Dashboard.this,message, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        queue.add(jsonObjectRequest);
+
     }
 
 }

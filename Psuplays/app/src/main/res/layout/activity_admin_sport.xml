@@ -8,13 +8,15 @@
 
     <Button
         android:id="@+id/btGenerateSchedule"
-        android:visibility="visible"
-        android:onClick="generateSchedule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/button"
+        android:onClick="generateSchedule"
         android:paddingHorizontal="10dp"
         android:text="@string/generate_schedule"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.535"
@@ -47,12 +49,11 @@
 
     <TextView
         android:id="@+id/tvSchedule"
-        android:visibility="invisible"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="@string/schedule"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/lvschedule"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lvSportsTeam" />

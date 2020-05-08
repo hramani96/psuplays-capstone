@@ -55,8 +55,6 @@ public class signup extends AppCompatActivity {
         form.put("password_conf",cPassword);
         form.put("role","Student");
 
-
-
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.POST, url, form, new Response.Listener<JSONObject>() {
 

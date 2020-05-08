@@ -36,6 +36,14 @@ public class MainActivity extends AppCompatActivity {
         sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         setContentView(R.layout.activity_main);
 
+        Boolean cred = sharedPref.getBoolean("remember_credentials",false);
+        if(cred){
+            String username = sharedPref.getString("username","");
+            String password = sharedPref.getString("password","");
+            ((TextView)findViewById(R.id.etUsername)).setText(username);
+            ((TextView)findViewById(R.id.etPassword)).setText(password);
+        }
+
         Boolean pref = sharedPref.getBoolean("log_in_preference",false);
         if(pref){
             ProgressDialog pd = new ProgressDialog(this);

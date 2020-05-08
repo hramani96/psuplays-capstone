@@ -53,7 +53,7 @@
     <string name="select_a_date">Select a date:</string>
     <string name="create_a_new_team">Create a New Team</string>
     <string name="team_name">Team Name</string>
-    <string name="description_optional">Description: Message for admin \n\t\t\t\t\t\t\t (optional)</string>
+    <string name="description_optional">Team Description</string>
     <string name="create_team">Create Team</string>
     <string name="livechat">LiveChat</string>
     <string name="select_semester">Select A Semester</string>
@@ -115,6 +115,11 @@
     <string name="end_game">End Game</string>
     <string name="create_game">Create Game</string>
     <string name="schedule">Game Schedule</string>
+    <string name="Enter_team_name">Enter Team Name</string>
+    <string name="request_team">Request Team</string>
+    <string name="add_player">Add Player</string>
+    <string name="players_email">Enter player\'s email</string>
+    <string name="your_teams">Your Teams:</string>
     <string-array name="IssueRegarding">
         <item name="LS">LiveStreams</item>
         <item name="LS">LiveScores</item>

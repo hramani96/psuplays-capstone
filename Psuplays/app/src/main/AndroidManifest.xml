@@ -29,7 +29,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Student_sport"></activity>
+        <activity android:name=".TeamPage"></activity>
+        <activity android:name=".Student_sport" />
         <activity android:name=".UpdateLiveScore" />
         <activity
             android:name=".livevideouploader"
@@ -40,13 +41,13 @@
             android:label="@string/action_settings" />
         <activity
             android:name=".Admin_Dashboard"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_admin__dasboard"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Student_Dashboard"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_student__dasboard"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".medical_info"
