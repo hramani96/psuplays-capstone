@@ -64,8 +64,9 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
     public static String[] sport_max_teams;
     public static String[] sport_max_players;
 
-    public String[] teams;
-    public String[] sports;
+    public static String[] teams;
+    public static Integer[] ids;
+    public static String[] sports;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -320,14 +321,9 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
     public void loadteams()throws JSONException {
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http:73.188.242.140:8888/sport/getSchedule/";
+        String url = "http:73.188.242.140:8888/team/getUserTeams/";
         JSONObject form = new JSONObject();
-        JSONObject sport = new JSONObject();
-        sport.put("id",getIntent().getExtras().getInt("sport_id"));
-        sport.put("name",getIntent().getExtras().getString("sport"));
-        sport.put("max_teams_capacity",getIntent().getExtras().getInt("max_teams"));
-        sport.put("max_players_capacity",getIntent().getExtras().getInt("max_players"));
-        form.put("sport",sport);
+        form.put("user",sharedPref.getString("username",""));
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.POST, url, form, new Response.Listener<JSONObject>() {
 
@@ -338,17 +334,20 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
                             Log.e(TAG,response.toString());
                             status = response.getString("status");
 
-                            JSONArray team = response.getJSONArray("schedule");
+                            JSONArray team = response.getJSONArray("teams");
                             int no_teams = team.length();
                             String[] my_teams = new String[no_teams];
                             String[] my_sports = new String[no_teams];
+                            Integer[] my_teams_id = new Integer[no_teams];
 
                             for(int i = 0; i < no_teams; i++){
                                 JSONObject temp = team.getJSONObject(i);
-                                my_teams[i] = temp.getString("team1");
-                                my_sports[i] = temp.getString("date");
+                                my_teams[i] = temp.getString("name");
+                                my_teams_id[i] = temp.getInt("id");
+                                my_sports[i] = temp.getString("sport__name");
                             }
 
+                            ids = my_teams_id;
                             teams = my_teams;
                             sports = my_sports;
 
@@ -374,6 +373,7 @@ public class Student_Dashboard extends AppCompatActivity implements logoutDialog
                                     //updateSports(i);
                                     Intent intent = new Intent(Student_Dashboard.this, TeamPage.class);
                                     intent.putExtra("member",true);
+                                    intent.putExtra("id",ids[i]);
                                     intent.putExtra("team", teams[i]);
                                     startActivity(intent);
                                 }

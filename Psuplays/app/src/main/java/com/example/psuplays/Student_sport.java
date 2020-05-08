@@ -35,6 +35,7 @@ public class Student_sport extends AppCompatActivity {
 
     SharedPreferences sharedPref;
     public static String[] team_names;
+    public static Integer[] team_ids;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +65,7 @@ public class Student_sport extends AppCompatActivity {
         form.put("sport",sport);
         form.put("name",((EditText)findViewById(R.id.etTeamName)).getText().toString());
         form.put("description",((EditText)findViewById(R.id.etTeamDescription)).getText().toString());
-        form.put("creator",sharedPref.getString("username",""));
+        form.put("user",sharedPref.getString("username",""));
         form.put("accepted","?");
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
@@ -135,12 +136,15 @@ public class Student_sport extends AppCompatActivity {
                             JSONArray teams = response.getJSONArray("teams");
                             int no_teams = teams.length();
                             String[] name = new String[no_teams];
+                            Integer[] ids = new Integer[no_teams];
 
                             for(int i = 0; i < no_teams; i++){
                                 JSONObject temp = teams.getJSONObject(i);
+                                ids[i] = temp.getInt("id");
                                 name[i] = temp.getString("name");
                             }
 
+                            team_ids = ids;
                             team_names = name;
 
                             Log.e(TAG,response.toString());
@@ -159,6 +163,7 @@ public class Student_sport extends AppCompatActivity {
                                     //updateSports(i);
                                     Intent intent = new Intent(Student_sport.this, TeamPage.class);
                                     intent.putExtra("member",false);
+                                    intent.putExtra("id",team_ids[i]);
                                     intent.putExtra("team", team_names[i]);
                                     startActivity(intent);
                                 }

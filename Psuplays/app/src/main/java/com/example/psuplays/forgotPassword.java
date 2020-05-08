@@ -2,11 +2,25 @@ package com.example.psuplays;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
 
 public class forgotPassword extends AppCompatActivity {
 
@@ -17,7 +31,7 @@ public class forgotPassword extends AppCompatActivity {
         ((TextView)findViewById(R.id.etEmail)).setText(getIntent().getExtras().getString("username"));
     }
 
-    public void changePassword(View view) {
+    public void changePassword(View view) throws JSONException {
 
         String username = ((TextView)findViewById(R.id.etEmail)).getText().toString();
         String password = ((TextView)findViewById(R.id.etPassword)).getText().toString();
@@ -25,36 +39,61 @@ public class forgotPassword extends AppCompatActivity {
         String answer1 = ((TextView)findViewById(R.id.etAnswer1)).getText().toString();
         String answer2 = ((TextView)findViewById(R.id.etAnswer2)).getText().toString();
 
-        if(username.isEmpty()){
-            Toast.makeText(forgotPassword.this, "Username is empty", Toast.LENGTH_SHORT).show();
-        }
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http:73.188.242.140:8888/forgotpassword/";
+        JSONObject form = new JSONObject();
+        form.put("email",username);
+        form.put("password",password);
+        form.put("conf_password",re_password);
+        form.put("ans1",answer1);
+        form.put("ans2",answer2);
 
-        else if(password.isEmpty()){
-            Toast.makeText(forgotPassword.this, "Password is empty", Toast.LENGTH_SHORT).show();
-        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.POST, url, form, new Response.Listener<JSONObject>() {
 
-        else if(re_password.isEmpty()){
-            Toast.makeText(forgotPassword.this, "Re-enter Password is empty", Toast.LENGTH_SHORT).show();
-        }
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e("Sign up", response.toString());
+                        String status = "";
+                        try {
+                            status = response.getString("status");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        if(status.equals("success")){
+                            Toast.makeText(forgotPassword.this,"Password Changed successfull",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(forgotPassword.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else {
+                            Toast.makeText(forgotPassword.this, "Password changed failed!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
 
-        else if(answer1.isEmpty()||answer2.isEmpty()){
-            Toast.makeText(forgotPassword.this, "Enter answer for security question(s).", Toast.LENGTH_SHORT).show();
-        }
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+                        String responseBody = null;
+                        try {
+                            responseBody = new String(error.networkResponse.data, "utf-8");
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        JSONObject data = null;
+                        try {
+                            data = new JSONObject(responseBody);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        String message = data.optString("reason");
+                        Toast.makeText(forgotPassword.this,message, Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-        else if(!(password.equals(re_password))){
-            Toast.makeText(forgotPassword.this, "Password does not match", Toast.LENGTH_SHORT).show();
-        }
 
-        else {
-            String[] temp = username.split("@");
-            if((temp.length < 2)||!(temp[1].equals("psu.edu"))) {
-                Toast.makeText(forgotPassword.this, "Not a valid username", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                Toast.makeText(forgotPassword.this, "Password changed", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        }
+        queue.add(jsonObjectRequest);
 
     }
 }

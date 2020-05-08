@@ -120,6 +120,8 @@
     <string name="add_player">Add Player</string>
     <string name="players_email">Enter player\'s email</string>
     <string name="your_teams">Your Teams:</string>
+    <string name="favourite_color">What is your favourite color?</string>
+    <string name="city_born">What city where you born in?</string>
     <string-array name="IssueRegarding">
         <item name="LS">LiveStreams</item>
         <item name="LS">LiveScores</item>

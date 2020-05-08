@@ -122,6 +122,8 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
         form.put("first_name",firstName);
         form.put("last_name",lastName);
         form.put("email",email);
+        form.put("ans1","default");
+        form.put("ans2","default");
         form.put("password",password);
         form.put("password_conf",password);
         form.put("role","Admin");

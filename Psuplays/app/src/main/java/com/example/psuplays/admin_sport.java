@@ -34,6 +34,7 @@ import static com.android.volley.VolleyLog.TAG;
 public class admin_sport extends AppCompatActivity {
 
     public static String[] team_names;
+    public static Integer[] team_ids;
     public static String[] matches;
     public static String[] times;
 
@@ -82,13 +83,16 @@ public class admin_sport extends AppCompatActivity {
                             JSONArray teams = response.getJSONArray("teams");
                             int no_teams = teams.length();
                             String[] name = new String[no_teams];
+                            Integer[] id = new Integer[no_teams];
 
                             for(int i = 0; i < no_teams; i++){
                                 JSONObject temp = teams.getJSONObject(i);
                                 name[i] = temp.getString("name");
+                                id[i] = temp.getInt("id");
                             }
 
                             team_names = name;
+                            team_ids = id;
 
                             Log.e(TAG,response.toString());
                             ArrayList<String> teams_list = new ArrayList<>();
@@ -107,6 +111,7 @@ public class admin_sport extends AppCompatActivity {
                                     Intent intent = new Intent(admin_sport.this, TeamPage.class);
                                     intent.putExtra("member",false);
                                     intent.putExtra("team", team_names[i]);
+                                    intent.putExtra("id", team_ids[i]);
                                     startActivity(intent);
                                 }
                             });

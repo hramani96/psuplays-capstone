@@ -1714,6 +1714,7 @@ string bottom_sheet_behavior
 string changePassword
 string character_counter_content_description
 string character_counter_pattern
+string city_born
 string click_to_edit
 string create_a_new_team
 string create_game
@@ -1733,6 +1734,7 @@ string end_stream
 string enter_password
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string favourite_color
 string fgt_psswd
 string firstname
 string generate_schedule

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +51,8 @@ public class signup extends AppCompatActivity {
         JSONObject form = new JSONObject();
         form.put("first_name",fname);
         form.put("last_name",lname);
+        form.put("ans1",((EditText)findViewById(R.id.etAnswer1)).getText().toString());
+        form.put("ans2",((EditText)findViewById(R.id.etAnswer2)).getText().toString());
         form.put("email",email);
         form.put("password",Password);
         form.put("password_conf",cPassword);
@@ -69,7 +72,7 @@ public class signup extends AppCompatActivity {
                         }
                         if(status.equals("success")){
                             Toast.makeText(signup.this,"Signup successfull",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(signup.this, medical_info.class);
+                            Intent intent = new Intent(signup.this, MainActivity.class);
                             startActivity(intent);
                             finish();
                         }

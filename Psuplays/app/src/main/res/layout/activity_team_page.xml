@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/tvRoaster"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
@@ -16,41 +16,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvAddPlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/add_player"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/etPlayerEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lvRoaster" />
-
     <ListView
         android:id="@+id/lvRoaster"
         android:layout_width="0dp"
-        android:layout_height="416dp"
+        android:layout_height="0dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
+        android:clickable="false"
         app:layout_constraintBottom_toTopOf="@+id/tvAddPlayer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRoaster" />
 
+    <TextView
+        android:id="@+id/tvAddPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/add_player"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/etPlayerEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lvRoaster" />
+
     <EditText
         android:id="@+id/etPlayerEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
+        android:enabled="false"
         android:hint="@string/players_email"
+        android:importantForAutofill="no"
         android:inputType="textEmailAddress"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/btAddPlayer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -59,14 +62,16 @@
 
     <Button
         android:id="@+id/btAddPlayer"
-        android:visibility="gone"
-        android:background="@drawable/round_corner"
-        android:paddingHorizontal="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
+        android:background="@drawable/round_corner"
+        android:clickable="false"
+        android:onClick="addPlayer"
+        android:paddingHorizontal="10dp"
         android:text="@string/add_player"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
