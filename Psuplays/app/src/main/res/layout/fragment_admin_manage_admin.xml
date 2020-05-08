@@ -38,7 +38,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/click_to_edit"
+        android:text="@string/admin_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

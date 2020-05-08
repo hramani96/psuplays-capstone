@@ -40,11 +40,11 @@ public class forgotPassword extends AppCompatActivity {
         String answer2 = ((TextView)findViewById(R.id.etAnswer2)).getText().toString();
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http:73.188.242.140:8888/forgotpassword/";
+        String url = "http:73.188.242.140:8888/forgotPassword/";
         JSONObject form = new JSONObject();
         form.put("email",username);
         form.put("password",password);
-        form.put("conf_password",re_password);
+        form.put("password_conf",re_password);
         form.put("ans1",answer1);
         form.put("ans2",answer2);
 

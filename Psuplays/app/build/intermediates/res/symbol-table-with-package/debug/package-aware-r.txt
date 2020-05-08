@@ -1702,6 +1702,7 @@ string add_score
 string add_sport
 string admin
 string admin_dashboard
+string admin_list
 string admin_stream_info
 string answer
 string app_name
@@ -1715,7 +1716,6 @@ string changePassword
 string character_counter_content_description
 string character_counter_pattern
 string city_born
-string click_to_edit
 string create_a_new_team
 string create_game
 string create_new_team

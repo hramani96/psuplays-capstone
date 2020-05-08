@@ -29,7 +29,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".TeamPage"></activity>
+        <activity android:name=".RemoveAdminDialog"></activity>
+        <activity android:name=".TeamPage" />
         <activity android:name=".Student_sport" />
         <activity android:name=".UpdateLiveScore" />
         <activity

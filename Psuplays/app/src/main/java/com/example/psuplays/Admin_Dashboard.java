@@ -46,7 +46,7 @@ import java.util.Map;
 
 import static com.android.volley.VolleyLog.TAG;
 
-public class Admin_Dashboard extends AppCompatActivity implements admin_form.admin_formListener, logoutDialog.logoutDialogListener, create_sport_form.create_sportListener, Team_Approvals.team_approvalListener{
+public class Admin_Dashboard extends AppCompatActivity implements admin_form.admin_formListener, logoutDialog.logoutDialogListener, create_sport_form.create_sportListener, Team_Approvals.team_approvalListener,RemoveAdminDialog.removeAdminListener{
 
     private AppBarConfiguration mAppBarConfiguration;
     SharedPreferences sharedPref;
@@ -313,7 +313,12 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
                             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                    updateAdmin(i);
+                                    Bundle args = new Bundle();
+                                    args.putString("email",emails[i]);
+                                    args.putString("name",firstNames[i] + " " + lastNames[i]);
+                                    RemoveAdminDialog adminDialog = new RemoveAdminDialog();
+                                    adminDialog.setArguments(args);
+                                    adminDialog.show(getSupportFragmentManager(), "Remove Admin");
                                 }
                             });
 
@@ -353,9 +358,55 @@ public class Admin_Dashboard extends AppCompatActivity implements admin_form.adm
         queue.add(jsonObjectRequest);
     }
 
-    public void updateAdmin(int i){
-        Toast.makeText(this,firstNames[i] + " " + lastNames[i] + " Item was selected", Toast.LENGTH_SHORT).show();
-        getAdmins();
+    public void removeAdmin(String email) throws JSONException {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http:73.188.242.140:8888/user/remove/";
+        JSONObject form = new JSONObject();
+        form.put("email",email);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.POST, url, form, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        String status = "";
+                        try {
+                            status = response.getString("status");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        if(status.equals("success")){
+                            getAdmins();
+                            Toast.makeText(Admin_Dashboard.this,"Admin removed successfully",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(Admin_Dashboard.this, "Admin removal failed!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+                        String responseBody = null;
+                        try {
+                            responseBody = new String(error.networkResponse.data, "utf-8");
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        JSONObject data = null;
+                        try {
+                            data = new JSONObject(responseBody);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        String message = data.optString("reason");
+                        Toast.makeText(Admin_Dashboard.this,message, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+        queue.add(jsonObjectRequest);
     }
 
     public void getSports() {

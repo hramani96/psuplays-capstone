@@ -1290,10 +1290,10 @@ public final class R {
         public static final int abc_shareactionprovider_share_with = 0x7f110022;
         public static final int abc_shareactionprovider_share_with_application = 0x7f110023;
         public static final int abc_toolbar_collapse_description = 0x7f110024;
-        public static final int appbar_scrolling_view_behavior = 0x7f11002f;
-        public static final int bottom_sheet_behavior = 0x7f110034;
-        public static final int character_counter_content_description = 0x7f110036;
-        public static final int character_counter_pattern = 0x7f110037;
+        public static final int appbar_scrolling_view_behavior = 0x7f110030;
+        public static final int bottom_sheet_behavior = 0x7f110035;
+        public static final int character_counter_content_description = 0x7f110037;
+        public static final int character_counter_pattern = 0x7f110038;
         public static final int fab_transformation_scrim_behavior = 0x7f11004a;
         public static final int fab_transformation_sheet_behavior = 0x7f11004b;
         public static final int hide_bottom_view_on_scroll_behavior = 0x7f110053;

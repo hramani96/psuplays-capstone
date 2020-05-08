@@ -1195,10 +1195,12 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addteamform
 id admin_drawer_layout
 id admin_nav_view
 id admin_navigation
 id admin_user_id
+id adminconstraintlayout
 id alertTitle
 id alignBounds
 id alignMargins
@@ -1212,8 +1214,8 @@ id blocking
 id bottom
 id btAddAScore
 id btAddHScore
+id btAddPlayer
 id btAddSport
-id btCa
 id btCancelGame
 id btChangePassword
 id btCreateGame
@@ -1222,6 +1224,7 @@ id btEndStream
 id btGenerateSchedule
 id btLiveStream
 id btPlayStream
+id btRequestTeam
 id btSignUp
 id btSubAScore
 id btSubHScore
@@ -1291,7 +1294,9 @@ id etName
 id etNameTheSport
 id etNumber
 id etPassword
+id etPlayerEmail
 id etRePassword
+id etTeamDescription
 id etTeamName
 id etUsername
 id etWeight
@@ -1340,9 +1345,12 @@ id live_score_table
 id lvAdmins
 id lvApprovedTeams
 id lvPendingTeams
+id lvRoaster
 id lvSportsList
 id lvSportsTeam
+id lvStudentSportTeams
 id lvStudentSportsList
+id lvYourTeams
 id lvschedule
 id masked
 id media_actions
@@ -1438,6 +1446,7 @@ id submenuarrow
 id submit_area
 id surface
 id surface_layout
+id svCreateTeam
 id tabMode
 id tableRow
 id tag_accessibility_actions
@@ -1455,7 +1464,6 @@ id textSpacerNoTitle
 id textStart
 id textView
 id text_input_password_toggle
-id text_slideshow
 id textinput_counter
 id textinput_error
 id textinput_helper_text
@@ -1474,10 +1482,13 @@ id transition_scene_layoutid_cache
 id transition_transform
 id tvAScore
 id tvATeam
+id tvAddPlayer
 id tvAdminStreamInfo
 id tvApprovedTeams
 id tvAwayScore
 id tvAwayTeam
+id tvCreateTeam
+id tvCreateTeamSport
 id tvCurrentSports
 id tvHScore
 id tvHTeam
@@ -1492,13 +1503,17 @@ id tvLSInfo
 id tvLoginAs
 id tvOR
 id tvPendingTeams
+id tvRoaster
 id tvSchedule
 id tvScores
 id tvSelectSport
 id tvSpinner1
 id tvSpinner2
+id tvSportNameCreateTeam
+id tvStSportTeams
 id tvTeams
 id tvVersus
+id tvYourTeams
 id tvempty
 id tvinfo
 id unchecked
@@ -1577,6 +1592,7 @@ layout activity_settings
 layout activity_signup
 layout activity_student_dasboard
 layout activity_student_sport
+layout activity_team_page
 layout activity_update_live_score
 layout app_bar_admin_dashboard
 layout app_bar_student__dasboard
@@ -1644,6 +1660,7 @@ navigation admin_navigation
 navigation student_navigation
 string AddAdmin
 string Basketball
+string Enter_team_name
 string Live_Games
 string LoginAs
 string Message
@@ -1680,6 +1697,7 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string action_settings
 string addSports
+string add_player
 string add_score
 string add_sport
 string admin
@@ -1696,6 +1714,7 @@ string bottom_sheet_behavior
 string changePassword
 string character_counter_content_description
 string character_counter_pattern
+string city_born
 string click_to_edit
 string create_a_new_team
 string create_game
@@ -1715,6 +1734,7 @@ string end_stream
 string enter_password
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string favourite_color
 string fgt_psswd
 string firstname
 string generate_schedule
@@ -1756,12 +1776,14 @@ string path_password_strike_through
 string pending_teams
 string place_holder
 string play_stream
+string players_email
 string pref_sync_frequency
 string pref_sync_frequency_summary
 string pref_user_name
 string pref_user_name_summary
 string pref_user_profile
 string re_enter_password
+string request_team
 string schedule
 string scores
 string search_menu_title
@@ -1792,6 +1814,7 @@ string title_activity_student__dasboard
 string username
 string versus
 string weight
+string your_teams
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
