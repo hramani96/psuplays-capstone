@@ -81,22 +81,20 @@
                 <div class="content" ng-controller="TeamController as teamCtrl" >
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-header card-header-primary">
                                         <h4 class="card-title">Team List</h4>
                                     </div>
-                                    <div class="card-body table-responsive" ng-init="teamCtrl.getApprovedTeams()">
+                                    <div class="card-body table-responsive" ng-init="teamCtrl.getTeamsForUser()">
                                         <table class="table table-hover">
                                             <thead class="text-warning">
-                                                <th>ID</th>
                                                 <th>Name</th>
                                                 <th>Sport</th>
                                                 <th>Description</th>
                                             </thead>
                                             <tbody>
                                                 <tr ng-repeat="team in teamCtrl.teams">
-                                                    <td><span ng-bind="team.id"></span></td>
                                                     <td><a ng-href="/student/team/teamInfo/" ng-bind="team.name"></a></td>
                                                     <td><span ng-bind="team.sport__name"></span></td>
                                                     <td><span ng-bind="team.description"></span></td>

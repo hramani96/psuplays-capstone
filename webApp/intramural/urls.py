@@ -38,6 +38,8 @@ urlpatterns = [
     path('sport/getTeamsForSport/', views.get_teams_for_sport, name='getTeamsForSport'), #get teams for perticular sport api
     path('sport/getTeams/', views.get_teams, name='getTeams'), #get teams for perticular sport api with parameter
     path('sport/getSchedule/', views.get_schedule, name='getSchedule'), #get schodule for perticular sport api with parameter
+    path('team/getUserTeams/', views.get_user_teams, name='getUserTeams'), #get user teams api
+    path('student/team/<team_name>/', views.TeamInfoPageView.as_view(), name='TeamsInfo'), # SportInfo url
     # Score
 	path('score/update/', views.update_score, name='updateScore'),
 	path('score/createGame/', views.create_game, name='createGame'),
@@ -46,4 +48,8 @@ urlpatterns = [
 
     # Schedule
     path('schedule/create/', views.create_schedule, name='create_schedule'), #create schedule api
+
+    # Player
+    path('player/create/', views.create_player, name='create_player'), #create team api
+    path('player/getPlayersForTeam', views.get_players_for_team, name='getPlayersForTeam'), #get player for team
 ]

@@ -8,14 +8,10 @@ app.config(['$httpProvider', function($httpProvider) {
 app.controller('UserController', ['$http', '$window', '$scope', '$rootScope', 'Auth', 'AUTH_EVENTS', function($http, $window, $scope, $rootScope, Auth, AUTH_EVENTS) {
 
 	var vm = this;
-
-
 	vm.admins = []
-
 	vm.admin = []
-
+    vm.user = []
 	vm.formInfo = {};
-
 	vm.index = function() {
 	}
 
@@ -114,6 +110,12 @@ app.controller('UserController', ['$http', '$window', '$scope', '$rootScope', 'A
 		$window.location.href='/signup/';
 		
 	}
+
+	vm.get_loggedin_user = function() {
+        vm.user = $window.sessionStorage["userInfo"];
+		console.log(vm.user);
+	}
+    	
 	
 	if ($window.sessionStorage["userInfo"]) {
 		var credentials = JSON.parse($window.sessionStorage["userInfo"]);

@@ -40,11 +40,12 @@ app.controller('TeamController', function($http, $window, $scope) {
 	}
 
 	vm.create = function() {
+        vm.formInfo.user = window.sessionStorage.username;
 		$http.post('/team/create/', vm.formInfo)
 			.then(function success(response) {
 				console.log(response);
 				toastr.success("Team has been submitted");
-				$window.location.href='/student/team/createTeam/';
+				//$window.location.href='/student/team/createTeam/';
 				//vm.reset();
 			},
 				function error(response) {
@@ -109,6 +110,17 @@ app.controller('TeamController', function($http, $window, $scope) {
         $http.get('/sport/getAllSports')
         .then(function success(response) {
             vm.sports = response.data.sports;
+        }, function error(response) {
+            console.log(response);
+            toastr.error("Failure : " + response.data.reason);
+        });
+    }
+
+    vm.getTeamsForUser = function() {
+        vm.formInfo.user = window.sessionStorage.username;
+        $http.post('/team/getUserTeams/',vm.formInfo)
+        .then(function success(response) {
+            vm.teams = response.data.teams;
         }, function error(response) {
             console.log(response);
             toastr.error("Failure : " + response.data.reason);

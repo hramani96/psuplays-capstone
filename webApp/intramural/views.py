@@ -1,11 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView # Import TemplateView
 from django.http import HttpResponse
-from .models import Users
-from .models import Teams
-from .models import Sport
-from .models import Games
-from .models import Schedule
+from .models import *
 from django.core import serializers
 import json
 from .helpers import *
@@ -72,6 +68,9 @@ class Leaderboard(TemplateView):
 class SportInfoPageView(TemplateView):
     template_name = "sportInfo.html"
 
+class TeamInfoPageView(TemplateView):
+    template_name = "studentTeamInfo.html"
+
     #def sport_name(self):
     #    return self.kwargs['sport_name']
 
@@ -89,16 +88,17 @@ def create_user(request):
         password = req_data["password"]
         password_conf = req_data["password_conf"]
         role = req_data["role"]
+        ans1 = req_data["ans1"]
+        ans2 = req_data["ans2"]
 
         # Validate the data here
         if is_empty([first_name, last_name, email,
-            password, password_conf, role]):
+            password, password_conf, role, ans1, ans2]):
             error = "Required fields cannot be empty"
 
         # email compatible validation
         if email.endswith('@psu.edu') == False:
             error = "Improper email format"
-            return HttpResponse(json.dumps(data), status=500)
 
         # emaill already exists validation
         if Users.objects.filter(email=email).count() > 0:
@@ -118,7 +118,7 @@ def create_user(request):
             return HttpResponse(json.dumps(data), status=500)
 
 
-        user = Users(first_name=first_name,last_name=last_name,email=email,password=password,role=role)
+        user = Users(first_name=first_name,last_name=last_name,email=email,password=password,role=role,ans1=ans1,ans2=ans2)
         user.save()
         data["status"] = "success"
         return HttpResponse(json.dumps(data), status=200)
@@ -128,6 +128,58 @@ def create_user(request):
         data["reason"] = "Because you made a mistake"
         return HttpResponse(json.dumps(data), status=500)
 
+@csrf_exempt
+def forgotPassword(request):
+    req_data = json.loads(request.body)
+    try:
+        error = None
+        data = {}
+        email = req_data["email"]
+        password = req_data["password"]
+        password_conf = req_data["password_conf"]
+        ans1 = req_data["ans1"]
+        ans2 = req_data["ans2"]
+
+        # Validate the data here
+        if is_empty([email, password, password_conf, ans1, ans2]):
+            error = "Required fields cannot be empty"
+
+        # email compatible validation
+        if email.endswith('@psu.edu') == False:
+            error = "Improper email format"
+
+        # passwords did not match validation
+        if password_conf != password:
+            error = "Passwords do not match"
+
+        # ans1 did not match validation
+        if ans1 != Users.objects.filter(email=email).get().ans1:
+            error = "Wrong Security Question Answer"
+
+        # ans2 did not match validation
+        if ans2 != Users.objects.filter(email=email).get().ans2:
+            error = "Wrong Security Question Answer"
+
+        # role is not Student validation
+        #if role != "Student":
+        #    error = "Do not play with me!"
+
+        if error is not None:
+            data["status"] = "failure"
+            data["reason"] = error
+            return HttpResponse(json.dumps(data), status=500)
+
+
+        user = Users(email=email)
+        user.password=password
+        user.save()
+        data["status"] = "success"
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][CREATE_USER] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
 @csrf_exempt
 def login_student(request):
     req_data = json.loads(request.body)
@@ -251,10 +303,13 @@ def create_team(request):
     try:
         error = None
         data = {}
+        #uinfo = req_data["user"]
+        #print(uinfo)
         name = req_data["name"]
         description = req_data["description"]
         sport = Sport.objects.get(name=req_data["sport"].get('name'))
         accepted = req_data["accepted"]
+        creator = Users.objects.get(email=req_data["user"])
 
         # Validate the data here
         if is_empty([name, description, sport, accepted]):
@@ -269,7 +324,7 @@ def create_team(request):
             data["reason"] = error
             return HttpResponse(json.dumps(data), status=500)
 
-        team = Teams(name=name, description=description, sport=sport, accepted=accepted)
+        team = Teams(name=name, description=description, sport=sport, accepted=accepted, creator=creator)
         team.save()
         data["status"] = "success"
         return HttpResponse(json.dumps(data), status=200)
@@ -374,8 +429,12 @@ def approve_team(request):
         name = req_data["name"]
         description = req_data["description"]
         sport = Sport.objects.get(name=req_data["sport__name"])
-        team = Teams(id = id, name=name, description=description, sport=sport, accepted='Y')
+        team = Teams.objects.get(id=id)
+        creator = team.creator
+        team.accepted = 'Y'
         team.save()
+        player = Player(user=creator, team=team)
+        player.save()
         data["status"] = "success"
         return HttpResponse(json.dumps(data), status=200)
     except Exception as e:
@@ -649,6 +708,73 @@ def get_schedule(request):
         return HttpResponse(json.dumps(data), status=200)
     except Exception as e:
         print("[EXCEPTION][get_teams] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+
+
+@csrf_exempt
+def create_player(request):
+    req_data = json.loads(request.body)
+    try:
+        error = None
+        data = {}
+        team = Teams.objects.get(id=req_data["team_id"])
+        user = Users.objects.get(email=req_data["email"])
+
+        # Validate the data here
+        if is_empty([sport]):
+            error = "Required fields cannot be empty"
+
+        if Player.objects.filter(user=user,team=team).count()>0:
+            error = "Player is already in this team."
+
+        if error is not None:
+            data["status"] = "failure"
+            data["reason"] = error
+            return HttpResponse(json.dumps(data), status=500)
+
+
+        player = Player(team=team,user=user)
+        player.save()
+
+        data["status"] = "success"
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][CREATE_TEAM] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+
+@csrf_exempt
+def get_user_teams(request):
+    req_data = json.loads(request.body)
+    try:
+        data={}
+        user = Users.objects.get(email=req_data["user"])
+        teams = Teams.objects.filter(creator=user).values("name", "description", "sport__name")
+        print(list(teams))
+        data["status"] = "success"
+        data["teams"] = list(teams)
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][get_teams_for_sport] ::: {}".format(e))
+        data["status"] = "failure"
+        data["reason"] = "Because you made a mistake"
+        return HttpResponse(json.dumps(data), status=500)
+
+@csrf_exempt
+def get_players_for_team(request):
+    req_data = json.loads(request.body)
+    try:
+        data={}
+        players = Players.objects.filter(team=req_data["team"]).values("user")
+        print(list(players))
+        data["status"] = "success"
+        data["teams"] = list(players)
+        return HttpResponse(json.dumps(data), status=200)
+    except Exception as e:
+        print("[EXCEPTION][get_teams_for_sport] ::: {}".format(e))
         data["status"] = "failure"
         data["reason"] = "Because you made a mistake"
         return HttpResponse(json.dumps(data), status=500)

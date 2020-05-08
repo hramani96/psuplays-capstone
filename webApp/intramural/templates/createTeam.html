@@ -86,7 +86,7 @@
 
 	<div class="content">
         <div class="container-fluid" ng-controller="TeamController as teamCtrl">
-          <div class="row">
+          <div class="row" ng-controller="UserController as userCtrl">
             <div class="col-lg-6 col-md-8">
               <div class="card">
                 <div class="card-header card-header-primary">
@@ -129,6 +129,9 @@
               </div>
             </div>
           </div>
+          <div class="row">
+               <video width="640" height="400" controls="controls" src="http://73.175.158.34:1935/live/android_test/playlist.m3u8"></video>
+        </div>
         </div>
       </div>
 	    </div>

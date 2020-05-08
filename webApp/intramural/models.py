@@ -9,10 +9,12 @@ class Users(models.Model):
     email = models.CharField(max_length=50, unique=True, default='', null=False)
     password = models.CharField(max_length=50, default='', null=False)
     role = models.CharField(max_length=7, default='Student', null=False)
+    ans1 = models.CharField(max_length=50, default='', null=False)
+    ans2 = models.CharField(max_length=50, default='', null=False)
 
     def __str__(self):
         return self.first_name
-   
+
 
 class User_medical_info(models.Model):
     student_id = models.ForeignKey(Users, on_delete=models.CASCADE)
@@ -50,6 +52,7 @@ class Teams(models.Model):
     description = models.TextField(max_length=200, default='', null=False)
     sport = models.ForeignKey(Sport, on_delete=models.CASCADE)
     accepted = models.CharField(max_length=1, default='N', null=False)
+    creator = models.ForeignKey(Users, on_delete=models.CASCADE, null=True)
 
     class Meta:
         unique_together = ("name","sport")
@@ -76,3 +79,13 @@ class Schedule(models.Model):
 
     def __str__(self):
         return str(self.team1) + " vs " + str(self.team2)
+
+class Player(models.Model):
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)
+    team = models.ForeignKey(Teams, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ("user","team")
+
+    def __str__(self):
+        return self.user.first_name
