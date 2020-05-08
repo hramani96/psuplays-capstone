@@ -54,6 +54,9 @@ class StudentDashboardPageView(TemplateView):
 class StudentTeamPageView(TemplateView):
     template_name = "studentTeam.html"
 
+class StudentSportPageView(TemplateView):
+    template_name = "studentSports.html"
+
 class StudentCreateTeamPageView(TemplateView):
     template_name = "createTeam.html"
 
@@ -67,6 +70,9 @@ class Leaderboard(TemplateView):
 
 class SportInfoPageView(TemplateView):
     template_name = "sportInfo.html"
+
+class SportInfoStudentPageView(TemplateView):
+    template_name = "sportInfoStudent.html"
 
 class TeamInfoPageView(TemplateView):
     template_name = "studentTeamInfo.html"
@@ -170,7 +176,7 @@ def forgotPassword(request):
             return HttpResponse(json.dumps(data), status=500)
 
 
-        user = Users(email=email)
+        user = Users.objects.get(email=email)
         user.password=password
         user.save()
         data["status"] = "success"
@@ -688,8 +694,13 @@ def get_schedule(request):
     req_data = json.loads(request.body)
     print(req_data["sport"])
     try:
+        error = None
         data = {}
         sport = Sport.objects.get(name=req_data["sport"])
+
+        if Schedule.objects.filter(sport=sport).count()<1:
+            error = "Schedule has not been posted yet"
+
         schedule = Schedule.objects.filter(sport=sport).order_by('date')
         print(schedule[0].date)
         print(list(schedule))
@@ -702,6 +713,11 @@ def get_schedule(request):
             sched["date"] = str(s.date),
             sched["time"] = str(s.time)
             data["schedule"].append(sched)
+
+        if error is not None:
+            data["status"] = "failure"
+            data["reason"] = error
+            return HttpResponse(json.dumps(data), status=500)
 
         print(data)
         data["status"] = "success"
@@ -723,8 +739,8 @@ def create_player(request):
         user = Users.objects.get(email=req_data["email"])
 
         # Validate the data here
-        if is_empty([sport]):
-            error = "Required fields cannot be empty"
+        #if is_empty([team_id, email]):
+        #    error = "Required fields cannot be empty"
 
         if Player.objects.filter(user=user,team=team).count()>0:
             error = "Player is already in this team."
@@ -752,13 +768,13 @@ def get_user_teams(request):
     try:
         data={}
         user = Users.objects.get(email=req_data["user"])
-        teams = Teams.objects.filter(creator=user).values("name", "description", "sport__name")
+        teams = Teams.objects.filter(creator=user).values("id", "name", "description", "sport__name")
         print(list(teams))
         data["status"] = "success"
         data["teams"] = list(teams)
         return HttpResponse(json.dumps(data), status=200)
     except Exception as e:
-        print("[EXCEPTION][get_teams_for_sport] ::: {}".format(e))
+        print("[EXCEPTION][get_user_teams] ::: {}".format(e))
         data["status"] = "failure"
         data["reason"] = "Because you made a mistake"
         return HttpResponse(json.dumps(data), status=500)
@@ -768,13 +784,14 @@ def get_players_for_team(request):
     req_data = json.loads(request.body)
     try:
         data={}
-        players = Players.objects.filter(team=req_data["team"]).values("user")
+        team = Teams.objects.get(id=req_data["id"])
+        players = Player.objects.filter(team=team).values("user__first_name","user__last_name")
         print(list(players))
         data["status"] = "success"
         data["teams"] = list(players)
         return HttpResponse(json.dumps(data), status=200)
     except Exception as e:
-        print("[EXCEPTION][get_teams_for_sport] ::: {}".format(e))
+        print("[EXCEPTION][get_players_for_team] ::: {}".format(e))
         data["status"] = "failure"
         data["reason"] = "Because you made a mistake"
         return HttpResponse(json.dumps(data), status=500)

@@ -10,6 +10,7 @@ urlpatterns = [
     path('user/remove/', views.remove_user, name='remove_user'), # user remove api
     path('loginStudent/', views.login_student, name='student_login'), # student login api
     path('loginAdmin/', views.login_admin, name='admin_login'), # admin login api
+    path('forgotPassword/', views.forgotPassword, name='forgotPassword'), # forgot Password api
 
     # Admin
     path('admin/dashboard/', views.AdminDashboardPageView.as_view(), name='Admindashboard'), # Admin dashboard url
@@ -24,6 +25,8 @@ urlpatterns = [
     # Student
     path('student/dashboard/', views.StudentDashboardPageView.as_view(), name='Studentdashboard'), # Student dashboard url
     path('student/team/', views.StudentTeamPageView.as_view(), name='StudentTeam'), # Student Team url
+    path('student/sports/', views.StudentSportPageView.as_view(), name='StudentSport'), # Student Sport url
+    path('student/sports/<sport_name>/', views.SportInfoPageView.as_view(), name='SportInfo'), # SportInfo url
     path('student/team/createTeam/', views.StudentCreateTeamPageView.as_view(), name='StudentCreateTeam'), # Student Create Team url
     path('student/team/teamInfo/', views.StudentTeamInfoPageView.as_view(), name='StudentTeamInfo'), # Student Team Info url
     path('sport/create/', views.create_sport, name='create_sport'), # sport cration api
@@ -51,5 +54,5 @@ urlpatterns = [
 
     # Player
     path('player/create/', views.create_player, name='create_player'), #create team api
-    path('player/getPlayersForTeam', views.get_players_for_team, name='getPlayersForTeam'), #get player for team
+    path('player/getPlayersForTeam/', views.get_players_for_team, name='getPlayersForTeam'), #get player for team
 ]
